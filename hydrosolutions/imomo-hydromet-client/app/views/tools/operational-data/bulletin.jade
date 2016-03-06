@@ -1,0 +1,72 @@
+include ../../mixins/form-mixins.jade
+
+.page-header
+  h1 #{$i18n.tools.operationalData.bulletin.title}
+.row
+  .col-xs-7
+    form.form-horizontal(name='bulletinForm')
+      .form-group
+        label.control-label.col-xs-3
+          | #{$i18n.tools.operationalData.bulletin.siteToAdd.label}
+        .col-xs-9
+          .form-group
+            .col-xs-12
+              .input-group
+                input.form-control(name='siteToAdd', type='text',
+                  ng-model='bulletinCtrl.siteToAdd', required,
+                  placeholder=$i18n.tools.operationalData.bulletin.siteToAdd.placeholder,
+                  typeahead='site as site.siteCode for site in bulletinCtrl.sites | filter: $viewValue',
+                  typeahead-editable='false')
+                +inputGroupAddon('siteToAdd', true, $i18n.tools.operationalData.bulletin, 'bulletinForm')
+          .form-group
+            .col-xs-12
+              button.btn.btn-block.btn-primary(
+                ng-click='bulletinCtrl.addSite($event)',
+                ng-disabled='bulletinForm.siteToAdd.$invalid')
+                | #{$i18n.tools.operationalData.bulletin.addSite} #{''}
+                i.octicon.octicon-checklist
+      .form-group
+        label.control-label.col-xs-3
+          | #{$i18n.tools.operationalData.bulletin.date.label}
+        .col-xs-9
+          .input-group
+            span.input-group-btn
+              button.btn.btn-default(
+                ng-click='bulletinCtrl.openDatePicker($event)')
+                i.octicon.octicon-calendar
+            input.form-control(type='text', name='date', required,
+              datepicker-popup='{{bulletinCtrl.dateFormat}}',
+              placeholder=$i18n.tools.operationalData.bulletin.date.placeholder,
+              ng-model='bulletinCtrl.date',
+              is-open='bulletinCtrl.dateOpen',
+              max-date='bulletinCtrl.maxDate',
+              current-text=$i18n.datePicker.today,
+              clear-text=$i18n.datePicker.clear,
+              close-text=$i18n.datePicker.close)
+            +inputGroupAddon('date', true, $i18n.tools.operationalData.bulletin, 'bulletinForm')
+      .form-group
+        .col-xs-9.col-xs-offset-3
+          button.btn.btn-block.btn-primary(
+            ng-click='bulletinCtrl.generateBulletin($event)',
+            ng-disabled='bulletinForm.date.$invalid || bulletinCtrl.selectedSites.length === 0 || bulletinCtrl.generatingBulletin || bulletinCtrl.bulletinError')
+            span(ng-hide='bulletinCtrl.generatingBulletin') #{$i18n.tools.operationalData.bulletin.generate} #{''}
+              i.octicon.octicon-file-text
+            span(ng-show='bulletinCtrl.generatingBulletin') #{$i18n.tools.operationalData.bulletin.generating} #{''}
+              i.octicon.octicon-hourglass
+          a.btn.btn-block.btn-success(ng-show='bulletinCtrl.downloadLink',
+            download='bulletin.xlsx', ng-href='{{bulletinCtrl.downloadLink}}')
+            | #{$i18n.tools.operationalData.bulletin.download} #{''}
+            i.octicon.octicon-cloud-download
+  .col-xs-5
+    h4 #{$i18n.tools.operationalData.bulletin.siteList}
+    ul.list-group.scrollable-list#bulletin-station-list
+      li.list-group-item.clearfix(
+        ng-repeat='site in bulletinCtrl.selectedSites')
+        span {{site.siteCode}} - {{site.siteName}}
+        a.pull-right(href, ng-click='bulletinCtrl.removeSite($event, $index)')
+          i.octicon.octicon-x
+.row
+  .col-xs-12
+    alert(ng-show='bulletinCtrl.bulletinError', type='danger',
+      close='bulletinCtrl.closeErrorAlert()')
+      | {{bulletinCtrl.bulletinError}}

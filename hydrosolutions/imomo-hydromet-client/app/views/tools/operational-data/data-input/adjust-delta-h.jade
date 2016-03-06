@@ -1,0 +1,15 @@
+include ../../../mixins/form-mixins.jade
+
+.panel.panel-primary(ng-controller='AdjustDeltaHCtrl as optionCtrl')
+  .panel-heading
+    | #{$i18n.tools.operationalData.dischargeControl.adjustment.adjustDeltaH.label} #{''}
+    i.octicon.octicon-pulse
+  .panel-body
+    form(name='adjustDeltaHForm')
+      +vFormField('deltaH', true, $i18n.tools.operationalData.dischargeControl.adjustment.adjustDeltaH, 'adjustDeltaHForm', 'optionCtrl.deltaH',
+        'optionCtrl.isInputDisabled()', 'number')
+      +vFormField('modelName', true, $i18n.tools.operationalData.dischargeControl.adjustment.adjustDeltaH, 'adjustDeltaHForm', 'optionCtrl.modelName', 'optionCtrl.isInputDisabled()', 'text')
+      .form-group
+        button.btn.btn-success(ng-click='optionCtrl.createNewModel($event)',
+                               ng-disabled='adjustDeltaHForm.$invalid || optionCtrl.isInputDisabled()')
+          | #{$i18n.tools.operationalData.dischargeControl.adjustment.adjustDeltaH.button}

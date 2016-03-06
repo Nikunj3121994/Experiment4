@@ -1,0 +1,29 @@
+@radius: 30px;
+@radius-lg: 50px;
+@radius-xl: 70px;
+
+.btn-circle {
+  width: @radius;
+  height: @radius;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: calc(@radius/2);
+}
+.btn-circle.btn-lg {
+  width: @radius-lg;
+  height: @radius-lg;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: calc(@radius-lg/2);
+}
+.btn-circle.btn-xl {
+  width: @radius-xl;
+  height: @radius-xl;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: calc(@radius-xl/2);
+}

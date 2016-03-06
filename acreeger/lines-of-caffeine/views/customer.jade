@@ -1,0 +1,126 @@
+extends layout
+block head
+  link(rel='stylesheet', media='screen', href='/stylesheets/customer.css')
+
+block content
+  .disabled-warnings
+    if (!twilioEnabled)
+      p Text messaging functionality has been disabled.
+    if (!emailEnabled)
+      p Email functionality has been disabled.
+  div#top-right-buttons.pull-right
+    button#top-right-refresh-button.btn.btn-link.refresh-button
+      i.icon-refresh
+    button#top-right-reset-button.btn.btn-link.reset-button Reset
+  .container
+    .row
+      .span4
+        div#long-wait-caution.hide.text-error The wait for drinks is currently
+          span.wait-length
+          | minutes.
+      .span4.logo-row
+        h1: img(src="images/AKQA_BLUEBOTTLE_logo.jpg",title="AKQA & Blue Bottle Coffee")
+        //- h3.text-left Caffeine Ordering For Fast Employee Enjoyment
+    form#contact-info-form.form-inline
+      #contact-info-container.input-container
+        #first-time-question.row
+          .span6.offset3
+            p Used this app before?
+            p We'll automatically look up your last order...
+        .row
+          .span5.offset3
+            input#contact-info-prescreen(type="text", name="contact-info-prescreen", placeholder="Please enter your cell or email...", autocapitalize="off", autocomplete="off", autocorrect="off", spellcheck="off")
+          .span1
+            button#next-button.btn.btn-primary Next
+        .row.errorLabelRow
+          .span5.offset3
+            label.errorMessage(for="contact-info-prescreen")
+        #or-row.row
+          .span6.offset3
+            div.align-center - or -
+        #never-used-it-row.row
+          .span6.offset3
+            div.align-center
+              button#never-used-it-button.btn I've never used it before
+            //- TODO: Add button for skipping this section or inputting phone number/email
+
+    form#order-form.form-inline.hide
+      #order-success.modal.hide.fade
+        .modal-header
+          h3 Thank you!
+        .modal-body
+          p We will contact you when it's time to come grab your drink.
+      #special-instructions.modal.hide.fade
+        .modal-header
+          h4 Add special requests here...
+        .modal-body
+          textarea#special-instructions-input(name="drinks[0][specialInstructions]",maxlength="110")
+        .modal-footer
+          button.clear-special-instructions.btn.btn-link.pull-left Clear
+          button.btn.btn-primary.btn(data-dismiss='modal', aria-hidden='true') Close
+      #user-container.input-container
+        .row.errorLabelRow
+          .span4
+            label.errorMessage(for="cust-first-name")
+          .span4
+            label.errorMessage(for="cust-last-name")
+          .span4
+            label.errorMessage(for="contact-info")
+        .row
+          .span4
+            input#cust-first-name.required.customer-data(type="text", placeholder="Your first name...", name="customer[firstName]", autocomplete="off", autocorrect="off", spellcheck="off")
+          .span4
+            input#cust-last-name.required.customer-data(type="text", placeholder="Your last name...", name="customer[lastName]", autocomplete="off", autocorrect="off",spellcheck="off")
+          .span4
+            input#contact-info.span4.customer-data(type="text", placeholder="Cell or email...", name="customer[contactInfo]", autocapitalize="off", autocomplete="off", autocorrect="off", spellcheck="off")
+        .row
+          .span4.offset8.hidden-phone.input-helper-text.align-right
+            em ...we'll contact you when your drink is ready
+      #order-container
+        .row
+          .span12.input-helper-text.align-left
+            em I would like a...
+        .row.order-row
+          .span4
+            select.caff-level.input-large(name="drinks[0][strength]")
+              option(value="full") Full strength
+              option(value="decaf") Decaffeinated
+              option(value="half-caff") Half caff
+          .span4
+            select.coffee-type.input-extra-large(name="drinks[0][drinkType]")
+              option(value="americano") Cafè Americano
+              option(value="latte",selected="selected") Cafè Latte
+              option(value="mocha") Cafè Mocha
+              option(value="cappuccino") Cappuccino
+              option(value="dry-cappuccino") dry Cappuccino
+              option.caffeine-only(value="chai") Chai Latte
+              option.no-milk(value="single-espresso") single Espresso shot
+              option.no-milk(value="double-espresso") double Espresso shot
+              option(value="macchiato") Macchiato
+          .span4
+            select.milk-type.input-medium(name="drinks[0][milk]")
+              option(value="full-fat") with full fat milk
+              option(value="skim") with non-fat milk
+              option(value="soy") with soy milk
+              option(value="none") with no milk
+        .row
+          .span12.align-center
+            button#no-special-requests.add-special-instructions.btn.btn-large(data-toggle="modal",data-target="#special-instructions") Any special requests?
+            p#entered-special-requests.hide
+              strong Special requests:&nbsp;
+              span#special-instructions-text
+              button.add-special-instructions.btn(data-toggle="modal",data-target="#special-instructions") Edit
+        .row
+          .span12.align-center
+            button#order-button.btn.btn-primary.btn-large Order
+        .row
+          .span12.align-center
+            span.wait-infos
+              span.hide.wait-info.no-wait Your order will be made immediately
+              span.hide.wait-info.one-minute-wait Your order will be ready in a minute or so
+              span.hide.wait-info.minutes-wait Your order will be ready in about
+                span.wait-length
+                | minutes.
+block late-scripts
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js")
+  script(src="js/customer.js")

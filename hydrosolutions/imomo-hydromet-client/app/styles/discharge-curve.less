@@ -1,0 +1,126 @@
+@curve-color-4: #88A825;
+@curve-color-3: #35203B;
+@curve-color-2: #911146;
+@curve-color-1: #CF4A30;
+@curve-color-0: #ED8C2B;
+
+@data-point-color: #0015FF;
+@data-point-color-selected: #FFC900;
+@data-label-color: #0015FF;
+@data-label-color-selected: #FFC900;
+@data-link-color: #0015FF;
+@data-link-color-selected: #FFC900;
+
+@non-hover-opacity: 0.6;
+@hover-opacity: 1;
+
+@base-font: 12px;
+
+.generate-curve-colors(@n, @i: 0) when (@i <= @n) {
+  @temp: "curve-color-@{i}";
+  .curve-@{i} {
+    stroke: @@temp;
+  }
+  .legend.curve-@{i} {
+    background-color: @@temp;
+  };
+
+  .legend.curve-@{i}:focus {
+    background-color: @@temp;
+  };
+
+  .legend.curve-@{i}:hover {
+    background-color: @@temp;
+  };
+
+  .generate-curve-colors(@n, (@i + 1));
+}
+
+discharge-curve > svg {
+  height: 600px;
+  width: 100%;
+}
+
+.axis line {
+  stroke: #777;
+  stroke-dasharray: 2, 2;
+}
+
+.axis path {
+  display: none;
+}
+
+.curve {
+  opacity: @non-hover-opacity;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.curve.hover {
+  opacity: @hover-opacity;
+  cursor: pointer;
+}
+
+.curve.selected {
+  opacity: @hover-opacity;
+  stroke-width: 3;
+}
+
+.generate-curve-colors(4);
+
+.legend-container {
+  max-height: 177px;
+  overflow-y: auto;
+}
+
+.legend {
+  opacity: @non-hover-opacity;
+}
+
+.legend > span {
+  opacity: @hover-opacity;
+  color: #FFF;
+}
+
+.legend:hover, .legend:focus {
+  opacity: @hover-opacity;
+}
+
+.legend.selected {
+  opacity: @hover-opacity;
+  font-weight: bold;
+}
+
+.node-group {
+  cursor: pointer;
+}
+
+.node-group > circle {
+  stroke: none;
+  fill: @data-point-color;
+  stroke-width: 1;
+}
+
+.node-group > text {
+  stroke: none;
+  fill: @data-label-color;
+  font-size: @base-font;
+}
+
+.node-group > line {
+  stroke: @data-link-color;
+}
+
+.node-group > circle.selected {
+  fill: @data-point-color-selected;
+}
+
+.node-group > text.selected {
+  fill: @data-label-color-selected;
+  font-size: 1.5*@base-font;
+}
+
+.node-group > line.selected {
+  stroke-width: 2;
+  stroke: @data-link-color-selected;
+}

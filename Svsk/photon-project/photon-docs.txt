@@ -1,0 +1,80 @@
+Photon Engine Documentation
+
+1.0 Introduction
+The Photon Engine is a JavaScript based RPG game engine that allows for creation of basic
+role playing games. The engine takes structured files as inputs and builds the game world 
+based on these. These file packets are known as Maps or Map Packages. In order to create
+your own adventures within the engine an intermediate level of knowledge about JavaScript
+is required. The following documentation will describe the structure of the map packages
+and how to use the API provided with the engine.
+
+1.1 Terminology
+WIP
+
+2.0 The Map Package Structure
+The map package contains one or several JavaScript files (depending on how you choose to
+structure your JavaScript) along with five directories. These directories are attackvisuals,
+backgrounds, music, sprites and battle-sprites. In practice these can be structured however
+you like as they are only referenced from your own JavaScript files in the Map Package, but
+we recommend sticking to this structured to create a standardized Map Package structure.
+
+2.1 Map Package basic JavaScript
+The first thing that should be done in the Map Package JavaScript file is to declare the following
+variables:
+	- player (character object)
+	- spellVisuals (assosciative array of spell visuals)
+	- randomMonsters (array of random monsters using character objects)
+	- questCompletions (assosciative array of quest ids coinciding with quests you may create to hold scripted completions to quests)
+	
+You should also push area objects into the "areas"-array declared in the engine.
+
+2.1.1 The Character Class
+The character class creates character objects that will battle in the engine. It currently
+has the follwing variables:
+	name (String)
+	isPlayer (boolean)
+	maxHp (int)
+	currentHp (int)
+	mapSprite (String)
+	battleSprite (String)
+	inventory (array of item objects)
+	baseAttack (int)
+	active (boolean)
+	target (character object)
+	battleMusic (String)
+	onDeafeat (function)
+
+2.1.2 The Item Class
+Spells and items alike are all created by the Item Class. It currently has the following
+variables:
+	name (String)
+	type (String - "Offensive Spell" or "Offensive Weapon" or "Defensive Spell" or "Defensive Armor")
+	damage (int)
+Note that the type of the item needs to be correct. The engine checks for the word "Offensive" (case sensitive) when
+listing possible attacks in battle. Non player characters do not distinguish between offensive and defensive items
+at this time.
+
+2.1.3 The randomMonsters array
+You want to put several character objects into the randomMonsters array. The area class (covered later) contains a boolean
+called hasRandomMonsters. If this is set to "true" for the current area the player will encounter a random character
+from this array periodically when moving through the area. Currently all characters present in this array can appear
+in any area with random monsters enabled. This will get addressed in a future build.
+
+2.2 Areas
+Building areas is currently reasonably simple in the Photon Engine. Area objects are pushed into the "areas" array at the load
+of the page. Therefor these should be pushed immediately in your main JavaScript file. The area object currently has the 
+following variables:
+	id (int - Must be unique between areas)
+	name (String)
+	background (String - file string referencing the background image file)
+	music (String - file string referencing the music to play in this area)
+	timeOfDay (int - number between 0 and 1 to define the time of day. 1 being pitch black night)
+	topStart (String - Map position on load. This can be used to position the player in the correct starting position in the area)
+	leftStart (String - Map position on load. This can be used to position the player in the correct starting position in the area)
+	triggers (Array - The trigger array can be used to keep track of events completed on the map. There is no set structure for the contents of the array, but typically you can use it as an assosciative array ex: triggers["galennaEventCompleted"] = true)
+	obstructions (Array - an array of strings. These strings are html code to generate divs to act as obstructions on the map)
+	characters (Array of mapCharacter objects, their sprites and their talkData functions)
+	triggerAreas (Array of triggerArea objects. These are used to trigger specific scripts when the player steps into them.)
+	hasRandomMonsters (Boolean to check whether monsters should spawn randomly or not)
+
+

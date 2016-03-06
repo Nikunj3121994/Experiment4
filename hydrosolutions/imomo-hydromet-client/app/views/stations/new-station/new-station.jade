@@ -1,0 +1,55 @@
+include ../../mixins/form-mixins.jade
+
+mixin newStationFormField(name, required, type)
+  - var constraints = {}
+  if type === 'text'
+    - constraints['ng-maxlength'] = "{{newStationCtrl.sitesLexicon.maxLength('" + name + "')}}"
+  else if type === 'number'
+    - constraints.min = "{{newStationCtrl.sitesLexicon.min('" + name + "')}}"
+    - constraints.max = "{{newStationCtrl.sitesLexicon.max('" + name + "')}}"
+  +formField(name, required, $i18n.newStation, 'newStationForm', 'newStationCtrl.newSite.' + name, 'newStationCtrl.inputDisabled', type)&attributes(constraints)
+
+.page-header
+  h1(id='top') #{$i18n.newStation.title}
+alert(type='success', ng-show='newStationCtrl.siteCreated')
+  h1
+    i.octicon.octicon-info
+    | #{''} #{$i18n.newStation.success.title}
+  p #{$i18n.newStation.success.message}
+  ol
+    li #{$i18n.newStation.success.stepOne}
+    li #{$i18n.newStation.success.stepTwo}
+    li #{$i18n.newStation.success.stepThree}
+  ul.list-inline
+    li: a.btn.btn-lg.btn-info(ui-sref='^.overview')
+      | #{$i18n.newStation.success.back}
+error-alert(ng-show='newStationCtrl.siteCreateError',
+  close='newStationCtrl.closeErrorAlert()',
+  error='newStationCtrl.siteCreateError')
+form.form-horizontal(name='newStationForm')
+  alert(ng-show='newStationForm.$dirty && newStationForm.$valid',
+    type='success') #{$i18n.newStation.validForm}
+  +newStationFormField('siteCode', true, 'text')
+  +newStationFormField('siteName', true, 'text')
+  +newStationFormField('latitude', true, 'number')
+  +newStationFormField('longitude', true, 'number')
+  +newStationFormField('country', true, 'text')
+  +newStationFormField('basin', true, 'text')
+  +newStationFormField('region', false, 'text')
+  .form-group
+    label.col-xs-4.control-label #{$i18n.newStation.comments.label}
+    .col-xs-8
+      textarea.form-control(name='comments',
+        placeholder=$i18n.newStation.comments.placeholder,
+        ng-model='newStationCtrl.newSite.comments',
+        ng-disabled='newStationCtrl.inputDisabled')
+  .form-group
+    .col-xs-offset-4.col-xs-8
+      button.btn.btn-primary(ng-click='newStationCtrl.storeSite($event)',
+        ng-disabled='newStationForm.$invalid || newStationCtrl.inputDisabled')
+        span(ng-hide='newStationCtrl.inputDisabled')
+          | #{$i18n.newStation.storeStation} #{''}
+          i.octicon.octicon-pencil
+        span(ng-show='newStationCtrl.inputDisabled')
+          | #{$i18n.newStation.storingStation} #{''}
+          i.octicon.octicon-hourglass

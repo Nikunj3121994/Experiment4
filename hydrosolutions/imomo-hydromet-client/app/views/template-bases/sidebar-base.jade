@@ -1,0 +1,23 @@
+block variables
+  //-
+    Defines 3 variables to be used to customize the base template.
+    * homeState: Name of the state that should be linked by the anchor
+      tag in the title of the sidebar panel. This name should follow the
+      format specified by ui-sref.
+    * homeStateTitle: Reference to the $i18n variable that contains the
+                      localized title for the sidebar panel.
+    * displayHomeState: Indicates whether to display the home state tab.
+  - var homeState = null;
+  - var homeStateTitle = null;
+  - var displayHomeState = true;
+
+ul.nav.nav-tabs.nav-justified
+  if displayHomeState
+    li
+      a(ui-sref=homeState, ui-sref-active-eq='active') #{homeStateTitle} #{''}
+        span.octicon.octicon-tools
+  li(ng-repeat='option in sidebarOptsCtrl.options')
+    a(ui-sref='{{option.state}}',
+      ui-sref-active='active')
+      | {{sidebarOptsCtrl.localize(option.localizedNamePath)}} #{''}
+      span.octicon(ng-class='option.octicon')

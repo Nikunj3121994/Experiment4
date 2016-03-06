@@ -1,0 +1,74 @@
+local_id,basin,river,description,country,latitude,longitude,
+17047,Amudariya,Pianj,Nishni,TJ,,
+17100,Amudariya,Kyzyl Suu,Dombrachi,TJ,,
+17101,Amudariya,Muksu,Davsear,TJ,,
+17109,Amudariya,Obikhingou,Tavildara,TJ,,
+17462,Amudariya,Kyzyl Suu,Sary Tash,KG,73.25005,39.70606
+17084,Amudariya,Vakhsh,Darband (inflow to Nurek reservoir),UZ,69.96667,38.85
+17082,Amudariya,Vakhsh,Garm,TJ,70.37452,39.01636
+17137,Amudariya,Kafirnigan,Tartki,TJ,68.13333,37.6
+17150,Amudariya,Varzob,Dagana,TJ,,
+17050,Amudariya,Gunt,Khorog,TJ,71.5566,37.49209
+17453,Amudariya,Vanch,Bichkharv,TJ,,
+17077,Amudariya,Yakhsu,Karbostonal,TJ,,
+17078,Amudariya,Yakhsu,Vose,TJ,,
+17194,Amudariya,Tupalang,Inflow to Tupalang reservoir,UZ,67.804,38.59692
+17202,Amudariya,Karatag,Karatag,TJ,68.33008,38.61703
+17211,Amudariya,Sangardak,Keng-Guzar,UZ,67.77855,38.44725
+17464,Amudariya,Akdariya,Hissarak,UZ,67.26491,39.01897
+17260,Amudariya,Yakkabagdariya,Tatar,UZ,67.1019,38.83333
+17279,Amudariya,Uryadariya Kichik-Uryadariya,Inflow to Pachkamar reservoir,UZ,66.50114,38.53825
+17275,Amudariya,Uryadariya Kichik-Uryadariya,Inflow to Pachkamar reservoir,UZ,66.43333,38.45
+17288,Amudariya,Zeravshan,Dupuli,TJ,67.7955,39.48843
+17461,Amudariya,Zeravshan,Inflow to Rovatkhodja dam,UZ,67.40315,39.54024
+16068,Syrdariya,Big Naryn,Mouth,KG,,
+16070,Syrdariya,Little Naryn,Mouth,KG,,
+16055,Syrdariya,Naryn,Naryn,KG,76.00155,41.43348
+16059,Syrdariya,Naryn,Uch Terek,KG,73.15661,41.78737
+16100,Syrdariya,Uzun Akhmat,Usta Say,KG,72.90176,41.89002
+16936,Syrdariya,Naryn,Inflow to Toktogul reservoir,KG,72.87894,41.79899
+16136,Syrdariya,Kurshab,Gulcha,KG,73.46667,40.3
+16121,Syrdariya,Tar,Chalma,KG,73.71514,40.56904
+16487,Syrdariya,Kara Kuldja,Pervomay,KG,73.85358,40.65578
+16127,Syrdariya,Yassi,Salamalik,KG,73.62746,40.84141
+16134,Syrdariya,Donguz Too,Donguz Too,KG,73.5489,40.85
+16135,Syrdariya,Zerger,Tosoy,KG,73.53333,40.9
+16143,Syrdariya,Changet,Changet,KG,73.11667,40.86667
+16139,Syrdariya,Kegart,Mikhaylovka,KG,73.19935,41.15653
+16938,Syrdariya,Karadariya,Inflow to Andijan reservoir,UZ,73.12762,40.77942
+16176,Syrdariya,Padsha-Ata,Tostu,UZ,71.6693,41.58333
+16193,Syrdariya,Gavasay,Gava,UZ,71.08333,41.16667
+16202,Syrdariya,Chadak,Dzhulaysay,UZ,70.73682,41
+16153,Syrdariya,Akbura,Min Teke,KG,,
+16159,Syrdariya,Aravansay,Karakol,KG,72.61466,40.3498
+16169,Syrdariya,Isfayransay,Uch-Kurgan,UZ,72.0808,40.18289
+16510,Syrdariya,Shakhimardan,Dzhidalik,KG,71.71922,40.11674
+16198,Syrdariya,Sokh,Sarykanda,UZ,71.12081,39.96551
+16205,Syrdariya,Isfara,Tash-Kurgan,TJ,70.5452,39.85708
+16223,Syrdariya,Sanzar,Kyrk,UZ,67.98333,39.73333
+16230,Syrdariya,Akhangaran,Irtash,UZ,70.35196,41.12056
+16936,Syrdariya,Chirchik,Inflow to Charvak reservoir,UZ,70.05107,41.63456
+16936,Syrdariya,Chirchik,Inflow to Charvak reservoir and Ugam river,UZ,70.05107,41.63456
+16300,Syrdariya,Chirchik,Inflow to Charvak reservoir and Ugam river,UZ,69.94547,41.63266
+16290,Syrdariya,Chirchik,Pskem Mullalla,UZ,,
+16279,Syrdariya,Chirchik,Chatkal-Khudaydod,UZ,,
+15020,Issyk-Kyl,Ak Suu,Teplokluchenka,KG,,
+15013,Issyk-Kyl,Dzhyrgalan,Sovetskoe,KG,,
+15025,Issyk-Kyl,Karakol,Kaska-Suu,KG,,
+15034,Issyk-Kyl,Chon Kyzyl Suu,Lesnoy kordon,KG,,
+15081,Issyk-Kyl,Chon Ak Suu,Grigorevka,KG,,
+15102,Chu,Chu,Inflow to Orto-Tokoy reservoir,KG,75.84379,42.26517
+15149,Chu,Chon Kemin,Mouth,KG,75.91667,42.68333
+15189,Chu,Alamedin,Chunkurchak,KG,74.66373,42.69807
+15194,Chu,Ala Archa,Kashka Suu,KG,74.49538,42.65072
+15214,Chu,Sokuluk,Belogorka,KG,74.24315,42.71659
+15212,Chu,Ak Suu,Cho Aryk,KG,74.00264,42.6383
+15215,Chu,Kara Balta,Sosnovka,KG,73.89857,42.64979
+15171,Chu,Kegety,Lesnoy kordon,KG,75.14616,42.63667
+15256,Talas,Talas,Ak Tash,KG,73.09976,42.50082
+15259,Talas,Talas,Uch Koshoy,KG,72.53389,42.48792
+15283,Talas,Besh Tash,Saz,KG,72.28058,42.40209
+15285,Talas,Ur Maral,Oktyabrskoe,KG,71.97892,42.39979
+15312,Talas,Kyumyush Too,Zhany,KG,71.83834,42.41639
+15261,Talas,Talas,Inflow to Kirov reservoir,KG,71.71213,42.61331
+17194,Surkhandariya,Tupalang,Zarchob,UZ,,

@@ -1,0 +1,17 @@
+.row
+  .col-xs-12
+    .row
+      .col-xs-12
+        discharge-curve(discharge-points='displayCtrl.dischargePoints',
+          discharge-curves='displayCtrl.dischargeCurves')
+        hr
+    .row
+      .col-xs-12
+        discharge-curve-controls(
+          discharge-curves='displayCtrl.dischargeCurves')
+        hr
+    .row
+      .col-xs-12
+        discharge-table(
+          discharge-model='selectedDischargeModel')
+

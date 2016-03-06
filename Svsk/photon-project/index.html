@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jqui/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="jqui/js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="engine.js"></script>
+<script type="text/javascript" src="maps/labrynna/labrynna.js"></script>
+<link rel="stylesheet" type="text/css" href="jqui/css/ui-lightness/jquery-ui-1.8.23.custom.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<!--<input type="submit" value="New Obstruction" onclick="newObstruction()"/> <input type="submit" value="Generate HTML" onclick="generateObstructionHtml()" />-->
+<div style="position: relative; background-color: #41A152; height: 500px; width: 750px; border: 1px solid black; overflow: hidden;" id="screen">
+	<div style="color: white; position: absolute; top: 3px; left: 5px; z-index: 100000;">Legends of Labrynna - Alpha Build 100</div>
+	<div style="cursor: pointer; bottom: 10px; right: 10px; position: absolute; z-index: 100000;" id="mute-button"><img src="mute-icon.png" /></div>
+	<div id="daytime" class="daytime"></div>
+	<audio loop="loop" autoplay="autoplay" id="background-music"></audio>
+	<div id="map" style="z-index: 25000; position: relative;"></div>
+	<div id="player" class="player"></div>
+	<div id="mapTerminal" class="mapTerminal"></div>
+	<div id="menu" class="menu">
+		<div class="menuHeader" id="menuHeader"></div>
+		<div class="menuLeft" id="menuLeft">
+		</div>
+		<div class="menuRight" id="menuRight">
+		</div>
+		<div class="menuFooter">
+			<input type="submit" class="menuButton" value="Inventory" onclick="appendInventory();" />
+			<input type="submit" class="menuButton" value="Quest Log" onclick="appendQuestLog();" />
+			<input type="submit" class="menuButton" value="Save" onclick="save();" />
+			<input type="submit" class="menuButton" value="Load" onclick="load();" />
+			<input type="submit" class="menuButton" value="Delete Save" onclick="deleteSave();" />
+			&nbsp;&nbsp;<img style="display: none;" id="loadGif" src="load.gif" />
+		</div>
+	</div>
+</div>
+<div style="position: relative; float: left;" id="generatedObstructions"></div>
+<script type="text/javascript">
+	buildArea(getAreaById(1));
+	buildMovementArrays();
+	document.getElementById("background-music").muted = true;
+	setInterval(movePlayer, 20);
+
+	$("#mute-button").click(function () {
+		var mute = document.getElementById("background-music").muted;
+		if (mute == true) {
+			document.getElementById("background-music").muted = false;
+		} else {
+			document.getElementById("background-music").muted = true;
+		}
+	});
+</script>
+</body>
+</html>

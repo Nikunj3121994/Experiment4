@@ -1,0 +1,9 @@
+.page-header
+  h1 #{$i18n.tools.operationalData.telegrams.title}
+.row
+  .col-xs-12
+    button.btn.btn-success(
+      ng-click='telegramsCtrl.uploadTelegrams',
+      ng-disabled='telegramsCtrl.uploadingTelegrams')
+      | #{$i18n.tools.operationalData.telegrams.upload} #{''}
+      i.octicon.octicon-cloud-upload

@@ -1,0 +1,386 @@
+
+<div style="height:10em">
+  <div id="versionsHidden" style="position:relative; width: 25%">
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<script>
+$(function() {
+  var vButton = drawVersionsButton();
+  var vList = drawVersionsList(false, []);
+  var vContainer = drawVersionsContainer(vButton, vList);
+  $("#versionsHidden").append(vContainer);
+});
+</script>
+
+<div style="height:10em;">
+  <div id="versionsShown" style="position:relative; width: 25%">
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<script>
+$(function() {
+  var vButton = drawVersionsButton();
+  var b1 = drawVersionButton(Date());
+  var b2 = drawVersionButton(Date());
+  var vList = drawVersionsList(true, [b1, b2]);
+  var vContainer = drawVersionsContainer(vButton, vList);
+  $("#versionsShown").append(vContainer);
+});
+</script>
+
+<div>
+  <div id="codemirror-regions-test">
+  </div>
+  <div id="codemirror-results">
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<script>
+$(function() {
+  var cm = makeEditor(
+    $("#codemirror-regions-test"),
+    {
+      initial: "",
+      run: function() {}
+    }
+  );
+  var editor = createEditor(cm, [
+      "fun f():",
+      "\ncheck:",
+      "\nend"
+    ],
+    {
+      initial: {0: "\n  # Your code here", 1: "\n  # Your tests here"}
+    });
+  setInterval(function() {
+    $("#codemirror-results").empty();
+    $("#codemirror-results").append(
+      $("<ul>")
+        .append($("<li>").text(editor.getAt(0)))
+        .append($("<li>").text(editor.getAt(1))));
+  }, 100);
+  setInterval(function() {
+    editor.setAt(1, "\n  # Forcing these checks down yo throat");
+  }, 1000);
+});
+</script>
+
+<div>
+  <div id="codemirror-inline-test">
+  </div>
+  <div id="codemirror-inline-results">
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<script>
+$(function() {
+  var cm = makeEditor(
+    $("#codemirror-inline-test"),
+    {
+      initial: "",
+      run: function() {}
+    }
+  );
+  var editor = createEditor(cm, [
+      "fun f(x ::",", y ::",")"
+    ], {
+      names: ["xAnn", "yAnn"],
+      initial: {xAnn: " ", yAnn: " String"}
+    });
+  setInterval(function() {
+    $("#codemirror-inline-results").empty();
+    $("#codemirror-inline-results").append(
+      $("<ul>")
+        .append($("<li>").text(editor.getAt("xAnn")))
+        .append($("<li>").text(editor.getAt("yAnn"))));
+  }, 100);
+});
+</script>
+
+<div style="height:10em;">
+  <div id="version-review-ui" style="position:relative; width: 25%">
+  </div>
+  <div id="version-content-log">
+  </div>
+</div>
+<script>
+$(function() {
+  var panel = createTabPanel($(document.body));
+  var versionsUI = versions($("#version-review-ui"), {
+      panel: panel,
+      name: "Phooey!",
+      onLoadVersion: function(response) {
+        $("#version-content-log").append($("<p>").text(response));
+      },
+      lookupVersions: function(success) {
+        success([
+          {
+            time: "Jun 4, 2014",
+            lookup: function(success2) { success2("Version 1"); },
+            reviews: [{
+                lookup: function(success2) {
+                  success2({ review: {
+                    correct: "6",
+                    design: "7",
+                    comments: "Nice try, use more helpers"
+                  }});
+                }
+              }]
+          }, {
+            time: "Jun 5, 2014",
+            lookup: function(success2) { success2("Version 2"); },
+            reviews: [{
+                lookup: function(success2) {
+                  success2({ review: {
+                    correct: "7",
+                    design: "8",
+                    comments: "Helpers are there, still not passing tests"
+                  }});
+                }
+              }, {
+                lookup: function(success2) {
+                  success2({review: {
+                    correct: "8",
+                    design: "7",
+                    comments: "Avoid parentheses when unnecessary"
+                  }});
+                }
+              }
+            ]
+          }, {
+            time: "Jun 6, 2014",
+            lookup: function(success2) { success2("Version 3"); },
+            reviews: []
+          }
+        ])
+      },
+      save: function(success) {
+        success();
+      }
+    });
+  });
+</script>
+
+<div>
+  <div id="student-write-review-test" style="width: 40%"></div>
+</div>
+<script>
+  var theReview = null;
+  studentCodeReview(
+    $("#student-write-review-test"),
+    {
+      run: function(prog, options1, options2) {
+        ct_log("Running: ", prog, options1, options2);
+      },
+      lookupCode: function(k) { k("# Proggy"); },
+      reviewOptions: {
+        reviews: {
+          lookup: function(k) { k(theReview); },
+          save: function(v, k) { theReview = v; k(); }
+        },
+        hasReviews: true
+      }
+    }
+  );
+</script>
+
+
+
+<div style="height:10em;">
+  <div id="version-review-ui" style="position:relative; width: 25%">
+  </div>
+  <div id="version-content-log">
+  </div>
+</div>
+<script>
+$(function() {
+  var panel = createTabPanel($(document.body));
+  var versionsUI = versions($("#version-review-ui"), {
+      panel: panel,
+      name: "Phooey!",
+      onLoadVersion: function(response) {
+        $("#version-content-log").append($("<p>").text(response));
+      },
+      lookupVersions: function(success) {
+        success([
+          {
+            time: "Jun 4, 2014",
+            lookup: function(success2) { success2("Version 1"); },
+            reviews: [{
+                lookup: function(success2) {
+                  success2({ review: {
+                    correct: "6",
+                    design: "7",
+                    comments: "Nice try, use more helpers"
+                  }});
+                }
+              }]
+          }, {
+            time: "Jun 5, 2014",
+            lookup: function(success2) { success2("Version 2"); },
+            reviews: [{
+                lookup: function(success2) {
+                  success2({ review: {
+                    correct: "7",
+                    design: "8",
+                    comments: "Helpers are there, still not passing tests"
+                  }});
+                }
+              }, {
+                lookup: function(success2) {
+                  success2({review: {
+                    correct: "8",
+                    design: "7",
+                    comments: "Avoid parentheses when unnecessary"
+                  }});
+                }
+              }
+            ]
+          }, {
+            time: "Jun 6, 2014",
+            lookup: function(success2) { success2("Version 3"); },
+            reviews: []
+          }
+        ])
+      },
+      save: function(success) {
+        success();
+      }
+    });
+  });
+</script>
+
+
+
+<div>
+  <div id="stepped-editor" style="width: 50%;">
+  </div>
+  <div id="stepped-editor-results">
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<script>
+$(function() {
+  var reviewButtonShown = false;
+  var editor = steppedEditor(
+    $("#stepped-editor"),
+    [
+      {type: "dom",  value: drawInstructionsWidget("Mo' instructions'!")[0]},
+      {type: "code", value: " "},
+      {type: "code", value: "data Tree:\n  |mt\n  |node(value, kids)\nend"},
+      {type: "dom",  value: drawInstructionsWidget("Some instructions!")[0]},
+      {type: "code", value: "\nfun find(tree :: Tree, proc):"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "\nfun update (c :: Cursor, proc :: Tree -> Tree) -> Cursor"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "fun to-tree(c :: Cursor) -> Tree:"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "\nfun left(c :: Cursor) -> Cursor:"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "\nfun right(c :: Cursor) -> Cursor:"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "\nfun up(c :: Cursor) -> Cursor:"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"},
+      {type: "code", value: "\nfun down(c :: Cursor, n :: Number) -> Cursor:"},
+      {type: "code", value: "\ncheck:"},
+      {type: "code", value: "\nend"}
+    ],
+    {
+      run: function() {},
+      names: ["_0", "_1", "find_def", "find_tests",
+              "_2", "update_def", "update_tests",
+              "_3", "to-tree_def", "to-tree_tests",
+              "_4", "left_def", "left_tests",
+              "_5", "right_def", "right_tests",
+              "_6", "up_def", "up_tests",
+              "_7", "down_def", "down_tests"],
+      initial: {"_0": "\n", "_1": "\n\n", "find_def": "\n", "find_tests": "\n",
+                "_2": "\n\n", "update_def": "\n", "update_tests": "\n",
+                "_3": "\n\n", "to-tree_def": "\n", "to-tree_tests": "\n",
+                "_4": "\n\n", "left_def": "\n", "left_tests": "\n",
+                "_5": "\n\n", "right_def": "\n", "right_tests": "\n",
+                "_6": "\n\n", "up_def": "\n", "up_tests": "\n",
+                "_7": "\n\n", "down_def": "\n", "down_tests": "\n"
+               },
+      steps: ["find_tests", "find_def", "update_tests", "update_def",
+             "to-tree_tests", "to-tree_def", "left_tests", "left_def",
+             "right_tests", "right_def", "up_tests", "up_def",
+             "down_tests", "down_def"],
+      instructions: {
+        "find_tests": "Write test cases for find:"
+      },
+      drawPartGutter: function(step, f) {
+        // NOTE(dbp 2013-08-06): This is just a hack to only show
+        // one review button
+        if(reviewButtonShown) {
+          f(drawReviewsButton(1)[0]);
+        } else {
+          reviewButtonShown = true;
+        }
+      }
+    });
+});
+</script>
+
+<div id="feedbackContainer">
+</div>
+<script>
+$(function() {
+  $("#feedbackContainer").append(drawFeedback(function() { console.log("Submitted: ", arguments); }));
+});
+</script>
+
+<div id="submittedFeedbackContainer">
+</div>
+<script>
+$(function() {
+  $("#submittedFeedbackContainer").append(drawSubmittedFeedback({
+    helpfullness: 2,
+    comments: "Nice job"
+  }));
+});
+</script>
+
+<div id="submittedFeedbackContainer2">
+</div>
+<script>
+$(function() {
+  $("#submittedFeedbackContainer2").append(drawSubmittedFeedback({
+    helpfullness: 2,
+    comments: ""
+  }));
+});
+</script>
+
+<div id="reportAbuseContainer">
+</div>
+<script>
+$(function() {
+  $("#reportAbuseContainer").append(drawReportAbuse(function(){
+      console.log({
+        type: "feedback",
+        helpfullness: 2,
+        comments: "Your code looks like a llama gave birth to a poophead."
+      })
+    }));
+});
+</script>
+
+<div id="modalContainer">
+<span id="clickMeForModal">Click me to see a modal!</span>
+</div>
+<script>
+$(function() {
+  $("#clickMeForModal").click(function() {
+    drawModal("You may have made a mistake (or been lazy)!  This was a good solution written by the course staff, and you marked it as incorrect or badly designed.", function() { ct_log("Modal closed"); })
+  });
+});
+</script>
+

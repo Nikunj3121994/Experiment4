@@ -1,0 +1,9 @@
+.page-header
+  h1 #{$i18n.tools.home.welcome}
+
+.panel.panel-default(ng-repeat='tool in aboutToolsCtrl.tools')
+  .panel-heading
+    h4.panel-title: a(ui-sref='{{tool.state}}')
+      | {{aboutToolsCtrl.localize(tool.localizedNamePath)}} #{''}
+  .panel-body
+    p {{aboutToolsCtrl.localize(tool.localizedDescriptionPath)}}

@@ -1,0 +1,63 @@
+include ../../mixins/form-mixins.jade
+
+.page-header
+  h1 #{$i18n.tools.forecast.decade.title}
+.row
+  .col-xs-7
+    form.form-horizontal(name='decadeForm')
+      +formSelect('site', false, $i18n.tools.forecast.decade.form,
+        'decadeForm', 'ctrl.selectedSite', 'site', 'site.toString()', 'site',
+        'ctrl.allSites', 'ctrl.inputDisabled()')(
+        ng-change="ctrl.siteSelected()")
+      +formField('month', true, $i18n.tools.forecast.decade.form,
+        'decadeForm', 'ctrl.month', 'ctrl.inputDisabled()',
+        'number')(min='1', max='12')
+      +formField('decade', true, $i18n.tools.forecast.decade.form,
+        'decadeForm', 'ctrl.decade', 'ctrl.inputDisabled()',
+        'number')(min='1', max='3')
+      .form-group
+        .col-xs-8.col-xs-offset-4
+          button.btn.btn-primary(ng-click='ctrl.getForecast($event)',
+            ng-disabled='ctrl.getForecastDisabled() || decadeForm.$invalid')
+            | #{$i18n.tools.forecast.decade.form.getForecast} #{''}
+            i.octicon.octicon-circuit-board
+  .col-xs-5
+    h4 #{$i18n.tools.forecast.decade.siteList}
+    ul.list-group.scrollable-list.station-list
+      li.list-group-item.clearfix(
+        ng-repeat='site in ctrl.selectedSites')
+        span {{site.toString()}}
+        a.pull-right(href, ng-click='ctrl.unselectSite($event, site)')
+          i.octicon.octicon-x
+.row(ng-if='ctrl.dataReady()')
+  .col-xs-12
+    hr
+    table.table.table-bordered
+      caption
+        h3 #{$i18n.tools.forecast.decade.table.title}
+      thead
+        tr
+          th #{$i18n.tools.forecast.decade.table.sites}
+          th #{$i18n.tools.forecast.decade.table.forecast}
+          th(colspan='10') #{$i18n.tools.forecast.decade.table.previousValues}
+        tr
+          th(colspan='2')
+          - for (var i = 0; i < 5; i++)
+            th #{$i18n.tools.forecast.decade.table.year}
+            th #{$i18n.tools.forecast.decade.table.value}
+      tbody
+        tr(ng-repeat='forecastData in ctrl.forecastDataArray')
+          td.text-info
+            | {{ctrl.indexedSites[forecastData.siteId].toString()}}
+          td.text-primary
+            | {{forecastData.predictedValue | hydroround}}
+          td.text-info(
+            ng-repeat-start='previousValue in forecastData.previousValues')
+            | {{previousValue.localDateTime.year()}}
+          td.text-primary(ng-repeat-end)
+            | {{previousValue.dataValue | hydroround}}
+
+.row(ng-if='ctrl.dataError()')
+  .col-xs-12
+    error-alert(close='ctrl.closeErrorAlert()',
+      error='ctrl.forecastError')

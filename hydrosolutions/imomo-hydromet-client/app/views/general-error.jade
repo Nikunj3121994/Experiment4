@@ -1,0 +1,7 @@
+.container
+  .page-header
+    h1.text-danger #{$i18n.errors.title}
+  p #{$i18n.errors.summary}
+  hr
+  h3.text-primary #{$i18n.errors.details}
+  p {{ errorDisplayCtrl.localizeError( errorDisplayCtrl.error.errorCode )}}

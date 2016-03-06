@@ -1,0 +1,54 @@
+table.table.table-bordered
+  caption
+    h2 #{$i18n.tools.operationalData.calculatedDischarge.title}
+  thead
+    tr
+      th #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.date}
+      th(colspan='2') #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.eight}
+      th(colspan='2') #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.twenty}
+      th(colspan='2') #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.average}
+    tr
+      th
+      - var n = 0
+      while n < 3
+        th !{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.h}
+        th !{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.q}
+        - n++
+  tbody
+    tr
+      td.text-info
+        | {{calculatedDischargeCtrl.localizeDate( calculatedDischargeCtrl.dailyData.previousDayDate() )}}
+      td.text-muted
+        | #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.unchanged}
+      td.text-muted
+        | #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.unchanged}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.waterLevelTwenty | hydroround}}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.calculatedDischargeTwenty | hydroround}}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.averageWaterLevel | hydroround}}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.calculatedAverageDischarge | hydroround}}
+    tr
+      td.text-info
+        | {{calculatedDischargeCtrl.localizeDate( calculatedDischargeCtrl.dailyData.mainDate )}}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.waterLevelEight | hydroround}}
+      td.text-primary
+        | {{calculatedDischargeCtrl.dailyData.calculatedDischargeEight | hydroround}}
+      td.text-muted(colspan='4')
+        | #{$i18n.tools.operationalData.calculatedDischarge.dischargeTable.dataNotAvailable}
+alert(type='success', ng-show='calculatedDischargeCtrl.redirecting')
+  | #{$i18n.tools.operationalData.calculatedDischarge.redirecting}
+alert(type='danger', ng-show='calculatedDischargeCtrl.dataStoreError',
+  close='calculatedDischargeCtrl.closeErrorAlert()')
+  | #{$i18n.tools.operationalData.calculatedDischarge.dataStoreError}
+button.btn.btn-primary(ng-click='calculatedDischargeCtrl.storeDailyData($event)', ng-disabled='calculatedDischargeCtrl.storing || calculatedDischargeCtrl.redirecting || calculatedDischargeCtrl.dataStoreError')
+  span(ng-hide='calculatedDischargeCtrl.storing')
+    | #{$i18n.tools.operationalData.calculatedDischarge.storeData} #{''}
+    i.octicon.octicon-cloud-upload
+  span(ng-show='calculatedDischargeCtrl.storing')
+    | #{$i18n.tools.operationalData.calculatedDischarge.storingData} #{''}
+    i.octicon.octicon-hourglass
+hr

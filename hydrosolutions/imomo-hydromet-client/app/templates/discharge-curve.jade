@@ -1,0 +1,42 @@
+svg
+  g(ng-attr-transform='translate({{dimensions.margins.left}}, ' +
+    '{{dimensions.margins.top}})')
+    defs
+      clippath#drawing-area
+        rect(ng-attr-width='{{dimensions.innerWidth}}',
+          ng-attr-height='{{dimensions.innerHeight}}')
+    g.x.axis
+    g.y.axis(ng-attr-transform='translate({{dimensions.innerWidth}}, 0)')
+    g(ng-repeat='dischargeCurve in dischargeCurves',
+      clip-path='url(#drawing-area)')
+      path.curve(ng-attr-d='{{dischargeCurve.dPath}}',
+        ng-class='dischargeCurve.cssClasses',
+        ng-mouseenter='hoverOverModel(dischargeCurve, true)',
+        ng-mouseleave='hoverOverModel(dischargeCurve, false)')
+    g.nodes
+      g.node-group(ng-repeat='dischargePoint in dischargePoints')
+        circle(ng-attr-cx='{{dischargePoint.dataValue.x}}',
+          ng-attr-cy='{{dischargePoint.dataValue.y}}',
+          ng-attr-r='{{dischargePoint.dataValue.radius}}',
+          ng-click='onDischargePointClick($event, dischargePoint)',
+          ng-class='dischargePoint.cssClasses')
+        text(ng-if='dischargePoint.hasLabel()',
+          ng-attr-transform='translate({{dischargePoint.label.x}}, {{dischargePoint.label.y}})',
+          ng-attr-dx='{{dischargePoint.label.dx}}',
+          ng-attr-dy='{{dischargePoint.label.dy}}',
+          ng-click='onDischargePointClick($event, dischargePoint)',
+          ng-class='dischargePoint.cssClasses')
+          | {{dischargePoint.label.text}}
+        line(ng-if='dischargePoint.hasLabel()',
+          ng-attr-x1='{{dischargePoint.dataValue.x}}',
+          ng-attr-x2='{{dischargePoint.label.x}}',
+          ng-attr-y1='{{dischargePoint.dataValue.y}}',
+          ng-attr-y2='{{dischargePoint.label.y}}',
+          ng-click='onDischargePointClick($event, dischargePoint)',
+          ng-class='dischargePoint.cssClasses')
+  text(ng-attr-transform='translate({{dimensions.innerWidth/2 + dimensions.margins.left}}, ' +
+    '{{dimensions.height - dimensions.titles.fontsize/2}})',
+    text-anchor='middle', ng-style='dimensions.titles.style') Q (m3/s)
+  text(ng-attr-transform='translate({{dimensions.titles.fontsize}}, ' +
+    '{{dimensions.innerHeight/2 + dimensions.margins.top}}) rotate(270)',
+    text-anchor='middle', ng-style='dimensions.titles.style') H (cm)

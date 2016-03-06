@@ -1,0 +1,146 @@
+include ../../mixins/form-mixins.jade
+
+.page-header
+  h1 #{$i18n.tools.operationalData.journal.title}
+.row
+  .col-xs-7
+    form.form-horizontal(name='journalForm')
+      .form-group
+        label.control-label.col-xs-4
+          | #{$i18n.tools.operationalData.journal.siteCode.label}
+        .col-xs-8
+          .input-group
+            input.form-control(name='siteCode', type='text',
+              ng-model='journalCtrl.site', required,
+              typeahead='site as site.siteCode for site in journalCtrl.sites | filter: $viewValue | limitTo: 10',
+              typeahead-editable='false',
+              ng-disabled='journalCtrl.journalLoaded || journalCtrl.loadingJournalData || journalCtrl.journalDataError',
+              placeholder=$i18n.tools.operationalData.journal.siteCode.placeholder)
+            +inputGroupAddon('siteCode', true, $i18n.tools.operationalData.journal, 'journalForm')
+      .form-group
+        .col-xs-8.col-xs-offset-4(ng-hide='journalCtrl.journalLoaded')
+          button.btn.btn-primary.btn-block(
+            ng-click='journalCtrl.addSite($event)',
+            ng-disabled='journalForm.siteCode.$invalid || journalCtrl.loadingJournalData || journalCtrl.journalDataError')
+            | #{$i18n.tools.operationalData.journal.addSite} #{''}
+            i.octicon.octicon-checklist
+      .form-group
+        label.control-label.col-xs-4
+          | #{$i18n.tools.operationalData.journal.date.label}
+        .col-xs-8
+          .input-group
+            span.input-group-btn
+              button.btn.btn-default(
+                ng-click='journalCtrl.openDatePicker($event)',
+                ng-disabled='journalCtrl.journalLoaded || journalCtrl.loadingJournalData || journalCtrl.journalDataError')
+                i.octicon.octicon-calendar
+            input.form-control(type='text', name='date', required,
+              datepicker-popup='{{journalCtrl.dateFormat}}',
+              datepicker-mode='journalCtrl.dateMode',
+              datepicker-options='journalCtrl.dateOptions',
+              placeholder=$i18n.tools.operationalData.journal.date.placeholder,
+              ng-model='journalCtrl.date',
+              ng-disabled='journalCtrl.journalLoaded || journalCtrl.loadingJournalData || journalCtrl.journalDataError',
+              is-open='journalCtrl.dateOpen',
+              current-text=$i18n.datePicker.today,
+              clear-text=$i18n.datePicker.clear,
+              close-text=$i18n.datePicker.close)
+            +inputGroupAddon('date', true, $i18n.tools.operationalData.journal, 'journalForm')
+      .form-group
+        .col-xs-8.col-xs-offset-4(ng-hide='journalCtrl.journalLoaded')
+          button.btn.btn-info.btn-block(
+            ng-click='journalCtrl.displayJournal($event)',
+            ng-disabled='journalForm.date.$invalid || journalCtrl.loadingJournalData || journalCtrl.journalDataError')
+            span(ng-hide='journalCtrl.loadingJournalData')
+              | #{$i18n.tools.operationalData.journal.displayJournal} #{''}
+              i.octicon.octicon-book
+            span(ng-show='journalCtrl.loadingJournalData')
+              | #{$i18n.tools.operationalData.journal.loadingData} #{''}
+              i.octicon.octicon-hourglass
+        .col-xs-4.col-xs-offset-4(ng-show='journalCtrl.journalLoaded')
+          a.btn.btn-success.btn-block(download='journal.xlsx',
+            ng-href='{{journalCtrl.journal.journalUrl}}')
+            | #{$i18n.tools.operationalData.journal.download} #{''}
+            i.octicon.octicon-cloud-download
+        .col-xs-4(ng-show='journalCtrl.journalLoaded')
+          button.btn.btn-warning.btn-block(
+            ng-click='journalCtrl.closeJournal($event)')
+            | #{$i18n.tools.operationalData.journal.closeJournal} #{''}
+            i.octicon.octicon-x
+  .col-xs-5
+    h4 #{$i18n.tools.operationalData.journal.siteList}
+    ul.list-group.scrollable-list#journal-station-list
+      li.list-group-item.clearfix(
+        ng-repeat='site in journalCtrl.selectedSites')
+        span {{site.siteCode}} - {{site.siteName}}
+        a.pull-right(href, ng-click='journalCtrl.removeSite($event, $index)')
+          i.octicon.octicon-x
+.row
+  .col-xs-12
+    alert(ng-show='journalCtrl.journalDataError', type='danger',
+      close='journalCtrl.closeErrorAlert()')
+      | {{journalCtrl.journalDataError}}
+hr
+.row(ng-show='journalCtrl.journalLoaded')
+  tabset
+    tab(ng-repeat='siteData in journalCtrl.sitesJournalData',
+      heading='{{journalCtrl.sitesIndex[siteData.siteId].toString()}}',
+      active='siteData.active')
+      .row
+        .col-xs-7
+          table.table.table-bordered
+            caption
+              h3 #{$i18n.tools.operationalData.journalTable.dailyDischarge}
+            thead
+              tr
+                th #{$i18n.tools.operationalData.journalTable.date}
+                th(colspan='2') #{$i18n.tools.operationalData.journalTable.eight}
+                th(colspan='2') #{$i18n.tools.operationalData.journalTable.twenty}
+                th(colspan='2') #{$i18n.tools.operationalData.journalTable.average}
+              tr
+                th
+                th !{$i18n.tools.operationalData.journalTable.h8}
+                th !{$i18n.tools.operationalData.journalTable.q8}
+                th !{$i18n.tools.operationalData.journalTable.h20}
+                th !{$i18n.tools.operationalData.journalTable.q20}
+                th !{$i18n.tools.operationalData.journalTable.havg}
+                th !{$i18n.tools.operationalData.journalTable.qavg}
+            tbody
+              tr(ng-repeat='dailyDataEntry in siteData.dailyData')
+                td.text-info
+                  | {{journalCtrl.localizeDate( dailyDataEntry.date )}}
+                td.text-primary
+                  | {{dailyDataEntry.eightData.waterLevel.dataValue | hydroround}}
+                td.text-primary
+                  | {{dailyDataEntry.eightData.discharge.dataValue | hydroround}}
+                td.text-primary
+                  | {{dailyDataEntry.twentyData.waterLevel.dataValue | hydroround}}
+                td.text-primary
+                  | {{dailyDataEntry.twentyData.discharge.dataValue | hydroround}}
+                td.text-primary
+                  | {{dailyDataEntry.averageData.waterLevel.dataValue | hydroround}}
+                td.text-primary
+                  | {{dailyDataEntry.averageData.discharge.dataValue | hydroround}}
+        .col-xs-5
+          table.table.table-bordered
+            caption
+              h3 #{$i18n.tools.operationalData.journalTable.dischargeMeasurements}
+            thead
+              tr
+                th !{$i18n.tools.operationalData.journalTable.dateTime}
+                th !{$i18n.tools.operationalData.journalTable.waterLevel}
+                th !{$i18n.tools.operationalData.journalTable.discharge}
+                th !{$i18n.tools.operationalData.journalTable.freeRiverArea}
+                th !{$i18n.tools.operationalData.journalTable.maximumDepth}
+            tbody
+              tr(ng-repeat='dischargeEntry in siteData.dischargeData')
+                td.text-info
+                  | {{journalCtrl.localizeDateTime( dischargeEntry.date )}}
+                td.text-primary
+                  | {{dischargeEntry.waterLevel.dataValue | hydroround}}
+                td.text-primary
+                  | {{dischargeEntry.discharge.dataValue | hydroround}}
+                td.text-primary
+                  | {{dischargeEntry.freeRiverArea.dataValue | hydroround}}
+                td.text-primary
+                  | {{dischargeEntry.maximumDepth.dataValue | hydroround}}

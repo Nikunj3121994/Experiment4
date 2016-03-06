@@ -1,0 +1,35 @@
+include ../views/mixins/form-mixins.jade
+
+.row
+  .col-xs-4
+    .panel.panel-primary
+      .panel-heading
+        h4.panel-title #{$i18n.dischargeControl.displayWindow.title}
+      .panel-body
+        form(name='displayWindowControlForm')
+          +vFormField('minWaterLevel', true, $i18n.dischargeControl.displayWindow, 'displayWindowControlForm', 'waterLevelControl.min',
+            undefined, 'number')
+          +vFormField('maxWaterLevel', true, $i18n.dischargeControl.displayWindow, 'displayWindowControlForm', 'waterLevelControl.max',
+            undefined, 'number')
+          .form-group
+            button.btn.btn-info.btn-block(
+              ng-disabled='displayWindowControlForm.$invalid',
+              ng-click='changeDisplayWindow($event)')
+              | #{$i18n.dischargeControl.displayWindow.change} #{''}
+              i.octicon.octicon-code
+  .col-xs-8
+    .panel.panel-info
+      .panel-heading
+        h4.panel-title #{$i18n.dischargeControl.legend.title}
+      .panel-body
+        .list-group.legend-container
+          a.list-group-item.legend(href,
+            ng-repeat='dischargeCurve in dischargeCurves',
+            ng-class='dischargeCurve.cssClasses',
+            ng-mouseenter='hoverOverModel(dischargeCurve, true)',
+            ng-mouseleave='hoverOverModel(dischargeCurve, false)',
+            ng-click='onCurveLegendItemClicked($event, dischargeCurve)')
+            span {{dischargeCurve.toString()}}
+            i.octicon.octicon-trashcan.pull-right(
+              ng-if='dischargeCurve.isDeletable()',
+              ng-click='deleteDischargeCurve($event, $index)')

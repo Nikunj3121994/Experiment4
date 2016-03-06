@@ -1,0 +1,9 @@
+alert(type='danger', close='close()')
+  h2
+    i.octicon.octicon-alert #{''} #{''}
+    | #{$i18n.errors.errorAlert.title}
+  p {{localizeError(error.errorCode)}}
+  h3(ng-show='error.details') #{$i18n.errors.errorAlert.details}
+  p(ng-show='error.details') {{error.details}}
+  button.btn.btn-danger.btn-lg(ng-click='close()')
+    | #{$i18n.errors.errorAlert.close}

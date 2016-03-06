@@ -1,0 +1,67 @@
+.col-xs-12
+  hr
+  h2 #{$i18n.tools.operationalData.inputDisplay.title}
+  .row
+    div(ng-class='{\'col-xs-12\': !processedInputCtrl.dailyData.isDischargeAvailable(), \'col-xs-6\': processedInputCtrl.dailyData.isDischargeAvailable()}')
+      table.table.table-bordered
+        caption
+          h3 #{$i18n.tools.operationalData.inputDisplay.waterLevel.title}
+        thead
+          tr
+            th #{$i18n.tools.operationalData.inputDisplay.waterLevel.date}
+            th #{$i18n.tools.operationalData.inputDisplay.waterLevel.eight}
+            th #{$i18n.tools.operationalData.inputDisplay.waterLevel.twenty}
+            th #{$i18n.tools.operationalData.inputDisplay.waterLevel.average} #{''}
+              i.text-success.octicon.octicon-info(tooltip=$i18n.tools.operationalData.inputDisplay.waterLevel.measuredAverage,
+                tooltip-placement='right',
+                ng-if='processedInputCtrl.dailyData.isAverageWaterLevelFromMeasurement()')
+              i.text-warning.octicon.octicon-alert(tooltip=$i18n.tools.operationalData.inputDisplay.waterLevel.arithmeticAverage,
+                tooltip-placement='right',
+                ng-if='processedInputCtrl.dailyData.isAverageWaterLevelArithmetic()')
+              i.text-danger.octicon.octicon-stop(tooltip=$i18n.tools.operationalData.inputDisplay.waterLevel.estimatedAverage,
+                tooltip-placement='right',
+                ng-if='processedInputCtrl.dailyData.isAverageWaterLevelEstimated()')
+        tbody
+          tr
+            td.text-info
+              | {{ processedInputCtrl.localizeDate( processedInputCtrl.dailyData.previousDayDate() ) }}
+            td.text-muted(ng-if='processedInputCtrl.dailyData.previousWaterLevelEight !== null')
+              | {{ processedInputCtrl.dailyData.previousWaterLevelEight | hydroround }}
+            td.text-danger(ng-if='processedInputCtrl.dailyData.previousWaterLevelEight === null')
+              | #{$i18n.tools.operationalData.inputDisplay.dataNotAvailable}
+            td.text-primary {{ processedInputCtrl.dailyData.waterLevelTwenty | hydroround }}
+            td.text-primary {{ processedInputCtrl.dailyData.averageWaterLevel | hydroround }}
+          tr
+            td.text-info {{ processedInputCtrl.localizeDate( processedInputCtrl.dailyData.mainDate ) }}
+            td.text-primary {{ processedInputCtrl.dailyData.waterLevelEight | hydroround }}
+            td(colspan='2').text-muted #{$i18n.tools.operationalData.inputDisplay.dataNotAvailable}
+        tfoot
+          tr
+            td.text-info #{$i18n.tools.operationalData.inputDisplay.waterLevel.trendInformation}
+            td.text-success(ng-if='processedInputCtrl.dailyData.previousWaterLevelEight !== null', colspan='3')
+              | #{$i18n.tools.operationalData.inputDisplay.waterLevel.trendValid}
+            td.text-muted(ng-if='processedInputCtrl.dailyData.previousWaterLevelEight === null', colspan='3')
+              | #{$i18n.tools.operationalData.inputDisplay.waterLevel.trendNotAvailable}
+    .col-xs-6
+      table.table.table-bordered(ng-if='processedInputCtrl.dailyData.isDischargeAvailable()')
+        caption
+          h3 #{$i18n.tools.operationalData.inputDisplay.waterFlow.title}
+        thead
+          tr
+            th #{$i18n.tools.operationalData.inputDisplay.waterFlow.dateTime}
+            th !{$i18n.tools.operationalData.inputDisplay.waterFlow.waterLevel}
+            th !{$i18n.tools.operationalData.inputDisplay.waterFlow.waterFlow}
+            th !{$i18n.tools.operationalData.inputDisplay.waterFlow.riverFreeArea}
+            th !{$i18n.tools.operationalData.inputDisplay.waterFlow.maximumDepth}
+        tbody
+          tr
+            td.text-info
+              | {{ processedInputCtrl.localizeDateTime( processedInputCtrl.dailyData.dischargeDate ) }}
+            td.text-primary
+              | {{ processedInputCtrl.dailyData.dischargeWaterLevel | hydroround }}
+            td.text-primary
+              | {{ processedInputCtrl.dailyData.discharge | hydroround }}
+            td.text-primary
+              | {{ processedInputCtrl.dailyData.dischargeFreeRiverArea | hydroround }}
+            td.text-primary
+              | {{ processedInputCtrl.dailyData.dischargeMaximumDepth | hydroround }}

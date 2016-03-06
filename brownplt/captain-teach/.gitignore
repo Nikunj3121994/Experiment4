@@ -1,0 +1,12 @@
+*compiled/
+*~
+*.swp
+*\.nfs*
+src/tests/run.html
+src/tests/scribble/scribble-tests-compiled/
+tests/*.pid
+\.#*
+\#*
+user-repos
+web/public
+web/config/*.key

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Gallery</title>
+        <link rel="stylesheet" href="main.css">
+        <script src="imageviewer.js"></script>
+    </head>
+    <body>
+        <div id="control">
+            <input id="files" type="file" multiple>
+            <input id="fullscreen" type="button" value="Full screen">
+        </div>
+        <div id="imageviewer">
+            <div id="title-container" class="hidden">
+                <span id="title"></span>
+            </div>
+            <div id="index" class="hidden"></div>
+        </div>
+        <script>
+            var imageViewer = new ImageViewer({
+                imageholder: 'imageviewer',
+                fullscreener: 'fullscreen',
+                files: 'files',
+                plugins: ['index', 'title']
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>DriveShare</title>
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/fonts.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
+        <div id="main">
+
+          <header>
+            <div class="row">
+              <div class="col-xs-4">
+                <h2 class="title">
+                  <a href="http://driveshare.org/" class="js-external-link">DriveShare</a>
+                </h2>
+              </div>
+              <div class="col-xs-8 text-right">
+                <div class="btn-group">
+                  <button class="btn btn-drives dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Drive #{{current}} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right" role="tablist">
+                    <template v-for="(index, tab) in userdata.tabs">
+                      <li role="presentation" class="driveTab" v-bind:class="{'active':tab.active}">
+                        <a href="#" role="tab" data-toggle="tab" v-on:click="showTab(index)">
+                          Drive #{{index}}
+                          <span class="remove" v-if="tab.active" href="#" class="pull-right" v-on:click="removeTab">
+                            <i class="fa fa-times"></i>
+                          </span>
+                        </a>
+                      </li>
+                    </template>
+                    <li role="presentation">
+                      <a href="#" v-on:click='addTab'>+ Add New Drive</a>
+                    </li>
+                    <li><a href="#" v-if="tab.active" v-on:click="removeTab">- Remove This Drive</a></li>
+                  </ul>
+                </div>
+                <div id="app-settings" class="btn-group">
+                  <button class="btn btn-settings dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa icon-cog"></i>
+                  </button>
+                  <div class="dropdown-menu pull-right" role="tablist">
+                    <label for="MinToTask">
+                      <input v-model="userdata.appSettings.minToTask" v-on:change="changeSettings" id="MinToTask" type="checkbox"> Display in System Tray
+                    </label>
+                    <label for="LaunchOnBoot">
+                      <input v-model="userdata.appSettings.launchOnBoot" v-on:change="changeSettings" id="LaunchOnBoot" type="checkbox"> Launch Driveshare at User Login
+                    </label>
+                    <label for="RunDrivesOnBoot">
+                      <input v-model="userdata.appSettings.runDrivesOnBoot" v-on:change="changeSettings" id="RunDrivesOnBoot" type="checkbox"> Share Previously Running Drives at Launch
+                    </label>
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </header>
+
+          <div class="tab-content">
+            <div class="tab-pane fade in active" role="tabpanel">
+              <section class="main">
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                      <label class="control-label" for="address">Payout Address</label>
+                      <div class="pull-right">
+                        <span class="amount">
+                          <a v-if="!balance.qualified" class="js-external-link" href="https://counterwallet.io/">Create New Address</a>
+                          <p v-if="balance.qualified">Balance: {{balance.sjcx}} SJCX, {{balance.sjct}} SJCT</p>
+                        </span>
+                      </div>
+                      <input class="form-control address input-address" v-on:change="getBalance" v-bind:disabled="userdata.tabs[current]._process" data-error="Payout address is required" id="address" name="address" placeholder="Enter your SJCX Address" required="" type="text", v-model="userdata.tabs[current].address">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label class="control-label" for="location">Storage Location</label>
+                    <div class="pull-right">
+                        <span id="drive-space">{{freespace}}</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <input class="form-control directory" name="location" v-on:change="getFreeSpace" v-bind:disabled="userdata.tabs[current]._process" placeholder="Select where to keep the data" type="text" v-model="userdata.tabs[current].storage.path">
+                      </div>
+                      <div class="col-xs-4">
+                        <button class="btn btn-blue btn-block" type="button" v-bind:disabled="userdata.tabs[current]._process" v-on:click="selectStorageDirectory">Browse</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label class="control-label" for="storage">Storage Size</label>
+                    <div class="pull-right fat32-wrapper">
+                      <label class="checkbox-inline">
+                        <input class="fat32-check" type="checkbox" v-model="userdata.tabs[current].storage.tree" v-bind:disabled="userdata.tabs[current]._process"> Drive is formatted FAT32
+                      </label>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <input class="form-control size" min="0" name="storage" v-bind:disabled="userdata.tabs[current]._process" placeholder="Set amount of space to share" type="number", v-model="userdata.tabs[current].storage.size">
+                      </div>
+                      <div class="col-xs-6">
+                      	<select class="form-control size-unit" v-model="userdata.tabs[current].storage.unit" v-bind:disabled="userdata.tabs[current]._process">
+                          <option>MB</option>
+                          <option>GB</option>
+                          <option>TB</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="action">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <button v-if="!userdata.tabs[current]._process && !transitioning" class="btn btn-block start" data-style="expand-left" v-on:click="startFarming">
+                      <span class="start-label">START</span>
+                    </button>
+                    <button v-if="transitioning && !userdata.tabs[current]._process" class="btn btn-block transitioning" data-style="expand-left" disabled>
+                      <span class="start-label">PREPARING...</span>
+                    </button>
+                    <button v-if="userdata.tabs[current]._process" class="btn btn-block stop" data-style="expand-left" v-on:click="stopFarming">
+                      <i class="fa fa-check"></i>
+                      <span class="start-label">DRIVESHARE IS RUNNING</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <footer id="footer">
+          <div class="row">
+            <div class="col-xs-4 text-left">
+              <p><a href="#" v-on:click="showLogs">View Logs</a></p>
+            </div>
+            <div class="col-xs-4 text-center">
+              <p><a href="http://storj.io/" class="js-external-link">Powered by Storj</a></p>
+            </div>
+            <div class="col-xs-4 text-right">
+              <p><a href="http://slack.storj.io/" class="js-external-link">Need Help?</a></p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-center" id="setup" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+          <p v-if="working">Performing first time initialization. This can take up to several minutes, hang tight...</p>
+          <p v-if="working">{{status}}</p>
+          <p v-if="!working && error" class="error">{{error}}</p>
+          <div v-if="working" class="spinner spinner-modal">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+        </div>
+        <div v-if="error" class="modal-footer">
+          <div class="btn-group">
+            <button v-if="linux" type="button" class="btn btn-blue" v-on:click="openReleases">Download</button>
+            <button v-if="!linux" type="button" class="btn btn-blue" data-dismiss="modal" v-on:click="reload">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-center" id="updater" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 v-if="update" class="modal-title">Update DriveShare</h4>
+          <h4 v-if="!update" class="modal-title">No Update Available</h4>
+        </div>
+        <div v-if="!update" class="modal-body">You are already using the latest version.</div>
+        <div v-if="update" class="modal-body">DriveShare {{releaseTag}} is available! Would you like to download the update now?</div>
+        <div class="modal-footer">
+          <button v-if="!update" type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+          <div v-if="update" class="btn-group">
+            <button type="button" class="btn btn-blue" data-dismiss="modal" v-on:click="download">Yes</button>
+            <button type="button" class="btn btn-blue" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-center" id="about" tabindex="-1" role="dialog" aria-labelledby="modalAbout">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">About DriveShare</h4>
+        </div>
+        <div class="modal-body">Storj DriveShare version {{version}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-center" id="logs" tabindex="-1" role="dialog" aria-labelledby="modalLogs">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Debugging Console</h4>
+        </div>
+        <div class="modal-body">
+          <pre class="pre-scrollable text-left" id="logoutput">{{output}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+
+</body>
+</html>

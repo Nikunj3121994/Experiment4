@@ -1,0 +1,55 @@
+include ../../../mixins/form-mixins.jade
+
+.page-header
+  h1 #{$i18n.tools.operationalData.dataInput.title} #{''}
+    small #{$i18n.tools.operationalData.dataInput.kn15Input.title}
+error-alert(ng-show='inputCtrl.parseError',
+  close='inputCtrl.closeErrorAlert()',
+  error='inputCtrl.parseError')
+form.form-horizontal(name='kn15InputForm')
+  +formSelect('telegramMonth', true, $i18n.tools.operationalData.dataInput,
+    'kn15InputForm', 'inputCtrl.telegramMonth', 'month', 'month',
+    'month', 'inputCtrl.months', 'inputCtrl.disableInput || inputCtrl.processingData')
+  +formSelect('telegramYear', true, $i18n.tools.operationalData.dataInput,
+    'kn15InputForm', 'inputCtrl.telegramYear', 'year', 'year',
+    'year', 'inputCtrl.years', 'inputCtrl.disableInput || inputCtrl.processingData')
+  +formField('kn15Input', true, $i18n.tools.operationalData.dataInput,
+    'kn15InputForm', 'inputCtrl.kn15Input', 'inputCtrl.disableInput || inputCtrl.processingData', 'text')
+  .form-group
+    .col-xs-4.col-xs-offset-4
+      button.btn.btn-primary.btn-block(
+        ng-click='inputCtrl.decodeTelegram($event)',
+        ng-disabled='kn15InputForm.$invalid || inputCtrl.disableInput || inputCtrl.processingData')
+        span(ng-hide='inputCtrl.processingData')
+          | #{$i18n.tools.operationalData.dataInput.kn15Input.decodeTelegram} #{''}
+          i.octicon.octicon-file-binary
+        span(ng-show='inputCtrl.processingData')
+          | #{$i18n.tools.operationalData.dataInput.kn15Input.decodingTelegram} #{''}
+          i.octicon.octicon-dashboard
+    .col-xs-4
+      button.btn.btn-info.btn-block(
+        ng-click="inputCtrl.toggleHelp($event)")
+        span(ng-show='inputCtrl.kn15HelpCollapsed')
+          | #{$i18n.tools.operationalData.dataInput.kn15Input.showHelp} #{''}
+          i.octicon.octicon-unfold
+        span(ng-hide='inputCtrl.kn15HelpCollapsed')
+          | #{$i18n.tools.operationalData.dataInput.kn15Input.hideHelp} #{''}
+          i.octicon.octicon-fold
+ul(collapse='inputCtrl.kn15HelpCollapsed')
+  h4 #{$i18n.tools.operationalData.dataInput.kn15Input.help.title}
+  li.text-primary #{$i18n.tools.operationalData.dataInput.kn15Input.help.li1}
+  li.text-primary #{$i18n.tools.operationalData.dataInput.kn15Input.help.li2}
+  ul
+    li.text-info #{$i18n.tools.operationalData.dataInput.kn15Input.help.li21}
+    li.text-info #{$i18n.tools.operationalData.dataInput.kn15Input.help.li22}
+    li.text-info #{$i18n.tools.operationalData.dataInput.kn15Input.help.li23}
+  li.text-primary #{$i18n.tools.operationalData.dataInput.kn15Input.help.li3}
+  li.text-primary #{$i18n.tools.operationalData.dataInput.kn15Input.help.li4}
+  ul
+    li.text-success #{$i18n.tools.operationalData.dataInput.kn15Input.help.li41}
+    li.text-success #{$i18n.tools.operationalData.dataInput.kn15Input.help.li42}
+    li.text-success #{$i18n.tools.operationalData.dataInput.kn15Input.help.li43}
+    li.text-danger #{$i18n.tools.operationalData.dataInput.kn15Input.help.li44}
+div.row(ui-view='dataDisplay')
+div.row(ui-view='dischargeCurve')
+

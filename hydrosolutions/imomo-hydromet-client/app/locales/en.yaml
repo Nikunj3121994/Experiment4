@@ -1,0 +1,692 @@
+---
+datePicker:
+  currentText: Today
+  clearText: Clear
+  closeText: Close
+dischargeControl:
+  displayControls:
+    title: "Display control"
+    modelInfoVisible: "Display model information"
+    selectedMeasurementVisible: "Display selected measurement"
+    hqTableVisible: "Display H/Q table"
+    modelModificationVisible: "Display model modification options"
+  displayWindow:
+    change: Change
+    maxWaterLevel:
+      errorMsg:
+        number: "Maximum is not a number"
+        required: "Maximum is required"
+      label: "Maximum water level"
+    minWaterLevel:
+      errorMsg:
+        number: "Maximum is not a number"
+        required: "Minimum is required"
+      label: "Minimum water level"
+    title: "Window control"
+  legend:
+    title: Discharge models
+  models:
+    title: "Model equation"
+    noModel: "Please select a model using the legend panel or clicking on the curves in the graph."
+    adjustment: "This model has been adjusted with a ΔH with value "
+    notAdjusted: "Please fit a new model using the available options."
+  nextState:
+    back: "Reset to previous step"
+    proceed: "Proceed with selected model"
+    title: "Continue with operations"
+  selectedMeasurement:
+    noMeasurement: "You can select a measurement from the curve by double clicking on it or its date label."
+    title: "Selected measurement data"
+  table:
+    title: "H/Q Table"
+    header: "H (cm)"
+    noModel: "Please select a discharge model."
+  modelOptions:
+    title: "Discharge curve tuning"
+    newMeasurement:
+      title: "New water flow/level data"
+      waterLevel: "Measured water level (H)"
+      waterFlow: "Measured water flow (Q<sub>m</sub>)"
+      expectedWaterFlow: "Calculated water flow (Q<sub>c</sub>)"
+      relativeError: "Relative error (|Q<sub>c</sub> - Q<sub>m</sub>|/Q<sub>c</sub> * 100%)"
+      cm: cm
+      m3: "m<sup>3</sup>/s"
+      percent: "%"
+    options:
+      title: "Tuning options"
+      adjustDeltaH: "Fit ΔH"
+      adjustSlope: "Fit slope, remove existing ΔH"
+      fixDeltaH: "Merge ΔH into a"
+      adjust: "Tune model"
+      adjusting: "Tuning model..."
+      modelWithAdjustedDelta: "Model adjusted with ΔH"
+      modelWithAdjustedA: "Model with adjusted 'a' to fit previous ΔH"
+      modelWithAdjustedSlope: "Model with adjusted slope to fit previous ΔH"
+      setDeltaH: "Set ΔH"
+  title: "Discharge curve"
+  titles:
+    telegram: "Discharge rating curves"
+header:
+  brand: iMomo
+  dismiss: Dismiss
+  english: English
+  language: "Change language"
+  loadingUserInfo: "Loading user profile..."
+  loggedIn: "Logged in as"
+  login: Login
+  loginInProgress: "Logging in..."
+  logout: "Log out"
+  notYetRegistered: "Don't have an account?"
+  options: Menu
+  password: Password
+  russian: Русский
+  stations: Stations
+  tools: Tools
+  usernameOrEmail: Username/Email
+  users: Users
+footer:
+  copyright: "Copyright (c) 2014-2015 Hydrosolutions GmbH"
+locale: en
+stations:
+  title: 'Station options'
+  options:
+    overview: "Overview"
+    new: "New station"
+    edit: "Edit station"
+  overview:
+    title: "Station overview"
+    table:
+      title: "Gauging station list"
+      siteName:
+        label: "Name"
+        placeholder: "Filter by name"
+      siteCode:
+        label: "Code"
+        placeholder: "Filter by code"
+      region:
+        label: "Oblast"
+        placeholder: "Filter by oblast"
+      basin:
+        label: "Basin"
+        placeholder: "Filter by basin"
+      country:
+        label: "Country"
+        placeholder: "Filter by country"
+      options:
+        label: "Options"
+        clear: "Clear filters"
+        unsort: "Clear sorting"
+        select: "Select station"
+        show: "Show station list"
+        hide: "Hide station list"
+    noSites: "No stations exist in your organization."
+    noSitesAdvice: "Start by creating one."
+    createSite: "New station"
+    delete:
+      title: "Confirmation"
+      description: "If you delete this station, all data related to it will be deleted permanently as well. This action is not reversible!"
+      stationIndex: "Station index:"
+      delete: "Delete"
+      cancel: "Cancel"
+  selected:
+    options:
+      title: "Options"
+      details: "View and edit station details"
+      curve: "View and edit rating curve"
+      norm: "View and edit historic discharge data"
+    details:
+      subtitle: "Station details"
+      info: "To edit the station details simply modify them and click on the button below."
+      submit: "Submit changes"
+      submitting: "Submitting changes..."
+      noChanges: "No changes made"
+    curve:
+      addPoint:
+        title: "Artificial H-Q pairs"
+        add: "Add point"
+        waterLevel:
+          label: "Water level (cm)"
+          placeholder: "100 cm"
+          errorMsg:
+            required: "Both H and Q are required."
+            number: "Value entered is not a number"
+        discharge:
+          label: "Discharge (m^3/s)"
+          placeholder: "1 m^3/s"
+          errorMsg:
+            required: "Both H and Q are required."
+            number: "Value entered is not a number."
+            min: "Discharge must be positive."
+      fakePoints:
+        title: "Artificial discharge points"
+        waterLevel: "H (cm)"
+        discharge: "Q (m^3/s)"
+      newCurve:
+        title: "Create new curve"
+        info: "This allows creating a new discharge curve using the artificial points and any selected data point from the display. To select a discharge point, you can click on it in the graph."
+        fakePointsNo: "Artificial points"
+        selectedDataNo: "Selected data points"
+        create: "Create new model"
+        newModelName: "New model with quadratic equation"
+        selected: "The selected model is:"
+        submit: "Submit selected model"
+    norm:
+      table:
+        title: "Discharge norm (m3/s)"
+        header:
+         monthDecade: "Month/Decade"
+         first: "1st"
+         second: "2nd"
+         third: "3rd"
+      historic: "Historic Decadal Discharge Data"
+      upload:
+        title: "Upload data"
+        select: "Please select a excel file with the data."
+        button: "Upload"
+        startUpload: "Select a file and click on the upload button to start."
+        retrieving: "The application is retrieving the secure destination for the file."
+        uploading: "The file is being uploaded to the secure destination."
+        processing: "The data is now being processed by the iMoMo server."
+        error: "There was an error."
+        done: "The data has been successfully processed, the data will be soon loaded into the page."
+      download:
+        title: "Download data"
+        button: "Download"
+newStation:
+  comments:
+    label: Comments
+    placeholder: "Please enter any additional comments in this space"
+  dischargeNorm:
+    caption: "Discharge norm"
+    subcaption: "Please enter the norm discharge values in m3/s"
+    decade: "Decade"
+    decades:
+      - 1st
+      - 2nd
+      - 3rd
+  safeDischarge:
+    label: "Maximum safe discharge"
+    placeholder: "Please enter the maximum safe discharge for the station in m3/s"
+    errorMsg:
+      number: "Maximum safe discharge must be a number"
+  dischargeCurve:
+    continueWithData: "Continue to discharge curve fitting"
+    restartDataInput: "Modify input values"
+    dataTable:
+      addDataRowsButton: "Add rows"
+      date: "Measurement date"
+      removeDataRowsButton: "Remove rows"
+      title: "Input data"
+      waterFlow: "Water discharge (m³/s)"
+      waterLevel: "Water level (cm)"
+    instructions:
+      stepOne: "Please enter at least 3 water level (H) vs discharge (Q) points that match the current discharge rating curve."
+      stepTwo: "Enter the historic discharge value for the station (i.e. the discharge norm) and the maximum recommended safe discharge."
+      stepThree: "Click on 'Continue to discharge curve fitting' button, this will display the discharge curve fitting tool."
+      stepFour: "After obtaining a satisfactory curve, proceed with the model to the storage option."
+      title: Instructions
+    title: "Initial discharge curve"
+  latitude:
+    errorMsg:
+      max: "Latitude greater than 90"
+      min: "Latitude less than -90"
+      number: "Latitude is not a number"
+      required: "Latitude is required."
+    label: Latitude
+    placeholder: "Please enter the accurate location of the station (latitude)"
+  longitude:
+    errorMsg:
+      max: "Longitude greater than 180"
+      min: "Longitude less than -180"
+      number: "Longitude is not a number"
+      required: "Longitude is required."
+    label: Longitude
+    placeholder: "Please enter the accurate location of the station (longitude)"
+  siteCode:
+    errorMsg:
+      maxlength: "Max length is 50"
+      required: "Station code is required"
+    label: "Station code"
+    placeholder: "Please enter the code of the station"
+  siteName:
+    errorMsg:
+      maxlength: "Max length is 255"
+      required: "Station name is required"
+    label: "Station name"
+    placeholder: "Please enter a identifier for the station"
+  country:
+    errorMsg:
+      maxLength: "Max length is 255"
+      required: "Country is required"
+    label: Country
+    placeholder: "Please enter the country where the station is located"
+  region:
+    errorMsg:
+      maxlength: "Max length is 255"
+    label: "Oblast"
+    placeholder: "Please enter the Oblast for the station"
+  basin:
+    errorMsg:
+      maxlength: "Max length is 255"
+      required: "Basin is required"
+    label: "Basin"
+    placeholder: "Please enter the basin for the station"
+  title: "Register a new gauging station"
+  validForm: "All required input data is present and correct."
+  success:
+    title: "New station created successfully"
+    message: "Before the station can be used in operational work, there are a few steps to complete. All of these can be done in the overview tab."
+    stepOne: "An initial discharge must be provided using artificial discharge/level data point pairs."
+    stepTwo: "The maximum safe discharge value must be provided."
+    stepThree: "The historic discharge data must be uploaded so that the discharge norm can be calculated."
+    back: "Back to the overview"
+    edit: "Proceed to station editing"
+  storeStation: "Create station"
+  storingStation: "Creating..."
+  restartNewStation: "Edit information"
+  dischargeControl:
+    title: "Discharge rating curve"
+    modelSelect:
+      label: "Model selection"
+      placeholder: "Please select the model for the station initialization."
+      errorMsg:
+        required: "A model must be selected before proceeding."
+    newModel:
+      quadratic: "Model fit using an quadratic model"
+      johnsons: "Model fit using Johnson's method"
+    noQuadraticModel: "A model could not be fit using a quadratic fit."
+    noJohnsonsModel: "A model could not be fit using Johnson's method."
+    create: "Create new station"
+    creating: "Creating station..."
+editStation:
+  select:
+    title: "Edit a station"
+    label: "Select a station"
+    placeholder: "Please type the station index or name"
+    select: "Select station"
+    selecting: "Retrieving..."
+    change: "Change station"
+  edit:
+    title: "Station:"
+    validForm: "The proposed changes are valid."
+    editStation: "Apply changes"
+    editingStation: "Applying..."
+    editSuccess: "Station edited successfully, redirecting to station overview."
+    editError: "There was an error with the edit."
+    closeError: "Please review the error before attempting another edit"
+registerUser:
+  email:
+    errorMsg:
+      email: "Not a valid e-mail address"
+      maxlength: "E-mail is too long"
+      required: "E-mail is required"
+    label: E-mail
+    placeholder: "Please enter your e-mail"
+  fullName:
+    errorMsg:
+      maxlength: "Name is too long"
+      minlength: "Name is too short"
+      pattern: "Name contains invalid characters"
+      required: "Name is required"
+    label: Name
+    placeholder: "Please enter your name"
+  source:
+    label: Organization
+  password:
+    errorMsg:
+      maxlength: "Password is too long"
+      minlength: "Password is too short"
+      passwordStrength: "Passwords must contain at least one digit and uppercase letter"
+      required: "Password is required"
+    label: Password
+    placeholder: "Please enter your password"
+  register: "Register new user"
+  registerUserSuccess: "You have been successfully registered"
+  registering: Registering...
+  repeatPassword:
+    errorMsg:
+      validator: "Passwords do not match"
+    label: ~
+    placeholder: "Please enter again your password"
+  title: "iMomo User Registration"
+  username:
+    errorMsg:
+      maxlength: "Username is too long"
+      minlength: "Username is too short"
+      pattern: "Username contains invalid characters"
+      required: "Username is required"
+    label: Username
+    placeholder: "Please enter your desired username"
+storeStation:
+  create: "Create new station"
+  creating: Creating...
+  goToTop: "Back to top"
+  invalidStation: "The station data did not pass validatiom"
+  modelDetails:
+    equation: Equation
+    modelName: "Model name"
+    params: Parameters
+    title: "Current discharge model"
+    validFrom: "Valid since"
+  stationCreated: "A new station has been created"
+  stationCreationError: "There was an error during the creation"
+  stationDetails:
+    comments: Comments
+    elevation: "Elevation (m)"
+    latitude: Latitude
+    longitude: Longitude
+    siteCode: "Station index"
+    siteName: "Site name"
+    state: Country
+    title: "Station information"
+  historicData:
+    title: "Station's historic data"
+    dischargeNorm: "Discharge norm (m<sup>3</sup>/s)"
+    dischargeMax: "Maximum safe discharge (m<sup>3</sup>/s)"
+  title: "New gauging station"
+title: "iMoMo Central Asia"
+tools:
+  home:
+    sidebar: "Available tools"
+    welcome: "Welcome to iMoMo tools"
+  operationalData:
+    description: "The daily operational tool provides hydrology experts with an interface to record, process and store hydrological data, namely water level and flow, in registered gauging stations.\n"
+    displayName: "Daily operational data"
+    sidebar:
+      backToTools: "Back to toolbox"
+      dataInput: "Operational data input (KN15)"
+      journal: "Operational data journal"
+      bulletin: "Daily bulletin"
+      title: "Operational data functions"
+    dataInput:
+      title: "Daily operational data input"
+      telegramMonth:
+        label: Month
+        placeholder: "Please select the month for the data."
+        errorMsg:
+          required: "A month selection is required."
+      telegramYear:
+        label: Year
+        placeholder: "Please select the year for the data."
+        errorMsg:
+          required: "A year selection is required."
+      kn15Input:
+        title: "KN15 telegram decoding"
+        label: Telegram
+        placeholder: "Please enter a single KN15-encoded telegram line"
+        errorMsg:
+          required: "A telegram line is required."
+        decodeTelegram: Decode
+        decodingTelegram: Decoding...
+        showHelp: "Show help text"
+        hideHelp: "Hide help text"
+        help:
+          title: "Instructions"
+          li1: "Please enter a single KN15-encoded telegram"
+          li2: "The supported telegram sections are:"
+          li21: "Section 1 - Daily hydrological data"
+          li22: "Section 3 - Average water level and flow"
+          li23: "Section 6 - Flow measurements"
+          li3: "Please remove any comment text from the telegram"
+          li4: "Examples (First three are correct, last one is incorrect):"
+          li41: "3P: 16143 17081 10115 20102 30120="
+          li42: "3P: 16143 17082 10050 20000 30050 00000 96607 10067 21204 31130 50818="
+          li43: "3P: 16143 17082 10115 20102 30120 41//1 00000 93301 10128 96607 10067 21204 31130 50818="
+          li44: "3P: 16143 17082 10050 20000 30050 РАСХОД 96607 10067 21204 31130 50818="
+    inputDisplay:
+      title: "Decoded/processed data"
+      waterLevel:
+        title: "Water level measurements (in cm)"
+        date: "Measurement date"
+        eight: "08:00"
+        twenty: "20:00"
+        average: "Daily average"
+        measuredAverage: "The average was decoded from the telegram or provided in the input form"
+        arithmeticAverage: "The average was calculated as the arithmetic average between the values at 08:00 and 20:00"
+        estimatedAverage: "The average is equal to the value at 20:00 because there is no data for the value at 08:00"
+        trendInformation: "Water level trend"
+        trendValid: "Reported trend matches measured data"
+        trendNotAvailable: "No data was available to verify the trend"
+      waterFlow:
+        title: "Water flow and related measurements"
+        dateTime: "Measurement date and time"
+        waterLevel: "Water level (cm)"
+        waterFlow: "Water flow (m<sup>3</sup>/s)"
+        riverFreeArea: "River free area (m<sup>2</sup>)"
+        maximumDepth: "Maximum depth (cm)"
+      dataNotAvailable: "No data"
+    dischargeControl:
+      title: "Discharge rating curves"
+      proceed: "Continue"
+      adjustment:
+        title: "Discharge curve tuning options"
+        description: "Option description"
+        proceed: "Proceed with selected discharge model"
+        noOptionSelected: "Please select an option from the list above before proceeding."
+        adjustmentOption:
+          label: "Tuning option"
+          placeholder: "Please select an option"
+          errorMsg: []
+        adjustDeltaH:
+          label: "ΔH adjustment"
+          description: "Selecting this option will allow you to select a ΔH to adjust the curve temporarily to fit the new discharge measurement. This value can be later removed or incorporated in the model depending on the measurements received. Note that the adjustment is based on the selected model."
+          newName: "Adjusted model with ΔH correction"
+          deltaH:
+            label: "ΔH (cm)"
+            placeholder: "Please specify a displacement value for H in cm"
+            errorMsg:
+              number: "The correction must be a number"
+              required: "A ΔH value is required"
+          modelName:
+            label: "New model's label"
+            placeholder: "Please specify a descriptive label for the model"
+            errorMsg:
+              required: "A label is required"
+          button: "Create new model with ΔH correction"
+        fitModel:
+          label: "Fit model to selected data"
+          description: "Selecting this option will enable you to select two or more discharge points from the plot and then fit a model to these points using one of the different fitting methods provided. This also allows the possibility to create artificial data points that can be used for the fitting."
+          newName: "New model fit to selected data points"
+          johnsons: "Johnson's method"
+          fixedExp: "Quadratic fit"
+          artificialPoints:
+            title: "Add artificial data point"
+            waterLevel:
+              label: "H (cm)"
+              placeholder: "100 cm"
+              errorMsg:
+                number: "Water level must be a number"
+            discharge:
+              label: "Q (m^3/s)"
+              placeholder: "1 m^3/s"
+              errorMsg:
+                number: "Discharge must be a number"
+            add: "Create fake point"
+            listTitle: "Artificial data points"
+          title: "Fit new model"
+          info: "This allows creating a new discharge curve using the artificial points and any selected data point from the display. To select a discharge point, you can click on it in the graph."
+          create: "Fit new model to the data"
+          fakePointsNo: "# Artificial data points"
+          selectedDataNo: "# Selected data points"
+          modelName:
+            label: "New model's label"
+            placeholder: "Please specify a descriptive label for the model"
+            errorMsg:
+              required: "A label is required"
+        currentModel: "Current model details"
+        newModelDetails: "New model adjustment"
+        newModelEquation: "New model details"
+        newModelName:
+          label: "Model name"
+          placeholder: "Please enter a name for the new model"
+          errorMsg:
+            required: "A model name is required"
+        newModelDeltaH:
+          label: "ΔH correction"
+          placeholder: "Please enter a ΔH correction for the new model"
+          errorMsg:
+            number: "The correction must be a number"
+            required: "A ΔH value is required"
+        fittingMethod:
+          label: "Fitting method"
+        selectedPoints:
+          label: "Selected points"
+          value: "selected points."
+        fitPoints: "Fit model to selected data"
+    calculatedDischarge:
+      title: "Discharge calculation results"
+      dischargeTable:
+        date: "Measurement date"
+        eight: "08:00"
+        twenty: "20:00"
+        average: "Daily average"
+        h: "H (cm)"
+        q: "Q (m<sup>3</sup>/s)"
+        unchanged: "Not modified"
+        dataNotAvailable: "No data"
+      storeData: "Upload daily data"
+      storingData: "Uploading..."
+      redirecting: "Data stored successfully, we are now reloading the page."
+      dataStoreError: "There was an error while uploading the data, please check it and try again later."
+    journal:
+      title: "Operational data journal"
+      options: "Options"
+      siteCode:
+        label: "Station code"
+        placeholder: "Please enter the code for the desired station"
+        errorMsg:
+          required: "The station code is required"
+          editable: "The station code does not exist"
+      date:
+        label: "Month/Year"
+        placeholder: "Please select the month to display"
+        errorMsg:
+          required: "The month and year are required"
+          date: "The specified date is not valid"
+      displayJournal: "Display journal"
+      loadingData: "Loading journal data..."
+      addSite: "Add station to list"
+      closeJournal: "Close journal"
+      download: "Download journal"
+      siteList: "Stations to display"
+    journalTable:
+      title: "Station journal"
+      dailyDischarge: "Daily water level & discharge entries"
+      date: "Measurement date"
+      eight: "08:00"
+      twenty: "20:00"
+      average: "Average"
+      h8: "H<sub>8</sub> (cm)"
+      q8: "Q<sub>8</sub> (m<sup>3</sup>/s)"
+      h20: "H<sub>20</sub> (cm)"
+      q20: "Q<sub>20</sub> (m<sup>3</sup>/s)"
+      havg: "H<sub>avg</sub> (cm)"
+      qavg: "Q<sub>avg</sub> (m<sup>3</sup>/s)"
+      dischargeMeasurements: "Discharge measurements"
+      dateTime: "Measurement date & time"
+      waterLevel: "Water level (cm)"
+      discharge: "Discharge (m<sup>3</sup>/s)"
+      freeRiverArea: "Free river area (m<sup>2</s>)"
+      maximumDepth: "Maximum depth (cm)"
+    bulletin:
+      title: "Daily bulletin production"
+      siteList: "Selected stations"
+      siteToAdd:
+        label: "Station code"
+        placeholder: "Please enter a station code to add to the list"
+        errorMsg:
+          required: "A station code is required"
+          editable: "The station code does not exist"
+      date:
+        label: "Bulletin date"
+        placeholder: "Please enter the desired date for the bulletin"
+        errorMsg:
+          required: "A date is required"
+          date: "The date is not valid"
+      addSite: "Add station to list"
+      generate: "Generate bulletin"
+      generating: "Generating bulletin..."
+      download: "Download bulletin"
+  forecast:
+    description: "The forecasting tool provides hydrology experts with a user-friendly interface to a wide range of models for fitting and prediction of time series of river discharge values at gauging stations registered in the system.\n"
+    displayName: "Discharge forecast"
+    sidebar:
+      title: "Forecasting options"
+      daily: "Daily forecast"
+      decade: "Decade forecast"
+      monthly: "Monthly forecast"
+      seasonal: "Seasonal forecast"
+      backToTools: "Toolbox"
+    decade:
+      title: "Decadal forecasting"
+      form:
+        site:
+          label: "Stations"
+          placeholder: "Please select a station to add it to the list"
+          errorMsg: []
+        month:
+          label: "Month"
+          placeholder: "Please specify the month for the forecast"
+          errorMsg:
+            number: "Must be a number"
+            required: "Value is required"
+            min: "Must be between 1 and 12"
+            max: "Must be between 1 and 12"
+        decade:
+          label: "Decade"
+          placeholder: "Please specify the decade for the forecast"
+          errorMsg:
+            number: "Must be a number"
+            required: "Value is required"
+            min: "Must be between 1 and 3"
+            max: "Must be between 1 and 3"
+        getForecast: "Get decade forecast"
+      siteList: "Selected stations"
+      table:
+        title: "Decade Forecast"
+        sites: "Station"
+        forecast: "Forecasted discharge Q [m^3/s]"
+        previousValues: "Previous decade discharge values"
+        year: "Year"
+        value: "Q [m^3/s]"
+userRoles:
+  developer:
+    description: "Developers are a special role restricted only to mantainers of the application and server infrastructure."
+    name: Developer
+  hydrology_expert:
+    description: "Hydrology experts are in charge of inputting daily operational data and mantaining the discharge models."
+    name: "Hydrology expert"
+  supervisor:
+    description: "Supervisors are in charge of mantaining the organization's users, review the daily operations and update meta information such as gauging stations."
+    name: Supervisor
+errors:
+  title: "Error encountered"
+  summary: "There was an error during your request. Please notify your support contact person."
+  details: "Error details:"
+  code10000: "A unknown error has occurred in the server."
+  code11007: "The chosen username already exists in the system, please select a different one."
+  code11008: "The given e-mail is already associated with an account in the system."
+  code11015: "The given station code is already registered in the system."
+  code11016: "The given station name is already registered in the system."
+  code11017: "The given station code matches a site from another organization. You are not allowed to access its data."
+  code11018: "The given station code does not match any station registered in the system. Please check again the index or create a new station if necessary."
+  code11019: "The given station code matches a site that is not ready for data processing, please edit it in the stations page."
+  code13000: "There was an error while validating the input data."
+  code11001: "Username/E-mail and password combination does not match any user"
+  code11005: "The user is not yet approved"
+  code10101: "One of the given stations does not exist in the system."
+  code10102: "There is no calculated discharge information for at least one of the given sites on the selected date."
+  code10103: "There is no calculated discharge information for at least one of the given sites on the previous day to the selected date."
+  code10104: "There is no discharge norm registered for at least one of the sites in the 10 day period that comprises the given date. This information must be provided before requesting a bulletin."
+  code10105: "There is no maximum safe discharge registered for at least one of the sites. This information must be provided before requesting a bulletin."
+  code10106: "There is not enough discharge data for one of the stations to make a forecast."
+  code16002: "There is already a station with the same code."
+  code21001: "The given telegram does not match the expected format. Please check again the input."
+  code21002: "The given telegram does not contain all the water level information for 08:00, 20:00 and the trend. Please check and correct the telegram input."
+  code21003: "The water level trend reported in the telegram does not match the stored water level from the previous day. Please check the reported levels and trend."
+  code22000: "There was an unexpected error when contacting an external service."
+  code40000: "There was an unexpected error when contacting the imomo server."
+  errorAlert:
+    title: "IMoMo Error"
+    details: "Additional details:"
+    close: "Close and Try Again"

@@ -1,0 +1,70 @@
+include ../../mixins/form-mixins.jade
+
+.row
+  .col-xs-8
+    discharge-display(discharge-data='siteCurveCtrl.fakeDischargePairs',
+      discharge-models='siteCurveCtrl.sessionDischargeModels',
+      selected-discharge-model='siteCurveCtrl.selectedDischargeModel')
+  .col-xs-4
+    .row
+      .col-xs-12
+        .panel.panel-primary
+          .panel-heading
+            h4.panel-title #{$i18n.stations.selected.curve.addPoint.title}
+          .panel-body
+            form(name='addPointForm')
+              +vFormField('waterLevel', true, $i18n.stations.selected.curve.addPoint, 'addPointForm', 'siteCurveCtrl.newDischargePair.waterLevelValue', '', 'number')
+              +vFormField('discharge', true, $i18n.stations.selected.curve.addPoint, 'addPointForm', 'siteCurveCtrl.newDischargePair.dischargeValue', '', 'number')(min='0')
+              .form-group
+                button.btn.btn-block.btn-primary(ng-click='siteCurveCtrl.addFakePoint($event)',
+                  ng-disabled='addPointForm.$invalid')
+                  | #{$i18n.stations.selected.curve.addPoint.add} #{''}
+                  i.octicon.octicon-plus
+    .row
+      .col-xs-12
+        .panel.panel-info
+          .panel-heading
+            h4.panel-title #{$i18n.stations.selected.curve.fakePoints.title}
+          ul.list-group.scrollable-list.px200
+              li.list-group-item(
+                ng-repeat='dischargePair in siteCurveCtrl.fakeDischargePairs')
+                span #{$i18n.stations.selected.curve.fakePoints.waterLevel}
+                  | : {{dischargePair.waterLevelValue}}
+                br
+                span #{$i18n.stations.selected.curve.fakePoints.discharge}
+                  | : {{dischargePair.dischargeValue}}
+                i.octicon.octicon-trashcan.pull-right(
+                  ng-click='siteCurveCtrl.deleteFakePoint($event, $index)')
+    .row
+      .col-xs-12
+        .panel.panel-primary
+          .panel-heading
+            h4.panel-title
+            | #{$i18n.stations.selected.curve.newCurve.title} #{''}
+            i.octicon.octicon-info(
+              tooltip=$i18n.stations.selected.curve.newCurve.info)
+          .panel-body
+            dl.dl-horizontal
+              dt #{$i18n.stations.selected.curve.newCurve.fakePointsNo}
+              dd {{siteCurveCtrl.fakeDischargePairs.length}}
+              dt #{$i18n.stations.selected.curve.newCurve.selectedDataNo}
+              dd 0
+            button.btn.btn-lg.btn-primary(
+              ng-click='siteCurveCtrl.createNewModel($event)',
+              ng-disabled='!siteCurveCtrl.enoughDataPoints()')
+              | #{$i18n.stations.selected.curve.newCurve.create}
+            .row(ng-show='siteCurveCtrl.selectedDischargeModel')
+              .col-xs-12
+                hr
+                dl
+                  dt #{$i18n.stations.selected.curve.newCurve.selected}
+                  dd {{siteCurveCtrl.selectedDischargeModel.toString()}}
+                button.btn.btn-lg.btn-primary(
+                  ng-click='siteCurveCtrl.submitNewModel($event)',
+                  ng-disabled='!siteCurveCtrl.isModelSubmittable()')
+                  | #{$i18n.stations.selected.curve.newCurve.submit}
+            hr
+            error-alert(ng-show='siteCurveCtrl.createDischargeModelError',
+              close='siteCurveCtrl.closeErrorAlert()',
+              error='siteCurveCtrl.createDischargeModelError')
+

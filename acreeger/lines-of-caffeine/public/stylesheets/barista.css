@@ -1,0 +1,94 @@
+html, body {
+	background-color: #333;
+	color:white;
+	height: 100%;
+	min-height: 100%;
+}
+
+#order-info-container {
+	padding-bottom: 20px;
+}
+
+.barista-title {
+	color:#ccc;
+}
+
+.barista-count-2 {
+	height: 50%
+}
+
+.barista-count-3 {
+	height: 33%
+}
+
+.barista-count-4 {
+	height: 25%
+}
+
+.barista-container {
+	border-top: 1px solid silver;
+	margin-top: -1px;
+}
+
+.barista-container:first-child {
+	border-top: none;
+}
+
+/*.coffee-strength {
+	padding-right: 5px;
+}
+*/
+.drink:first-letter {
+	text-transform: capitalize;
+}
+
+.order {
+	font-size: 36px;
+}
+
+.no-orders h4 {
+	font-size: 24px;
+}
+
+.specialInstructions {
+	font-size: 22px;
+}
+
+.order-action-buttons {
+	text-align: center;
+}
+
+.order-action-buttons button {
+	height: 90px;
+	font-size: 28px;
+}
+
+.mark-as-aborted {
+	margin-left: 60px;
+	/*background-image: -webkit-linear-gradient(top,#fffeb8,#c49c38);*/
+}
+
+.status-assigned .mark-as-done {
+	display: none;
+}
+
+.status-in-production .mark-as-started {
+	display: none;
+}
+
+.status-in-production {
+	/*color:#006dcc;*/
+}
+
+.refresh-button, .refresh-button:active, .refresh-button:hover {
+	text-decoration: none;
+	color:#999;
+}
+
+.xrow, .xcol { overflow: hidden; position: absolute; }
+.xrow { left: 0; right: 0; }
+.xcol { top: 0; bottom: 0; }
+.scroll-x { overflow-x: auto; }
+.scroll-y { overflow-y: auto; }
+.header.xrow { height: 77px; top: 0; }
+.content.xrow { top: 77px; bottom: 0; }

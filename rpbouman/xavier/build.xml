@@ -1,0 +1,250 @@
+<project name="xavier" basedir=".">
+  <description>
+    XML/A Analyzer
+  </description>
+  
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="lib" location="lib"/>
+  <property name="mui.src.dir" location="../mui/src"/>
+  <property name="mui.dist.dir" location="../mui/dist"/>
+  <property name="xmla4js.dir" location="../xmla4js"/>
+  <property name="dist" location="dist"/>
+  <property name="dist.all" location="${dist}/${ant.project.name}"/>
+  <property name="src.plugin" location="${src}/plugin"/>
+  <property name="dist.plugin" location="${dist}/plugin"/>
+  <property name="resources"  location="resources"/>
+  <property name="dist.resources" location="${dist}/resources"/>
+  <property name="dist.lib" location="${dist}/lib"/>
+
+  <property name="webapps.dir"  location="/home/roland/apache-tomcat-7.0.56/webapps"/>
+  <property name="tomcat8-webapps.dir"  location="C:\apache-tomcat-8.0.29-windows-x64\webapps"/>
+  <property name="tomcat-deploy.dir"  location="${webapps.dir}/${ant.project.name}"/>
+  <property name="jasper.webapps.dir"  location="/home/roland/jasperreports-server-cp-6.0.1/apache-tomcat/webapps"/>
+  <property name="apache.deploy.dir"  location="deploy"/>
+<!--
+  <property name="icCube.dir"  location="/home/roland/icCube-4.8.2"/>
+-->
+  <property name="icCube-5.0.2.dir"  location="/home/roland/icCube/icCube-5.0.2"/>
+  <property name="icCube-5.0.2.web.dir"  location="${icCube-5.0.2.dir}/web"/>
+  <property name="icCube-5.1.2.dir"  location="/home/roland/icCube/icCube-5.1.2"/>
+  <property name="icCube-5.1.2.web.dir"  location="${icCube-5.1.2.dir}/web"/>
+  <property name="icCube-5.1.3.web.dir"  location="C:\Program Files\icCube\5.1.3\web"/>
+<!--
+  <property name="bi-server.dir"  location="/home/roland/pentaho-ce/biserver-ce-5.1.0.0-752/biserver-ce"/>
+  <property name="bi-server.dir"  location="/home/roland/pentaho-ee/biserver-ee-TRUNK-b2246/biserver-ee"/>
+  <property name="bi-server.dir"  location="/home/roland/pentaho-ce/biserver-ce-5.2/biserver-ce"/>
+  <property name="bi-server.dir"  location="/home/roland/pentaho-ce/biserver-ce-5.3.0.0-213/biserver-ce"/>
+-->
+  <property name="pentaho-ce-5.2"  location="/home/roland/pentaho-ce/biserver-ce-5.2.0.0-209/biserver-ce"/>
+  <property name="pentaho-ce-5.4"  location="/home/roland/pentaho-ce/biserver-ce-5.4.0.0-128/biserver-ce"/>
+  <property name="pentaho-ee-5.4"  location="/home/roland/pentaho-ee/biserver-ee-5.4.0.1-130/biserver-ee"/>
+  <property name="pentaho-ce-6.0"  location="C:\biserver-ce-6.0.0.0-353\pentaho-solutions\system"/>
+
+  <property name="bi-server-system.dir"  location="/pentaho-solutions/system"/>
+  <property name="tomcat.dir"  location="${bi-server.dir}/tomcat"/>
+  <property name="tomcat.lib.dir"  location="${tomcat.dir}/lib"/>
+  <property name="bi-server.lib.dir"  location="${tomcat.dir}/webapps/pentaho/WEB-INF/lib"/>
+  <property name="deploy.dir"  location="${bi-server-system.dir}/${ant.project.name}"/>
+
+  <property name="nowarn" value="on"/>
+  <property name="deprecation" value="off"/>
+  <property name="debug" value="on"/>
+  <property name="browser"          value="chrome"/>
+  <property name="sleep"          value="4"/>
+
+  <property name="bihost"           value="localhost"/>
+  <property name="biport"           value="8080"/>
+  <property name="biuser"           value="admin"/>
+  <property name="bipasswd"         value="password"/>
+  <property name="bihome"           value="http://${bihost}:${biport}/pentaho?userid=${biuser}&amp;password=${bipasswd}"/>
+
+  <!--
+  <property name="java.shared.libs" location="/usr/share/java/"/>
+  -->
+  <property name="java.shared.libs" location="C:\jars\"/>
+  
+  <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="C:\jars\google-closure-compiler.jar"/>
+
+  <target name="init">
+    <tstamp/>
+  </target>
+
+  <target name="copy-mui">
+    <copy todir="${lib}/mui" >
+      <fileset dir="${mui.src.dir}" includes="**"/>
+    </copy>
+  </target>
+
+  <target name="compile-mui" depends="copy-mui">
+    <jscomp compilationLevel="simple" warning="verbose" debug="false" output="${lib}/mui/mui-compiled.js">
+
+      <externs dir="${lib}/mui/js">
+        <file name="externs.js"/>
+      </externs>
+
+      <sources dir="${lib}/mui/js">
+        <file name="utilities.js"/>
+        <file name="dateutils.js"/>
+        <file name="dom.js"/>
+        <file name="event.js"/>
+        <file name="dnd.js"/>
+        <file name="observable.js"/>
+        <file name="displayed.js"/>
+        <file name="disabled.js"/>
+        <file name="timer.js"/>
+        <file name="spinner.js"/>
+        <file name="dialog.js"/>
+        <file name="toolbar.js"/>
+        <file name="treenode.js"/>
+        <file name="treelistener.js"/>
+        <file name="treeselection.js"/>
+        <file name="highlighter.js"/>
+        <file name="contentarea.js"/>
+        <file name="contentpane.js"/>
+        <file name="splitpane.js"/>
+        <file name="tabpane.js"/>
+        <file name="datagrid.js"/>
+      </sources>
+
+    </jscomp>
+  </target>
+
+<!--
+  <target name="xmla4js">
+    <delete dir="${xmla4js.dst.dir}"/>
+    <mkdir dir="${xmla4js.dst.dir}"/>
+    <get verbose="true" src="https://raw.githubusercontent.com/rpbouman/xmla4js/master/src/Xmla.js" dest="${xmla4js.dst.dir}"/>
+  </target>
+-->
+  <target name="xmla4js">
+    <copy todir="${lib}/xmla4js" >
+      <fileset dir="${xmla4js.dir}/src" includes="Xmla.js"/>
+      <fileset dir="${xmla4js.dir}/js" includes="Xmla-compiled.js"/>
+    </copy>
+  </target>
+
+  <target name="dist" depends="clean,init,compile-mui,xmla4js" description="generate the distribution" >
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${dist.all}"/>
+
+    <copy todir="${dist.all}">
+      <fileset dir="${src}/plugin"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/lib"/>
+    <copy todir="${dist.all}/lib">
+      <fileset dir="${lib}"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources"/>
+
+    <mkdir dir="${dist.all}/resources/doc"/>
+    <copy todir="${dist.all}/resources/doc">
+      <fileset dir="${src}/doc"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources/html"/>
+    <copy todir="${dist.all}/resources/html">
+      <fileset dir="${src}/html"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources/js"/>
+    <copy todir="${dist.all}/resources/js">
+      <fileset dir="${src}/js"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources/messages"/>
+    <copy todir="${dist.all}/resources/messages">
+      <fileset dir="${src}/messages"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources/css"/>
+    <copy todir="${dist.all}/resources/css">
+      <fileset dir="${src}/css"/>
+    </copy>
+
+    <mkdir dir="${dist.all}/resources/images"/>
+    <copy todir="${dist.all}/resources/images">
+      <fileset dir="${src}/images"/>
+    </copy>
+
+    <delete file="${dist}/${ant.project.name}.zip"/>
+    <zip destfile="${dist}/${ant.project.name}.zip">
+      <zipfileset dir="${dist}/${ant.project.name}" prefix="${ant.project.name}"/>
+    </zip>
+  </target>
+
+  <target name="deploy-apache" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${apache.deploy.dir}"/>
+  </target>
+
+  <target name="undeploy-pentaho-5.2" description="undeploy distribution">
+    <delete dir="${pentaho-ce-5.2}${bi-server-system.dir}/${ant.project.name}"/>
+  </target>
+
+  <target name="deploy-pentaho-5.2" depends="dist,undeploy-pentaho-5.2" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${pentaho-ce-5.2}${bi-server-system.dir}"/>
+  </target>
+
+  <target name="undeploy-pentaho-5.4" description="undeploy distribution">
+    <delete dir="${pentaho-ce-5.4}${bi-server-system.dir}/${ant.project.name}"/>
+  </target>
+
+  <target name="deploy-pentaho-5.4" depends="dist,undeploy-pentaho-5.4" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${pentaho-ce-5.4}${bi-server-system.dir}"/>
+  </target>
+
+  <target name="undeploy-pentaho-ee-5.4" description="undeploy distribution">
+    <delete dir="${pentaho-ee-5.4}${bi-server-system.dir}/${ant.project.name}"/>
+  </target>
+
+  <target name="deploy-pentaho-ee-5.4" depends="dist,undeploy-pentaho-ee-5.4" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${pentaho-ee-5.4}${bi-server-system.dir}"/>
+  </target>
+
+  <target name="undeploy-pentaho-6.0" description="undeploy distribution">
+    <delete dir="${pentaho-ce-6.0}\${ant.project.name}"/>
+  </target>
+
+  <target name="deploy-pentaho-6.0" depends="dist,undeploy-pentaho-6.0" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${pentaho-ce-6.0}"/>
+  </target>
+
+  <target name="deploy-iccube-5.0.2" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${icCube-5.0.2.web.dir}"/>
+  </target>
+
+  <target name="deploy-iccube-5.1.3" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${icCube-5.1.3.web.dir}"/>
+  </target>
+
+  <target name="deploy-iccube-5.1.2" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${icCube-5.1.2.web.dir}"/>
+  </target>
+
+  <target name="undeploy-tomcat" description="undeploy distribution">
+    <delete dir="${tomcat-deploy.dir}"/>
+  </target>
+
+  <target name="deploy-tomcat" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${webapps.dir}"/>
+  </target>
+
+  <target name="undeploy-tomcat8" description="undeploy distribution">
+    <delete dir="${tomcat8-webapps.dir.dir}/${ant.project.name}"/>
+  </target>
+
+  <target name="deploy-tomcat8" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${tomcat8-webapps.dir}"/>
+  </target>
+
+  <target name="deploy-jasper" depends="dist" description="deploy distribution">
+    <unzip src="${dist}/${ant.project.name}.zip" dest="${jasper.webapps.dir}"/>
+  </target>
+
+
+  <target name="clean" description="clean up" >
+    <delete dir="${dist}"/>
+  </target>
+</project>

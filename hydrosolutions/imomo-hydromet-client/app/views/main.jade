@@ -1,0 +1,7 @@
+.container(ui-view)
+  carousel(interval='3000')
+    - var n = 19;
+    while n > 0
+      slide
+        img.img-responsive.img-carousel(src='images/front_page_' + n + '.jpg')
+      - n -= 1

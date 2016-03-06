@@ -1,0 +1,66 @@
+{
+  "name": "codemirror-blocks",
+  "version": "0.0.1",
+  "description": "CoreMirror extension for using draggable blocks to write programming languages",
+  "main": "lib/codemirror-blocks.js",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.18",
+    "babel-core": "^6.1.21",
+    "babel-eslint": "^4.1.5",
+    "babel-loader": "^6.1.0",
+    "babel-polyfill": "^6.1.19",
+    "babel-preset-es2015": "^6.1.18",
+    "codemirror": "^5.8.0",
+    "css-loader": "^0.23.0",
+    "docco": "^0.7.0",
+    "eslint": "^1.9.0",
+    "eslint-loader": "^1.1.1",
+    "handlebars-loader": "pcardune/handlebars-loader",
+    "isparta-loader": "^2.0.0",
+    "jasmine": "^2.3.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-coverage": "^0.5.3",
+    "karma-coveralls": "^1.1.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-sourcemap-loader": "^0.3.6",
+    "karma-webpack": "^1.7.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.6",
+    "webpack-dev-server": "^1.12.1",
+    "wescheme-js": "bootstrapworld/wescheme-js"
+  },
+  "peerDependencies": {
+    "babel-polyfill": "^6.1.19",
+    "codemirror": "^5.8.0"
+  },
+  "optionalDependencies": {
+    "wescheme-js": "bootstrapworld/wescheme-js"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "test": "karma start --single-run",
+    "test-watch": "karma start",
+    "start": "webpack-dev-server --content-base example/",
+    "build": "webpack",
+    "lint": "eslint . --ext .js || true",
+    "docs": "docco src/*.js"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "author": "Paul Carduner",
+  "license": "MIT License"
+}

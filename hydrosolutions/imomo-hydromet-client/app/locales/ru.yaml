@@ -1,0 +1,691 @@
+datePicker:
+  currentText: Сегодня
+  clearText: Очистить
+  closeText: Закрыть
+dischargeControl:
+  displayControls:
+    title: Отображение управления
+    modelInfoVisible: Отображение информации модели
+    selectedMeasurementVisible: Показать выбранное измерение
+    hqTableVisible: Показать H/Q таблицу
+    modelModificationVisible: Показать опции модификации модели
+  displayWindow:
+    change: Изменить
+    maxWaterLevel:
+      errorMsg:
+        number: Максимумум не число
+        required: Требуется максимум
+      label: Максимальный уровень воды
+    minWaterLevel:
+      errorMsg:
+        number: Максимум не число
+        required: Требуется минимум
+      label: Минимальный уровень воды
+    title: Окно управления
+  legend:
+    title: Легенда
+  models:
+    title: Модели
+    noModel: "Пожалуйста, выберите модель с помощью панели легенды или кликнув по кривой на графике."
+    adjustment: Эта модель была скорректирована с ΔH со значением
+    notAdjusted: "Пожалуйста постройте новую модель, используя доступные опции."
+  nextState:
+    back: Возврат к предыдущему шагу
+    proceed: Продолжайте с выбранной моделью
+    title: Продолжить с операциями
+  selectedMeasurement:
+    noMeasurement: "Вы можете выделить измерение на кривой, дважды кликнуть на нем или его подписи с датой."
+    title: Выбранные измеренные данные
+  table:
+    title: H/Q Таблица
+    header: H (cm)
+    noModel: Please select a discharge model.
+  modelOptions:
+    title: Настройка кривой расходов
+    newMeasurement:
+      title: Новый расход/уровень воды
+      waterLevel: Измеренный уровень воды (H)
+      waterFlow: "Измеренный расход воды(Q<sub>m</sub>)"
+      expectedWaterFlow: "Рассчитанный расход воды(Q<sub>c</sub>)"
+      relativeError: "Относительная ошибка(|Q<sub>c</sub> - Q<sub>m</sub>|/Q<sub>c</sub> * 100%)"
+      cm: см
+      m3: "м<sup>3</sup>/с"
+      percent: "%"
+    options:
+      title: Опции настройки
+      adjustDeltaH: Подбор ΔH
+      adjustSlope: "Подбор угла наклона, удалить существующий ΔH"
+      fixDeltaH: Соединить ΔH в a
+      adjust: Настройка модели
+      adjusting: Идет настройка модели...
+      modelWithAdjustedDelta: Регулировка модели с ΔH
+      modelWithAdjustedA: "Модель скорректированная 'a' чтобы соответствовать предыдущей ΔH"
+      modelWithAdjustedSlope: "Модель с поправкой угла наклона, чтобы соответствовать предыдущей ΔH"
+      setDeltaH: Установка ΔH
+  title: Кривая расходов воды
+  titles:
+    telegram: Кривая расходов воды
+header:
+  brand: iMomo
+  dismiss: Отклонить
+  english: English
+  language: Смена языка
+  loadingUserInfo: Загружается профиль пользователя...
+  loggedIn: Вы вошли как
+  login: Логин
+  loginInProgress: Вход...
+  logout: Выход
+  notYetRegistered: Еще нет учетной записи?
+  options: Меню
+  password: Пароль
+  russian: Русский
+  stations: Гидропосты
+  tools: Инструменты
+  usernameOrEmail: Username/Email
+  users: Пользователи
+footer:
+  copyright: Copyright (c) 2014 Hydrosolutions GmbH
+locale: ru
+stations:
+  title: Опции гидропостов
+  options:
+    overview: Обзор
+    new: Новый гидропост
+    edit: Редактирование гидропоста
+  overview:
+    title: Обзор гидропоста
+    table:
+      title: Gauging station list
+      siteName:
+        label: Name
+        placeholder: Filter by name
+      siteCode:
+        label: Code
+        placeholder: Filter by code
+      region:
+        label: Oblast
+        placeholder: Filter by oblast
+      basin:
+        label: Basin
+        placeholder: Filter by basin
+      country:
+        label: Country
+        placeholder: Filter by country
+      options:
+        label: Options
+        clear: Clear filters
+        unsort: Clear sorting
+        select: Select station
+        show: Show station list
+        hide: Hide station list
+    noSites: No stations exist in your organization.
+    noSitesAdvice: Start by creating one.
+    createSite: New station
+    delete:
+      title: Подтверждение
+      description: "Если вы удалите эту станцию??, так же будут удалены навсегда все данные, связанные с ней. Это действие не обратимо!"
+      stationIndex: "Индекс гидропоста:"
+      delete: Удалить
+      cancel: Отмена
+  selected:
+    options:
+      title: Options
+      details: View and edit station details
+      curve: View and edit rating curve
+      norm: View and edit historic discharge data
+    details:
+      subtitle: Station details
+      info: To edit the station details simply modify them and click on the button below.
+      submit: Submit changes
+      submitting: Submitting changes...
+      noChanges: No changes made
+    curve:
+      addPoint:
+        title: Artificial H-Q pairs
+        add: Add point
+        waterLevel:
+          label: Water level (cm)
+          placeholder: 100 cm
+          errorMsg:
+            required: Both H and Q are required.
+            number: Value entered is not a number
+        discharge:
+          label: Discharge (m^3/s)
+          placeholder: 1 m^3/s
+          errorMsg:
+            required: Both H and Q are required.
+            number: Value entered is not a number.
+            min: Discharge must be positive.
+      fakePoints:
+        title: Artificial discharge points
+        waterLevel: H (cm)
+        discharge: Q (m^3/s)
+      newCurve:
+        title: Create new curve
+        info: "This allows creating a new discharge curve using the artificial points and any selected data point from the display. To select a discharge point, you can click on it in the graph."
+        fakePointsNo: Artificial points
+        selectedDataNo: Selected data points
+        create: Create new model
+        newModelName: New model with quadratic equation
+        selected: "The selected model is:"
+        submit: Submit selected model
+    norm:
+      table:
+        title: Discharge norm (m3/s)
+        header:
+          monthDecade: Month/Decade
+          first: 1st
+          second: 2nd
+          third: 3rd
+      historic: Historic Decadal Discharge Data
+      upload:
+        title: Upload data
+        select: Please select a spreadsheet with the data.
+        button: Upload discharge data
+        startUpload: Select a file and click on the upload button to start.
+        retrieving: The application is retrieving the secure destination for the file.
+        uploading: The file is being uploaded to the secure destination.
+        processing: The data is now being processed by the iMoMo server.
+        error: There was an error.
+        done: "The data has been successfully processed, the data will be soon loaded into the page."
+      download:
+        title: Download data
+        button: Download
+newStation:
+  comments:
+    label: Примечания
+    placeholder: "Пожалуйста, введите любые дополнительные примечания в этом месте"
+  dischargeNorm:
+    caption: Норма расхода воды
+    subcaption: "Пожалуйста, введите норму расходов воды в м3/с"
+    decade: Декада
+    decades:
+      - Первая
+      - Вторая
+      - Третья
+  safeDischarge:
+    label: Maximum safe discharge
+    placeholder: Please enter the maximum safe discharge for the station in m3/s
+    errorMsg:
+      number: Maximum safe discharge must be a number
+  dischargeCurve:
+    continueWithData: Fit curve to data
+    restartDataInput: Modify input values
+    dataTable:
+      addDataRowsButton: Добавить строки
+      date: Измеренные данные
+      removeDataRowsButton: Удалить строки
+      title: Входные данные
+      waterFlow: Расход воды(м3/с)
+      waterLevel: Уровень воды (см)
+    instructions:
+      stepOne: "Пожалуйста, введите не менее 3 значений измеренных расходов воды, которые соответствуют текущей кривой расходов воды."
+      stepTwo: Нажмите на кнопке оптимизация для получения оптимальных параметров кривой по приведенным данным.
+      stepThree: "Пожалуйста, проверьте кривую расходов воды и измените данные, если это необходимо"
+      stepFour: "After obtaining a satisfactory curve, proceed with the model to the storage option."
+      title: Инструкции
+    title: Исходная кривая расходов воды
+  latitude:
+    errorMsg:
+      max: Широта местности больше чем 90
+      min: Широта местности меньше чем -90
+      number: Широта местности не является числом
+      required: Требуется широта местности.
+    label: Широта местности
+    placeholder: "Пожалуйста, введите точное местоположение гидропоста (широта местности)"
+  longitude:
+    errorMsg:
+      max: Долгота местности больше чем 180
+      min: Долгота местности меньше чем -180
+      number: Долгота местности не является числом
+      required: Требуется долгота местности.
+    label: Долгота местности
+    placeholder: "Пожалуйста, введите точное местоположение гидропоста (долгота местности)"
+  siteCode:
+    errorMsg:
+      maxlength: Максимальная длина составляет 50
+      required: Требуется индекс гидропоста
+    label: Индекс гидропоста
+    placeholder: "Пожалуйста, введите индекс гидропоста"
+  siteName:
+    errorMsg:
+      maxlength: Максимальная длина составляет 255
+      required: Требуется название гидропоста
+    label: Название гидропоста
+    placeholder: "Пожалуйста, введите краткое описание гидропоста"
+  country:
+    errorMsg:
+      maxLength: Max length is 255
+      required: Country is required
+    label: Country
+    placeholder: Please enter the country where the station is located
+  region:
+    errorMsg:
+      maxlength: Max length is 255
+    label: Oblast
+    placeholder: Please enter the Oblast for the station
+  basin:
+    errorMsg:
+      maxlength: Max length is 255
+      required: Basin is required
+    label: Basin
+    placeholder: Please enter the basin for the station
+  title: Регистрация нового гидропоста
+  validForm: Все исходные данные правильные.
+  success:
+    title: New station created successfully
+    message: "Before the station can be used in operational work, there are a few steps to complete. All of these can be done in the overview tab."
+    stepOne: An initial discharge must be provided using artificial discharge/level data point pairs.
+    stepTwo: The maximum safe discharge value must be provided.
+    stepThree: The historic discharge data must be uploaded so that the discharge norm can be calculated.
+    back: Back to the overview
+    edit: Proceed to station editing
+  storeStation: Create station
+  storingStation: Creating...
+  restartNewStation: Edit information
+  dischargeControl:
+    title: Discharge rating curve
+    modelSelect:
+      label: Model selection
+      placeholder: Please select the model for the station initialization.
+      errorMsg:
+        required: A model must be selected before proceeding.
+    newModel:
+      quadratic: Model fit using an quadratic model
+      johnsons: "Model fit using Johnson's method"
+    noQuadraticModel: A model could not be fit using a quadratic fit.
+    noJohnsonsModel: "A model could not be fit using Johnson's method."
+    create: Create new station
+    creating: Creating station...
+editStation:
+  select:
+    title: Редактирование гидропоста
+    label: Выбор гидропоста
+    placeholder: "Пожалуйста, введите индекс или название гидропоста"
+    select: Выбор гидропрста
+    selecting: Получение...
+    change: Change station
+  edit:
+    title: "Гидропост:"
+    validForm: Предлагаемые изменения действительны.
+    editStation: Применить изменения
+    editingStation: Применение...
+    editSuccess: "Редактирование гидропоста прошло успешно, перенаправление на просмотр гидропоста."
+    editError: Была ошибка при редактировании.
+    closeError: "Пожалуйста, ознакомьтесь с ошибкой, прежде чем выполнить другое редактирование"
+registerUser:
+  email:
+    errorMsg:
+      email: Неправильный адрес электронной почты
+      maxlength: Адрес электронной почты слишком длинный
+      required: Требуется адрес электронной почты
+    label: Электронная почта
+    placeholder: "Пожалуйста, введите свой ??адрес электронной почты"
+  fullName:
+    errorMsg:
+      maxlength: Слишком длинное имя
+      minlength: Имя слишком короткое
+      pattern: Имя содержит недопустимые символы
+      required: Требуется имя
+    label: Имя
+    placeholder: "Пожалуйста, введите свое имя"
+  source:
+    label: Организация
+  password:
+    errorMsg:
+      maxlength: Пароль слишком длинный
+      minlength: Пароль слишком короткий
+      passwordStrength: Пароли должны содержать хотя бы одну цифру и букву в верхнем регистре
+      required: Требуется пароль
+    label: Пароль
+    placeholder: "Пожалуйста, введите ваш пароль"
+  register: Регистрация нового пользователя
+  registerUserSuccess: Вы были успешно зарегистрированы
+  registering: Регистрация...
+  repeatPassword:
+    errorMsg:
+      validator: Пароли не совпадают
+    label: null
+    placeholder: "Пожалуйста, введите пароль снова"
+  title: Регистрация пользователей iMomo
+  username:
+    errorMsg:
+      maxlength: Имя пользователя слишком длинное
+      minlength: Имя пользователя слишком короткое
+      pattern: Имя пользователя содержит недопустимые символы
+      required: Требуется имя пользователя
+    label: Имя пользователя
+    placeholder: "Пожалуйста, введите желаемое имя пользователя"
+storeStation:
+  create: Создать новый гидропост
+  creating: Создание...
+  goToTop: Вернуться к началу
+  invalidStation: Данные гидропоста не прошли проверку
+  modelDetails:
+    equation: Уравнение
+    modelName: Название модели
+    params: Параметры
+    title: Данная модель расчета расходов воды
+    validFrom: Действует с
+  stationCreated: Был создан новый гидропост
+  stationCreationError: Была ошибка во время создания
+  stationDetails:
+    comments: Примечания
+    elevation: Высота (м)
+    latitude: Широта
+    longitude: Долгота
+    siteCode: Индекс гидропоста
+    siteName: Названия гидропоста
+    state: Страна
+    title: Информация по гидропосту
+  historicData:
+    title: Исторические данные по гидропосту
+    dischargeNorm: "Норма расхода воды (м<sup>3</sup>/с)"
+    dischargeMax: "Опасное значение расхода воды (м<sup>3</sup>/с)"
+  title: Новый гидропост
+title: iMoMo Центральная Азия
+tools:
+  home:
+    sidebar: Доступные инструменты
+    welcome: Добро пожаловать в iMoMo инструменты
+  operationalData:
+    description: "Инструмент для ежедневной оперативной обработки данных, возволяющий экспертам гидрологам вводить, обрабатывать и хранить гидрологические данные, уровни и расходы воды для зарегистрированных гидропостов.\n"
+    displayName: Ежедневные оперативные данные
+    sidebar:
+      backToTools: Вернуться к инструментарию
+      dataInput: Ввод оперативных данных(КН-15)
+      journal: Оперативный журнал
+      bulletin: Ежедневный бюллетень
+      title: Функции оперативных данных
+    dataInput:
+      title: Обычный ввод данных
+      telegramMonth:
+        label: Month
+        placeholder: Please select the month for the data.
+        errorMsg:
+          required: A month selection is required.
+      telegramYear:
+        label: Year
+        placeholder: Please select the year for the data.
+        errorMsg:
+          required: A year selection is required.
+      kn15Input:
+        title: Расшифровка телеграммы КН-15
+        label: Телеграмма
+        placeholder: "Пожалуйста, введите одну КН-15 телеграмму в строку"
+        errorMsg:
+          required: A telegram line is required.
+        decodeTelegram: Расшифровка
+        decodingTelegram: Расшифровка...
+        showHelp: Показать текст подсказки
+        hideHelp: Спрятать текс подсказки
+        help:
+          title: Инструкции
+          li1: "Пожалуйста, введите одну КН-15 телеграмму"
+          li2: "Поддерживаются следующие разделы телеграммы:"
+          li21: Группа 1 - Ежедневные данные
+          li22: Группа 3 - Средние уровень и расход воды
+          li23: Группа 6 - Измеренный расход воды
+          li3: "Пожалуйста, удалите все текстовые комментарии из телеграммы"
+          li4: "Примеры (Первые три являются правильными, последняя неправильная):"
+          li41: "3P: 16143 17081 10115 20102 30120="
+          li42: "3P: 16143 17082 10050 20000 30050 00000 96607 10067 21204 31130 50818="
+          li43: "3P: 16143 17082 10115 20102 30120 41//1 00000 93301 10128 96607 10067 21204 31130 50818="
+          li44: "3P: 16143 17082 10050 20000 30050 РАСХОД 96607 10067 21204 31130 50818="
+    inputDisplay:
+      title: Расшифрованные/обработанные данные
+      waterLevel:
+        title: Измеренный уровень воды (в см)
+        date: Дата измерения
+        eight: "08:00"
+        twenty: "20:00"
+        average: Среднесуточные
+        measuredAverage: Средняя величина была расшифрована из телеграммы или предоставляется в форме ввода
+        arithmeticAverage: "Средняя величина рассчитывалась как среднее арифметическое между значениями в 08:00 и 20:00"
+        estimatedAverage: "Средняя величина равна значению в 20:00, потому что нет данных для значения в 08:00"
+        trendInformation: Тенденция уровня воды
+        trendValid: Тенденция соответствует измеренным данным
+        trendNotAvailable: Данные не были доступны для проверки тенденции
+      waterFlow:
+        title: Расход воды и связанные с ними измерения
+        dateTime: Дата и время измерения
+        waterLevel: Уровень воды (см)
+        waterFlow: "Расход воды (м<sup>3</sup>/с)"
+        riverFreeArea: "Площадь живого сечения (м<sup>2</sup>)"
+        maximumDepth: Максимальная глубина (см)
+      dataNotAvailable: Нет данных
+    dischargeControl:
+      title: Кривая расходов воды
+      proceed: Continue
+      adjustment:
+        title: Опции настройки кривой расходов воды
+        description: Описание опции
+        proceed: Proceed with latest model
+        noOptionSelected: "Пожалуйста, выберите опцию из списка слева перед продолжением."
+        adjustmentOption:
+          label: Tuning option
+          placeholder: Please select an option
+          errorMsg: []
+        adjustDeltaH:
+          label: ΔH корректировка
+          description: "Выбор этой опции позволит вам выбрать ΔH, чтобы времено ввести поправку для кривой расходов воды. Это значение может быть впоследствии удалено или изменено. Если модель уже имеет ΔH значение, то оно будет заменено на новое."
+          newName: Скорректированная модель с ΔH поправкой
+          deltaH:
+            label: ΔH (cm)
+            placeholder: Please specify a displacement value for H in cm
+            errorMsg:
+              number: The correction must be a number
+              required: A ΔH value is required
+          modelName:
+            label: "New model's label"
+            placeholder: Please specify a descriptive label for the model
+            errorMsg:
+              required: A label is required
+          button: Create new model with ΔH correction
+        fitModel:
+          label: Fit model to selected data
+          description: Selecting this option will enable you to select two or more discharge points from the plot and then fit a model to these points using one of the different fitting methods provided.
+          newName: Новая модель подходит для выбранных точек (данных)
+          johnsons: Метод Джонсона
+          fixedExp: Квадратная функция
+          artificialPoints:
+            title: Add artificial data point
+            waterLevel:
+              label: H (cm)
+              placeholder: 100 cm
+              errorMsg:
+                number: Water level must be a number
+            discharge:
+              label: Q (m^3/s)
+              placeholder: 1 m^3/s
+              errorMsg:
+                number: Discharge must be a number
+            add: Create fake point
+            listTitle: Artificial data points
+          title: Fit new model
+          info: "This allows creating a new discharge curve using the artificial points and any selected data point from the display. To select a discharge point, you can click on it in the graph."
+          create: Fit new model to the data
+          fakePointsNo: "# Artificial data points"
+          selectedDataNo: "# Selected data points"
+          modelName:
+            label: "New model's label"
+            placeholder: Please specify a descriptive label for the model
+            errorMsg:
+              required: A label is required
+        currentModel: Информация о текущем модели
+        newModelDetails: Новая корректировка модели
+        newModelEquation: Подробности новой модели
+        newModelName:
+          label: Имя модели
+          placeholder: "Пожалуйста, введите название новой модели"
+          errorMsg:
+            required: Требуется ввести название модели
+        newModelDeltaH:
+          label: ΔH коррекция
+          placeholder: "Пожалуйста, введите ΔH поправку для новой домели"
+          errorMsg:
+            number: Поправка должна быть числом
+            required: Требуется ΔH поправка
+        fittingMethod:
+          label: Fitting метод
+        selectedPoints:
+          label: Selected points
+          value: selected points.
+        fitPoints: Fit model to selected data
+    calculatedDischarge:
+      title: Результаты расчета расходов воды
+      dischargeTable:
+        date: Дата измерения
+        eight: "08:00"
+        twenty: "20:00"
+        average: Среднесуточные
+        h: H (см)
+        q: "Q (м<sup>3</sup>/с)"
+        unchanged: Не менялся
+        dataNotAvailable: Нет данных
+      storeData: Загрузка ежедневных данных
+      storingData: Загрузка...
+      redirecting: "Данные сохранены успешно, мы сейчас перезагружаем страницы."
+      dataStoreError: "Был ошибка при загрузке данных, пожалуйста, проверьте их и повторите попытку позже."
+    journal:
+      title: Оперативный журнал
+      options: Опции
+      siteCode:
+        label: Индекс гидропоста
+        placeholder: "Пожалуйста, введите индекс для требуемого гидропоста"
+        errorMsg:
+          required: Требуется индекс гидропоста
+          editable: Индекс гидропоста не существует
+      date:
+        label: Месяц/Год
+        placeholder: "Пожалуйста, выберите месяц для отображения"
+        errorMsg:
+          required: Требуются месяц и год
+          date: Указанная дата не действительна
+      displayJournal: Показать журнал
+      loadingData: Загрузка журнала данных...
+      addSite: Add station to list
+      closeJournal: Close journal
+      download: Download journal
+      siteList: Sites to display
+    journalTable:
+      title: Журнал гидропостов
+      dailyDischarge: Ежедневные уровни и расходы воды
+      date: Дата измерения
+      eight: "08:00"
+      twenty: "20:00"
+      average: Среднее
+      h8: "H<sub>8</sub> (см)"
+      q8: "Q<sub>8</sub> (м<sup>3</sup>/с)"
+      h20: "H<sub>20</sub> (см)"
+      q20: "Q<sub>20</sub> (м<sup>3</sup>/с)"
+      havg: "H<sub>avg</sub> (см)"
+      qavg: "Q<sub>avg</sub> (м<sup>3</sup>/с)"
+      dischargeMeasurements: Измереные расходы воды
+      dateTime: Дата и время измерения
+      waterLevel: Уровень воды (см)
+      discharge: "Расход воды (м<sup>3</sup>/с)"
+      freeRiverArea: "Площадь живого сечения (м<sup>2</sup>)"
+      maximumDepth: Максимальная глубина (см)
+    bulletin:
+      title: Выпуск ежедневного бюллетеня
+      siteList: Selected stations
+      siteToAdd:
+        label: Индекс гидропоста
+        placeholder: "Пожалуйста, введите индекс гидропоста чтобы добавить его в список"
+        errorMsg:
+          required: Требуется индекс гидропоста
+          editable: Индекс гидропоста не существует
+      date:
+        label: Дата бюллетеня
+        placeholder: "Пожалуйста, введите нужную дату для бюллетеня"
+        errorMsg:
+          required: Требуется дата
+          date: Дата не действует
+      addSite: Добавить гидропост ??в список
+      generate: Генерация бюллетеня
+      generating: Generating bulletin...
+      download: Загрузка бюллетеня
+  forecast:
+    description: "The forecasting tool provides hydrology experts with a user-friendly interface to a wide range of models for fitting and prediction of time series of river discharge values at gauging stations registered in the system.\n"
+    displayName: Discharge forecast
+    sidebar:
+      title: Forecasting options
+      daily: Daily forecast
+      decade: Decade forecast
+      monthly: Monthly forecast
+      seasonal: Seasonal forecast
+      backToTools: Toolbox
+    decade:
+      title: Decadal forecasting
+      form:
+        site:
+          label: Stations
+          placeholder: Please select a station to add it to the list
+          errorMsg: []
+        month:
+          label: Month
+          placeholder: Please specify the month for the forecast
+          errorMsg:
+            number: Must be a number
+            required: Value is required
+            min: Must be between 1 and 12
+            max: Must be between 1 and 12
+        decade:
+          label: Decade
+          placeholder: Please specify the decade for the forecast
+          errorMsg:
+            number: Must be a number
+            required: Value is required
+            min: Must be between 1 and 3
+            max: Must be between 1 and 3
+        getForecast: Get decade forecast
+      siteList: Selected stations
+      table:
+        title: Decade Forecast
+        sites: Station
+        forecast: "Forecasted discharge Q [m^3/s]"
+        previousValues: Previous decade discharge values
+        year: Year
+        value: "Q [m^3/s]"
+userRoles:
+  developer:
+    description: "Разработчики, особая роль ограничивается только сопровождением инфраструктуры приложения и сервера.\n"
+    name: Developer
+  hydrology_expert:
+    description: "Эксперты гидрологи отвечают за ввод ежедневно оперативные данные и поддержание модели разряда.\n"
+    name: Эксперт гидролог
+  supervisor:
+    description: "Руководители отвечают за поддержание пользователей, контроль ежедневные операции и обновление мета-данных, таких как паспортные данные гидропостов.\n"
+    name: Руководитель
+errors:
+  title: Ошибка
+  summary: "Была ошибка во время вашего запроса. Пожалуйста, сообщите об этом контактному лицу службы поддержки."
+  details: "Сведения об ошибке:"
+  code10000: A unknown error has occurred in the server.
+  code11007: "The chosen username already exists in the system, please select a different one."
+  code11008: The given e-mail is already associated with an account in the system.
+  code11015: The given station code is already registered in the system.
+  code11016: The given station name is already registered in the system.
+  code11017: The given station code matches a site from another organization. You are not allowed to access its data.
+  code11018: The given station code does not match any station registered in the system. Please check again the index or create a new station if necessary.
+  code11019: "The given station code matches a site that is not ready for data processing, please edit it in the stations page."
+  code13000: There was an error while validating the input data.
+  code11001: Комбинация Имя пользователя/E-mail и пароль не найдена ни для какого пользователь
+  code11005: Пользователь еще не утвержден
+  code10101: One of the given stations does not exist in the system.
+  code10102: There is no calculated discharge information for at least one of the given sites on the selected date.
+  code10103: There is no calculated discharge information for at least one of the given sites on the previous day to the selected date.
+  code10104: There is no discharge norm registered for at least one of the sites in the 10 day period that comprises the given date. This information must be provided before requesting a bulletin.
+  code10105: There is no maximum safe discharge registered for at least one of the sites. This information must be provided before requesting a bulletin.
+  code10106: There is not enough discharge data for one of the stations to make a forecast.
+  code16002: There is already a station with the same code.
+  code21001: "Данная телеграмма не соответствует формату КН-15. Пожалуйста, проверьте еще раз входную телеграмму."
+  code21002: "Данная телеграмма не содержит всю информацию об уровнях воды на 8:00, 20:00 и тенденцию уровня воды. Пожалуйста, проверьте и исправьте входную телеграмму."
+  code21003: "Тенденция уровень воды не совпадает с изменением уровеня воды за предыдущие сутки. Пожалуйста, проверьте уровни воды и тенденцию."
+  code22000: There was an unexpected error when contacting an external service.
+  code40000: There was an unexpected error when contacting the imomo server.
+  errorAlert:
+    title: IMoMo Error
+    details: "Additional details:"
+    close: Close and Try Again

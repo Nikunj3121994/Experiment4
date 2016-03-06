@@ -1,0 +1,48 @@
+include ../../mixins/form-mixins.jade
+
+mixin editSiteFormField(name, required, type)
+  - var constraints = {}
+  if type === 'text'
+    - constraints['ng-maxlength'] = "{{siteDetailsCtrl.sitesLexicon.maxLength('" + name + "')}}"
+  else if type === 'number'
+    - constraints.min = "{{siteDetailsCtrl.sitesLexicon.min('" + name + "')}}"
+    - constraints.max = "{{siteDetailsCtrl.sitesLexicon.max('" + name + "')}}"
+  +formField(name, required, $i18n.newStation, 'siteDetailsForm', 'siteDetailsCtrl.site.' + name, 'siteDetailsCtrl.modifying', type, 'col-xs-2', 'col-xs-5')&attributes(constraints)
+
+h3
+  | #{$i18n.stations.selected.details.subtitle} #{''}
+  i.octicon.octicon-info(tooltip=$i18n.stations.selected.details.info)
+error-alert(ng-show='siteDetailsCtrl.editError',
+  close='siteDetailsCtrl.closeErrorAlert()',
+  error='siteDetailsCtrl.editError')
+form.form-horizontal(name='siteDetailsForm')
+  +editSiteFormField('siteCode', true, 'text')
+  +editSiteFormField('siteName', true, 'text')
+  +editSiteFormField('latitude', true, 'number')
+  +editSiteFormField('longitude', true, 'number')
+  +editSiteFormField('country', true, 'text')
+  +editSiteFormField('basin', true, 'text')
+  +editSiteFormField('region', false, 'text')
+  +editSiteFormField('safeDischarge', false, 'number')
+  .form-group
+    label.col-xs-2.control-label #{$i18n.newStation.comments.label}
+    .col-xs-5
+      textarea.form-control(name='comments',
+        placeholder=$i18n.newStation.comments.placeholder,
+        ng-model='siteDetailsCtrl.site.comments',
+        ng-disabled='siteDetailsCtrl.modifying')
+  .form-group
+    .col-xs-offset-2.col-xs-5
+      button.btn.btn-large.btn-success(
+        ng-click='siteDetailsCtrl.submitChanges($event)',
+        ng-disabled='siteDetailsForm.$invalid || !siteDetailsCtrl.isModified() || siteDetailsCtrl.modifying')
+        span(
+          ng-show='siteDetailsCtrl.isModified() && !siteDetailsCtrl.modifying')
+          i.octicon.octicon-repo-push
+          | #{''} #{$i18n.stations.selected.details.submit}
+        span(ng-show='siteDetailsCtrl.modifying')
+          i.octicon.octicon-hourglass
+          | #{''} #{$i18n.stations.selected.details.submitting}
+        span(ng-hide='siteDetailsCtrl.isModified()')
+          i.octicon.octicon-dash
+          | #{''} #{$i18n.stations.selected.details.noChanges}

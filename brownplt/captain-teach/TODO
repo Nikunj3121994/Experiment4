@@ -1,0 +1,327 @@
+ASAP
+[] Don't depend on user-visible names when creating resource sections for scribble!
+[x] 500 notification emails
+[] Open-response questions
+[] Confused about whether run did anything (for simple examples)
+[] Repl scrolling is awful
+[] notify when reviews show up
+[x] color for passing tests in fixed region doesn't show up until active
+[] <unprintable-expr> on pretty printer
+[] Highlight the part you are reviewing
+[] Highlight the part you are editing
+[] Distinguish review vs. step buttons
+[] Run button, title, and saving indicator should follow page down with scrolling
+[] Buttons for reviews/feedback should have a gradient or other indicator of
+   good/bad
+[] = vs. is accident in test cases; do a parse-test before submission?
+  - Well-formedness error with a URL for the explanation of construct
+[] Can someone get the same code to review twice?
+[] Reviews need timestamps (any blob stuff needs timestamp)
+
+Late sept
+[] Focus interactions when things run
+[] Clicking a review link should focus that review tab, not open a new one
+[] Refreshing when in reviews doesn't focus review tabs, and doesn't move
+   editor to the right step
+[] Tutorial
+  - better description of what you should do for append
+  - make it clear that before running definitions, they aren't defined
+  - explain
+  - fold example gives away what it is doing
+  - more cases examples - explain what List means, etc
+  - different examples for CS019 (we're teaching sorting, so...)
+[] Submit button got lost sometimes - highlight and delete?
+[] Flow changes:
+  [x] Variants done before checks in DD
+  [] Variants go unreviewed (review after example data)
+
+Feedback from 8/13:
+[] Break button when you "run" sometimes doesn't break - just re-enables prompt
+   - infinite loops with recursion wouldn't break for Eisenstat
+[] Break button graphic needs work - maybe have it have text rather than just a
+   stop sign
+[] check-block-N identifiers in standalone check blocks are off (names for
+   check blocks?)
+[] submit button is still present in last section after refreshing (no-op on
+   server, but weird that it's there)
+[] Feature idea: clicking on past repl entries copies into prompt
+[] Feature idea: an option to give up on examples that ask you to fix things, and have it
+   filled in for you
+
+[] Format / make pretty feedback recieved on reviews
+[x] UI jump when submitting work and starting reviews
+Candidates:
+[] phrasing of values not equal in "is" (maybe "expected...")
+[x] Plumb name of editor for sending to server, so parse errors aren't in program "run".
+  - Needs careful choice of name
+
+[] Highlight column/span information?
+[] Instructions should tell you which run button to click early on
+[] Spaces around operators
+[] Return type annotation not introduced in tutorial
+[] Better error message when extra ends are added
+[x] Horizontal scrolling in editors is bad (hides e.g. Strongly Agree)
+[x] Tim saw multiple copies of the same review/feedback in the same review panel
+[] Summary on hidden instructions (next to "click to show")
+[] Workflow hard to follow, needs more inline instructions (Eisenstat)
+[] Block import statements (security)
+[x] Catch "print arg" because Python/Ruby users might try that
+
+Justin:
+[] Make buttons look more like buttons
+[] More instructions about which part of the editor is edit-able
+[] Figure out this comment: 'Connor asked "should we see a 1 on the side?"
+   after seeing only an arrow in the editor.'
+
+Need To Do:
+[] Review should have better feedback when you don't fill in values
+[] Background on code in reviews, highlight whole lines
+[] Error Messages
+   - empty args for for loop is bizarre
+   - Constructor form in messages
+   - field not found
+   - different parse errors, and bad:
+     (add1 5)
+     add1(add1 7)
+   - binops - bad args to prim is a terrible message
+   - can we eliminate [[code]] (at least name, or something)
+   - forgetting to close a paren and forgetting an end have BAD parse errors
+   - cases with no value
+   - random error message is bad
+   - cases with missing pipes is bad
+[] Well formedness
+   - ERRORS DONT HAVE SRCLOCS when run with raco pyret.
+   - multiple expressions on the same line (should at least be error on repl)
+[x] syntax for check-exn
+[] Highlighting on errors should be removed
+[] Progress is wierd - shouldn't fill when you are on the last step. Maybe use orange/blue?
+[] Handling of unexpected racket errors (like unbound identifiers?)
+[x] Indentation bugs:
+   - except(e):
+   - fun f():
+     o.{o:x} # not indented
+     end
+[x] Filter payloads on inbox-for-write or partition data
+
+Want To Do:
+[] Doc string on builtins
+[] Run this code on my code?
+[] Indentation checker
+[] Draw review blocks as code examples (so you can play with them and reset)
+
+Not Necessary:
+[] switch Enter and Shift-Enter?
+[] should print nothing? *note*: we do if you call "print" - it is javascript
+   that skips
+[] Should we stub out functions so they pass type checking? / Should run only
+   be shown for definition stages.
+[] Tab at beginning of line with text should jump to beginning of text
+[] Think about narrow screens
+
+All Feedback:
+[] Colors on everything
+[] Look at ben's state (reloaded, he was put at first step)
+[] Check for termination:
+    doubled-numbers = for map(elt from [1, 2, 3]):
+      elt * 2
+    end
+    print(doubled-numbers)
+
+    sum-of-numbers = for fold(sum from 0, elt from [1, 2, 3]):
+      sum + elt
+    end
+    print(sum-of-numbers)
+
+    odd-numbers = for filter(number from list.range(1,1000000)):
+      number.modulo(2) == 0
+    end
+    print(odd-numbers)
+
+
+[] Review Interface / Design
+   [x] Concrete rubric for reviews (data/tests/function different)
+     [x] Get feedback from Kathi
+     [] Rewrite first tests question
+   [x] confidence for review?
+    - No
+   [x] Concern: "same as the last guy" for comments. Maybe don't close tabs until all reviews done?
+    - No worries, bad feedback will catch this
+   [x] Feedback for reviews:
+     [x] Helpfulness likert + optional comments
+     [x] Report abuse button
+       - create a table for abuses:
+         userReporting | abuseData
+       - update drawReview for abuse
+         - showReview's callers need to pass abuseData 
+       - update drawSubmittedFeedback for abuse
+       - update readOnlyEditorFromParts for abuse
+   [x] Logging on reviews:
+     [x] Count of times read
+   [x] Place to see my reviews and feedback on them
+
+
+Deployment & Performance;
+[] More complete solution for signup/adding users
+[] Caching/torture testing for performance
+[] Get names for users? (or find something other than their email for Git
+   commits in the name field)
+[] Figure out how pathrefs should be created in the database... so
+   that caching can work (right now, we create path refs many times)
+
+Scribble:
+[] Choosing identifier names?
+  -  I don't know what this means
+
+UI/JS:
+[] Make CodeMirror behave with respect to zooming
+[] Extend code-assignment builder to do versioning
+  - and save intermediate code!
+[] Copy to beginning of the file even with atomic
+  - button for popping out just text
+
+Curricular:
+[] Sensible front-end on finding that the assigned reviews are completely
+   missing
+
+Refactoring
+[] data-parts needs to become data-steps
+[] Refactor save/submit/lookupResource to share more
+[] Consistent on("event") vs .event()
+
+[] Test finishing assignments --- something odd with {done:true} that may just
+   be browser refresh problem
+
+
+==================== DONE
+
+[x] Group by user_id and take the first by time in assign_reviews
+[x] Pre-seeded reviews
+  [x] Two paths in assign_reviews, looking for canned solutions/or not
+    - Should warn us with some urgent message if no canned
+      solutions are available
+  [x] inbox-for-write is aware (via private args), that immediate feedback
+     needs to be created, and create appropriate feedback
+  [x] client side of writeReview needs to check for feedback immediately,
+     and:
+      - wait to close until getting feedback
+      - show immediate feedback if it is present
+
+[x] Test submission and subsequent review lookup
+
+[?] Refactor parts/steps to be a list of more descriptive objects
+
+[x] Marks for function activities
+  - track beginning/end of header/check blocks
+[x] Locks for control of Whalesong printing
+[x] Have check mode just return the data structure of check results and
+   let the context figure it out (cmdline.rkt, repl.js, etc.), rather
+   than printing by itself
+
+[x] Column on submitted for how many have reviewed
+
+[x] Libraries
+[x] Versions
+[x] Reviews
+[~] Design recipe step
+
+[x] Scrollability behavior of reviews pane
+[x] Rewrite sorting.jrny to be an actual tutorial
+   x change green to pass in copy
+   x s/builtin/builtins/
+   x introduce data, before cases
+   X instructions for Shift-Enter too late
+   x Object literals? Should come later, bring up data first (or SKIP)
+   x minus on lists implied by instructions
+   x functional object update syntax is confusing (introduce later?)
+   x symmetric syntax of for is confusing for fold (why does accumulator have to be where it is?)
+   x data versus data type. consistent style / vocabulary.
+   x use identifiers that are NOT the fields in cases
+   x append as identifier
+   x append needs to be described - what should it do?
+   x interactions should come earlier
+   x if they are to use random for pivot, should introduce list.get
+   X check as identifier
+   X disallow `is` outside check
+   X unbound identifiers (env with builtins needed)
+[x] If error is already on the screen, don't scroll to it, when clicking on
+   location information
+[x] If all tests pass, show that. maybe highlight in editor, and just print
+   summary in interactions
+
+Simple assignment test for summer students@
+[x] Pick assignment
+  - Quicksort
+[x] Error reporting
+  [x] Static errors
+  [x] Runtime errors
+    consolidated above
+[x] Check-results reporting
+[x] Pretty printing
+[x] Review instructions / make them look nicer
+[x] Run button
+[x] Save button
+[x] Submit button in better location
+[x] Reviews button de-uglify
+[x] Tab closing for reviews (prioritize other reviews)
+[x] Figure out proper above / below for widgets. Instructions should
+    be above, but reviews should be below... An option
+[x] Be able to add users to a course
+[x] Have basic frontpage for users, showing them their assignments
+
+Morning
+[x] Seeds for a single assignment
+[x] Add one of us as a teacher and be on the course dashboard
+[x] Order of reporting in check block output
+[x] Teach about cases (or some way of destructing lists)
+[x] Generate initial solutions for reviewing
+[x] Prettier test output
+[x] Highlight error messages in output
+[x] Refactor server_tests.js into draw and ui components
+[x] Write code-assignment builder in ct.js that uses these
+[x] See the reviews you got
+[x] Design/write code-assignment scribble
+[x] Hook up frontend to call submission on each part
+[x] check block order printing is reverse (within block it is correct)
+[x] Exceptions that occur when computing the the values for comparison in check blocks
+   - `is` could thunk stuff
+[x] Disable repl prompt when running
+[x] Paren matching in editor. end matching... would be cool
+[x] string missing lessequal, greaterequal
+[x] Submit needs lots of confirmation
+[x] Reset needs confirmation (maybe put inside a menu)
+[x] Paren at the beginning of the document needs to be a PARENSPACE
+[x] tostring methods aren't preserved over method partial applications
+
+[x] Pretty-printing in the REPL
+[x] Width of editor
+[x] Clearing REPL output
+[x] Auto-save:
+  Don't do the below; simpler solution, just Git version everything
+  - blob stores the most recent version (if any)
+  - on reload, the blob is authoritative if its version matches the path's most recent version
+  - otherwise, the blob is discarded
+[x] See feedback on your reviews
+[x] repl loses newlines in echo
+[x] Rewrite tutorial to eliminate field names, introduce lists as data first
+   and foremost
+[x] Tokens that aren't lexed are invisible! (like ?)
+[x] Clear for interactions
+[x] Error handling in repl (add error wrapper)
+[x] Unbound ID and type errors (and others?) being swallowed
+[x] Editor scrolljump on various UI actions
+[x] Get instructions in flow with the assignment parts
+[x] To turn on/off or # reviews by part, change args[reviews] to be a
+   dictionary of part->reviews count
+[x] Indicate reviewability of activity instances in markup
+  - Indicate this by creating and passing args
+[x] Report abuse for students on cross-feedback
+[x] Remove every hardcoded localhost
+[x] Encryption
+Grading/Teacher view
+[x] How will we show reviews that students did for one another in the grading
+   interface?
+   - per-student login in read-only mode
+[x] Don't try to save versions in teacher review mode when switching versions
+   - doesn't exist anymore
+
+[x] grammar reference! maybe tooltip on keywords?

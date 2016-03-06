@@ -1,0 +1,45 @@
+include ../mixins/form-mixins.jade
+
+mixin registerUserFormField(name, required, type)
+  +formField(name, required, $i18n.registerUser,
+    'registerUserForm', 'registerUserCtrl.newUser.' + name,
+    '!registerUserCtrl.registerUserWaiting', type)&attributes(attributes)
+
+.page-header
+  h1 #{$i18n.registerUser.title}
+error-alert(ng-show='registerUserCtrl.registerUserError',
+  close='registerUserCtrl.closeErrorAlert()',
+  error='registerUserCtrl.registerUserError')
+alert(type='success', ng-show='registerUserCtrl.registerUserSuccess')
+  | #{$i18n.registerUser.registerUserSuccess}
+form.form-horizontal(name='registerUserForm')
+  +registerUserFormField('username', true, 'text')(
+    ng-minlength="{{registerUserCtrl.usersLexicon.minLength('username')}}",
+    ng-maxlength="{{registerUserCtrl.usersLexicon.maxLength('username')}}")
+  +registerUserFormField('password', true, 'password')(
+    ng-minlength="{{registerUserCtrl.usersLexicon.minLength('password')}}",
+    ng-maxlength="{{registerUserCtrl.usersLexicon.maxLength('password')}}",
+    ui-validate="{passwordStrength: 'registerUserCtrl.validatePasswordStrength($value)'}")
+  +registerUserFormField('repeatPassword', false, 'password')(
+    ui-validate="'$value === registerUserCtrl.newUser.password'",
+    ui-validate-watch="'registerUserCtrl.newUser.password'")
+  +registerUserFormField('email', true, 'email')(
+    ng-maxlength="{{registerUserCtrl.usersLexicon.maxLength('email')}}")
+  +registerUserFormField('fullName', true)(
+    ng-minlength="{{registerUserCtrl.usersLexicon.minLength('fullName')}}",
+    ng-maxlength="{{registerUserCtrl.usersLexicon.maxLength('fullName')}}")
+  .form-group
+    label.control-label.col-xs-4 #{$i18n.registerUser.source.label}
+    .col-xs-8
+      select.form-control(name='source',
+        ng-model='registerUserCtrl.newUser.sourceId',
+        ng-options='source.id as source.organization for source in registerUserCtrl.sources',
+        required,
+        ng-disabled='!registerUserCtrl.registerUserWaiting')
+  .form-group
+    .col-xs-8.col-xs-offset-4
+        button.btn.btn-primary(ng-click='registerUserCtrl.register($event)', ng-disabled='registerUserForm.$invalid || !registerUserCtrl.registerUserWaiting')
+          span(ng-hide='registerUserCtrl.registeringUser')
+            | #{$i18n.registerUser.register}
+          span(ng-show='registerUserCtrl.registeringUser')
+            | #{$i18n.registerUser.registering}

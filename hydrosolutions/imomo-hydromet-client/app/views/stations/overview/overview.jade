@@ -1,0 +1,84 @@
+mixin sortableColumnHeader(name)
+  th(ng-class='overviewCtrl.headerIcons.' + name + '.cell')
+    a(href='', ng-click='overviewCtrl.sortBy($event, "' + name + '")')
+      | #{$i18n.stations.overview.table[name].label}
+      i.pull-right.octicon(
+        ng-class='overviewCtrl.headerIcons.' + name + '.anchor')
+
+mixin filterColumnHeader(name)
+  th: input.form-control(type='text', ng-model='overviewCtrl.filters.' + name,
+    ng-change='overviewCtrl.onFilterChanged()',
+    placeholder=$i18n.stations.overview.table[name].placeholder)
+
+.page-header
+  h1
+    | #{$i18n.stations.overview.title}
+    i.octicon.octicon-unfold.pull-right(
+      style='cursor: pointer',
+      tooltip=$i18n.stations.overview.table.options.show,
+      ng-click='overviewCtrl.showList($event)',
+      ng-show='overviewCtrl.sharedState.collapsedSiteList')
+    i.octicon.octicon-fold.pull-right(
+      style='cursor: pointer',
+      tooltip=$i18n.stations.overview.table.options.hide,
+      ng-click='overviewCtrl.collapseList($event)',
+      ng-hide='overviewCtrl.sharedState.collapsedSiteList')
+.row(ng-if='overviewCtrl.sites.length'
+     collapse='overviewCtrl.sharedState.collapsedSiteList')
+  .col-xs-12
+    table.table.table-bordered.table-striped
+      caption
+        h2 #{$i18n.stations.overview.table.title}
+      thead
+        tr
+          +sortableColumnHeader('siteCode')
+          +sortableColumnHeader('siteName')
+          +sortableColumnHeader('region')
+          +sortableColumnHeader('basin')
+          +sortableColumnHeader('country')
+          th(rowspan=2, style='vertical-align: middle')
+            .btn-group(dropdown)
+              button.btn.btn-danger.dropdown-toggle(dropdown-toggle)
+                | #{$i18n.stations.overview.table.options.label} #{''}
+                span.caret
+              ul.dropdown-menu
+                li: a(href='',
+                  ng-click='overviewCtrl.resetSort($event)')
+                  i.octicon.octicon-dash
+                  | #{''} #{$i18n.stations.overview.table.options.unsort}
+                li: a(href='',
+                  ng-click='overviewCtrl.clearFilters($event)')
+                  i.octicon.octicon-x
+                  | #{''} #{$i18n.stations.overview.table.options.clear}
+        tr
+          +filterColumnHeader('siteCode')
+          +filterColumnHeader('siteName')
+          +filterColumnHeader('region')
+          +filterColumnHeader('basin')
+          +filterColumnHeader('country')
+      tbody
+        tr(ng-repeat='site in overviewCtrl.filteredSites')
+          td {{site.siteCode}}
+          td {{site.siteName}}
+          td {{site.region}}
+          td {{site.basin}}
+          td {{site.country}}
+          td
+            button.btn.btn-primary(
+              ng-click='overviewCtrl.selectSite($event, site.id)')
+              | #{$i18n.stations.overview.table.options.select} #{''}
+              i.octicon.octicon-heart
+    hr
+.row(ng-if='!overviewCtrl.sites.length')
+    .col-xs-12
+      .well
+        .row
+          .col-xs-6
+            h1 #{$i18n.stations.overview.noSites}
+            h1: span.small #{$i18n.stations.overview.noSitesAdvice}
+            a.btn.btn-success.btn-lg(href='', ui-sref='^.new')
+              | #{$i18n.stations.overview.createSite}
+          .col-xs-6
+            img.img-rounded.img-responsive(src='images/meteo-station.jpg')
+.row
+  ui-view.col-xs-12

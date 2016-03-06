@@ -1,0 +1,67 @@
+nav.navbar.navbar-default
+  .container
+    .navbar-header
+      a.navbar-brand(ui-sref='root'): img(src='images/kyrgyzstan_emblem.svg')
+    div
+      ul.nav.navbar-nav
+        li(dropdown).dropdown
+          a(href='', dropdown-toggle).dropdown-toggle
+            | #{$i18n.header.options} #{''}
+            span.caret
+          ul.dropdown-menu
+            li: a(ui-sref='root.tools.home', ui-sref-active='bg-primary')
+              | #{$i18n.header.tools} #{''}
+              i.octicon.octicon-tools
+            li: a(ui-sref='root.stations.home.overview',
+              ui-sref-active='bg-primary')
+              | #{$i18n.header.stations} #{''}
+              i.octicon.octicon-milestone
+            //- li: a(ui-sref='root.users', ui-sref-active='bg-primary')
+            //-   | #{$i18n.header.users} #{''}
+            //-   i.octicon.octicon-organization
+      form.navbar-form.navbar-left(ng-if='!headerCtrl.isLoggedIn',
+        name='loginForm')
+        .form-group(ng-hide='headerCtrl.loginError')
+          input.form-control(type='text',
+            placeholder=$i18n.header.usernameOrEmail,
+            name='usernameOrEmail',
+            ng-model='headerCtrl.loginInfo.usernameOrEmail', required,
+            ng-disabled='headerCtrl.loginInProgress')
+        .form-group(ng-hide='headerCtrl.loginError')
+          input.form-control(type='password',
+            placeholder=$i18n.header.password, name='password',
+            ng-model='headerCtrl.loginInfo.password', required,
+            ng-disabled='headerCtrl.loginInProgress')
+        button.btn.btn-success(ng-click='headerCtrl.login($event)',
+            ng-disabled='loginForm.$invalid || headerCtrl.loginInProgress',
+            ng-hide='headerCtrl.loginError')
+            span(ng-hide='headerCtrl.loginInProgress')
+              | #{$i18n.header.login}
+            span(ng-show='headerCtrl.loginInProgress')
+              | #{$i18n.header.loginInProgress}
+        .form-group(ng-hide='headerCtrl.loginError')
+          p.form-control-static
+            a(ui-sref='root.registerUser') #{$i18n.header.notYetRegistered}
+        .form-group(ng-show='headerCtrl.loginError')
+          p.text-danger.form-control-static
+            | {{headerCtrl.formatError(headerCtrl.loginError)}}
+        button.btn.btn-danger(ng-show='headerCtrl.loginError', ng-click='headerCtrl.dismissLoginError($event)')
+          | #{$i18n.header.dismiss}
+      p.navbar-text(ng-if='headerCtrl.isLoggedIn',
+        ng-hide='headerCtrl.userInfoLoadInProgress')
+        | #{$i18n.header.loggedIn} #{''}
+        | {{headerCtrl.currentUser.username}}
+      p.navbar-text(ng-if='headerCtrl.isLoggedIn',
+        ng-show='headerCtrl.userInfoLoadInProgress')
+        | #{$i18n.header.loadingUserInfo}
+      button.btn.btn-warning.navbar-btn(ng-if='headerCtrl.isLoggedIn',
+        ng-click='headerCtrl.logout($event)')
+        | #{$i18n.header.logout}
+      ul.nav.navbar-nav.navbar-right
+        li(dropdown).dropdown
+          a(href='', dropdown-toggle).dropdown-toggle
+            | #{$i18n.header.language} #{''}
+            span.caret
+          ul.dropdown-menu
+            li: a(href='/en/') #{$i18n.header.english}
+            li: a(href='/ru/') #{$i18n.header.russian}

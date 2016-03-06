@@ -1,0 +1,40 @@
+include ../../../mixins/form-mixins.jade
+
+.col-xs-12
+  hr
+  h2 #{$i18n.tools.operationalData.dischargeControl.title}
+  .row
+    div(ng-class='{\'col-xs-12\': !dischargeTelegramCtrl.modelOptionsEnabled, \'col-xs-7\': dischargeTelegramCtrl.modelOptionsEnabled}')
+      discharge-display(discharge-data='dischargeTelegramCtrl.dischargeData',
+          discharge-models='dischargeTelegramCtrl.dischargeModels',
+          selected-discharge-model='dischargeTelegramCtrl.dischargeControlState.sharedSelectedModel',
+          on-discharge-pair-select='dischargeTelegramCtrl.selectDischargePair(dischargePair)',
+          on-discharge-pair-deselect='dischargeTelegramCtrl.deselectDischargePair(dischargePair)')
+    .col-xs-5(ng-if='dischargeTelegramCtrl.modelOptionsEnabled')
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title #{$i18n.tools.operationalData.dischargeControl.adjustment.title} #{''}
+            i.octicon.octicon-gear
+        .panel-body
+          form(name='optionSelectForm')
+            +vFormSelect('adjustmentOption', false, $i18n.tools.operationalData.dischargeControl.adjustment, 'optionSelectForm', 'dischargeTelegramCtrl.selectedOption', 'option', 'option.label', 'option', 'dischargeTelegramCtrl.adjustmentOptions',
+              '')
+          h4 #{$i18n.tools.operationalData.dischargeControl.adjustment.description}
+          p.text-primary(ng-hide='dischargeTelegramCtrl.selectedOption')
+            | #{$i18n.tools.operationalData.dischargeControl.adjustment.noOptionSelected}
+          p.text-info(ng-show='dischargeTelegramCtrl.selectedOption')
+            | {{dischargeTelegramCtrl.selectedOption.description}}
+      ng-include(src='dischargeTelegramCtrl.selectedOption.optionsForm')
+      hr
+      .panel.panel-success
+        .panel-heading
+          h4.panel-title #{$i18n.tools.operationalData.dischargeControl.proceed}
+        .panel-body
+          button.btn.btn-lg.btn-primary(
+            ng-click='dischargeTelegramCtrl.proceedWithModel($event)',
+            ng-disabled='dischargeTelegramCtrl.isInputDisabled()')
+            span
+              | #{$i18n.tools.operationalData.dischargeControl.adjustment.proceed}
+  hr
+  div(ui-view)
+

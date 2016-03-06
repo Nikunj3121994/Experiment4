@@ -1,0 +1,81 @@
+p {
+  font-size: 1.3em;
+}
+
+.doneform {
+  display: -webkit-flex;
+  display: flex;
+}
+.doneform > .form-group {
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+  display: block;
+  margin-bottom: 0;
+}
+.doneform > .form-group > input {
+  width: 100%;
+}
+.doneform > button {
+  margin-left: .3em;
+}
+
+.donelist {
+  margin-top: 3.5em;
+}
+.donelist__title {
+  margin-bottom: .7em;
+  border-bottom: 1px solid #eee;
+}
+
+.doneitem {
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  margin-bottom: 15px;
+}
+.doneitem__delete-action {
+  display: none;
+  position: absolute;
+  width: 2em;
+  height: 100%;
+  right: 0;
+
+  font-size: 1.5em;
+}
+.doneitem:hover .doneitem__delete-action {
+  display: block;
+}
+.doneitem:hover .doneitem__delete-action::before {
+  content: "\e014";
+  position: absolute;
+  right: 0;
+  background-color: white;
+  opacity: .8;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: .75em;
+  line-height: 1.5em;
+  text-align: center;
+}
+.doneitem__user {
+  min-width: 3.5em;
+}
+.doneitem__user-icon {
+  font-size: xx-large;
+  text-align: center;
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: .6em;
+}
+.doneitem__user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doneitem__done-thing > p {
+  line-height: 1.6em;
+  margin-bottom: .3em;
+}
+.doneitem__time {
+  color: lightgray;
+}

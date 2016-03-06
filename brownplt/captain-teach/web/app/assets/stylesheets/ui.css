@@ -1,0 +1,463 @@
+#REPL .tabPanels .tab {
+}
+
+.versionsContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.versionsButton {
+  float: right;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.versionButton {
+
+}
+
+.invalidScore {
+  background-color: red;
+}
+
+.reviewText {
+  width: 80%;
+}
+
+.reviewButton {
+    display: inline-block;
+    height: 2em;
+    min-width: 2em;
+    text-align: center;
+    padding: 3px;
+}
+
+.reviewScore {
+    margin: 5px auto;
+}
+
+.likert {
+  padding-bottom: 5px;
+}
+
+.likertScore {
+  font-weight: bold;
+}
+
+.likertScoreLabel {
+  font-style: italic;
+}
+
+.likertButton {
+    padding: 6px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.likertButton input {
+    display: none;
+}
+
+.likertButton label {
+    border: 1px solid #06f;
+    border-radius: 3px;
+    color: #06f;
+    background-color: #eee;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 9pt;
+}
+
+.likertButton label:hover {
+    background-color: #cff;
+    color: #06f;
+}
+
+.likertButton input:checked + label {
+    background-color: #06f;
+    color: #eee;
+}
+
+.reviewScoreTitle {
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+    text-align: right;
+}
+
+.reviewTextSubmit {
+    margin: 20px auto;
+}
+
+.reviewTextSubmit textarea {
+    height: 70px;
+}
+
+.reviewLink {
+    background-color: #0c0;
+    border-radius: 0 5px 5px 0;
+    width: 20px;
+    text-align: center;
+    color: #eee;
+}
+.reviewLink:hover {
+    cursor: pointer;
+}
+
+.replContainer {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  width: 40%;
+  height: 90%;
+}
+
+.replContainer.maximized {
+    width: 90%;
+    z-index: 9000;
+}
+
+.replContainer.minimized {
+    margin-right: -35%;
+}
+
+.tabPanel {
+  border: 1px solid #333;
+  background-color: white;
+  max-height: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.tab {
+  max-height: 90%;
+  height: 90%;
+  overflow: auto;
+}
+
+.tabTitles {
+  border-bottom: 1px solid black;
+  padding: 5px 5px 0 5px;
+  background-color: #666;
+}
+
+.tabTitle {
+  border-bottom: 1px solid black;
+  background-color: #dddddd;
+  display: inline-block;
+  margin-bottom: -1px;
+  padding: 5px;
+  font-size: 13px;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 110px;
+  height: 16px;
+  padding-right: 20px;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+
+.tabTitle:hover {
+  cursor: pointer
+}
+
+.tabTitle span {
+  position: absolute;
+  right: 2px;
+  top: 5px;
+  padding: 3px;
+  height: 10px;
+  border-radius: 10px;
+  line-height: 10px;
+}
+
+.currentTab {
+  border: 1px solid black;
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+}
+
+.tabTitle span:hover {
+  background-color: #ee2222;
+  cursor: pointer;
+  color: white;
+}
+
+.tabPanels {
+  padding: 1em;
+  max-height: 100%;
+  height: 100%;
+}
+
+.reviewContents {
+  margin: 1em;
+  border: 1px dotted #060;
+  background-color: #cfc;
+  padding: 1em;
+  color: #111;
+  font-family: sans-serif;
+}
+
+.reviewContainer {
+  margin: 1em;
+  border: 1px dotted #630;
+  background-color: #ffc;
+  padding: 1em;
+  color: #111;
+  font-family: sans-serif;
+}
+
+.lineError {
+  background-color: #fcc !important;
+}
+
+.lineSuccess {
+  background-color: #cfc !important;
+}
+
+.lineError + pre .cptteach-fixed {
+  background-color: #fcc;
+}
+
+.lineSuccess + pre .cptteach-fixed {
+  background-color: #cfc;
+}
+
+.saveIndicator {
+  float: right;
+}
+
+.saved {
+  color: #393;
+}
+
+.saving {
+  color: #f33;
+}
+
+.blueButton {
+    background-color: #06f;
+    border: 1px solid #06f;
+    border-radius: 3px;
+    color: #eee;
+    text-align: center;
+    margin: 3px 3px 3px auto;
+    padding: 5px;
+}
+
+.blueButton:hover {
+    background-color: #eee;
+    color: #06f;
+    cursor: pointer;
+}
+
+.runButton {
+    width: 50px;
+}
+
+.errorLocation {
+    color: #f08;
+}
+
+.resetButton {
+    float: left;
+}
+
+.submitStep {
+  height: 2em;
+  margin: 7px 0 0 0;
+  color: #eee;
+}
+
+.submitStep span {
+  padding: 5px;
+  border-radius: 0 5px 5px 0;
+  background-color: #06f;
+  cursor: pointer;
+  border: 2px solid #06f;
+}
+
+.submitStep span:hover {
+  background-color: white;
+  color: #06f;
+}
+
+
+.repl-echo {
+    padding: 0 2px;
+}
+
+.feedback {
+  color: black;
+  border: 1px dotted #222;
+  background-color: #ffc;
+  margin: 5px;
+  padding: 5px;
+}
+
+.reviewScoreMessage {
+  padding: 5px;
+}
+
+.feedbackGiven {
+  position: relative;
+  color: black;
+  border: 1px dotted #222;
+  background-color: #ffc;
+  margin: 5px;
+  padding: 5px;
+}
+
+.likertFeedbackScore {
+  padding: 8px;
+}
+
+.likertFeedbackScore span {
+  background-color: #06f;
+  border: 1px solid #06f;
+  border-radius: 3px;
+  color: #eee;
+  text-align: center;
+  padding: 5px;
+}
+
+.feedbackComments {
+  font-style: italic;
+  padding-top: 5px;
+}
+
+.reportAbuse {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border: 1px solid transparent;
+}
+
+.reportAbuse img {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+}
+
+.reportAbuse:hover {
+  border: 1px solid red;
+  background-color: #fcc;
+  cursor: pointer;
+}
+
+.SCodeFlow {
+  font-family: monospace;
+  border: 1px solid black;
+  background: white;
+  padding: 1em;
+  width: 90%;
+}
+
+.SCodeFlow tr {
+  height: 1em;
+}
+
+.SCodeFlow p {
+  margin: 0;
+}
+
+.stt {
+  font-family: monospace;
+}
+
+.editorActiveRegion {
+    background-color: #cff;
+}
+
+#editor {
+    width: 55%;
+    z-index: -1;
+    position: relative;
+}
+
+#editor.maximized {
+    width: 85%;
+}
+
+.tabPanel .maximize, .tabPanel .minimize {
+    display: block;
+    position: absolute;
+    left: -10px;
+    width: 10px;
+    height: 15px;
+}
+
+.tabPanel .maximize:hover, .tabPanel .minimize:hover {
+    cursor: pointer;
+}
+
+
+.tabPanel .maximize {
+    top: 0px;
+    background-color: red;
+}
+
+.tabPanel .minimize {
+    top: 15px;
+    background-color: green;
+}
+
+.modal {
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+  border: 10em solid rgba(0,0,0,.2);
+}
+
+.modal p {
+  width:100%;
+  height:100%;
+  background-color: white;
+  margin: 0;
+  border: 1em solid white;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+  text-align: center;
+  border: 3px solid black;
+  padding: 2em;
+}
+
+.modalClose {
+  background-color: #eee;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  border: 3px solid black;
+  padding: 4px;
+}
+
+.modalClose:hover {
+  background-color: white;
+}
+
+.grade-mode-warning {
+  font-weight : bold;
+  background-color : #f33;
+  color : white;
+  position : fixed;
+  top : 0;
+  width : 100%;
+  z-index : 11000;
+}

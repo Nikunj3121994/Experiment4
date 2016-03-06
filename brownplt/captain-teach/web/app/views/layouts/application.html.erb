@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Captain Teach</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>var RAILS_HOST = "<%= "//#{request.env["SERVER_NAME"]}:#{request.env["SERVER_PORT"]}" %>";</script>
+  <script>var WHALESONG_URL = "<%= "#{WHALESONG_URL}" %>";</script>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <% if Rails.env.development? or Rails.env.test? %>
+    <%= javascript_include_tag "awesome" %>
+    <%= stylesheet_link_tag "awesome" %>
+  <% end %>
+  <% if not (Rails.env.development? or Rails.env.test?) %>
+    <%= setup_browserid() %>
+  <% end %>
+
+</head>
+<body data-no-turbolink>
+<% if Rails.env.development? or Rails.env.test? %>
+  <div id="awesome-panel"></div>
+<% end %>
+
+<% if current_user %>
+<%= link_to "Course Dashboard", "/course" %>
+<% end %>
+
+<% if authenticated? %>
+<%= logout_link  %>
+<% else %>
+<%= login_link "Login" %>
+<% end %>
+
+<% if Rails.env.development? or Rails.env.test? %>
+<% if masquerading? %>
+<%= link_to "End Masquerade", "/end_masquerade", "data-no-turbolink" => true %>
+<% else %>
+<%= link_to "Begin Masquerade", "/begin_masquerade", "data-no-turbolink" => true %>
+<% end %>
+<% end %>
+
+<%= yield %>
+
+</body>
+
+
+</html>

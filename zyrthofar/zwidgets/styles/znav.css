@@ -1,0 +1,221 @@
+.nav > li > .dropdown-menu.dropdown-multicolumn.open {
+    display: table;
+}
+
+.nav > li > .dropdown-menu.dropdown-multicolumn > .dropdown-column {
+    display: table-cell;
+}
+
+.nav > li > a > .item-desc {
+    display: block;
+    margin-left: 8px;
+    opacity: 0.65;
+    font-size: 75%;
+}
+
+.dropdown-menu.dropdown-multicolumn {
+    padding-top: 0;
+    padding-bottom: 0;
+    outline: none;
+}
+
+.dropdown-menu .dropdown-column {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dropdown-menu .dropdown-column > ul {
+    min-width: 160px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.dropdown-menu .dropdown-column > ul > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: hsl(0, 0%, 20%);
+    white-space: nowrap;
+}
+
+.dropdown-menu .dropdown-column > ul > li > a:hover,
+.dropdown-menu .dropdown-column > ul > li > a:focus {
+    color: hsl(0, 0%, 15%);
+    background-color: hsl(0, 0%, 95%);
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-column > ul > .selected > a,
+.dropdown-menu .dropdown-column > ul > .selected > a:hover,
+.dropdown-menu .dropdown-column > ul > .selected > a:focus {
+    color: hsl(0, 0%, 15%);
+    background-color: hsl(210, 100%, 90%);
+}
+
+.dropdown-menu .dropdown-column > ul > .active > a,
+.dropdown-menu .dropdown-column > ul > .active > a:hover,
+.dropdown-menu .dropdown-column > ul > .active > a:focus {
+    color: hsl(0, 0%, 100%);
+    text-decoration: none;
+    background-color: #428BCA;
+    outline: 0;
+}
+
+.dropdown-menu .dropdown-column > ul > .disabled > a,
+.dropdown-menu .dropdown-column > ul > .disabled > a:hover,
+.dropdown-menu .dropdown-column > ul > .disabled > a:focus {
+    color: hsl(0, 0%, 60%);
+}
+
+.dropdown-menu .dropdown-column > ul > .disabled > a:hover,
+.dropdown-menu .dropdown-column > ul > .disabled > a:focus {
+    text-decoration: none;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-image: none;
+}
+
+.dropdown-menu .dropdown-column > ul > .active.disabled > a,
+.dropdown-menu .dropdown-column > ul > .active.disabled > a:hover,
+.dropdown-menu .dropdown-column > ul > .active.disabled > a:focus {
+    color: hsl(0, 0%, 45%);
+    background-color: hsl(210, 50%, 90%);
+}
+
+.dropdown-menu .dropdown-column > .column-filter-ctn {
+    padding: 0 8px 5px;
+}
+
+
+/* MENU COLUMN COLOR SCHEMES */
+.dropdown-menu .dropdown-column.dropdown-column-light {
+    background-color: hsl(0, 0%, 95%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > li > a {
+    color: hsl(0, 0%, 15%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > li > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > li > a:focus {
+    color: hsl(0, 0%, 10%);
+    background-color: hsl(0, 0%, 90%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .selected > a,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .selected > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .selected > a:focus {
+    color: hsl(0, 0%, 10%);
+    background-color: hsl(210, 100%, 85%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active > a,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active > a:focus {
+    color: hsl(0, 0%, 100%);
+    background-color: #428BCA;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .disabled > a:focus {
+    color: hsl(0, 0%, 55%);
+    background-color: transparent;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active.disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active.disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-light > ul > .active.disabled > a:focus {
+    color: hsl(0, 0%, 50%);
+    background-color: hsl(210, 50%, 85%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark {
+    background-color: hsl(0, 0%, 20%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > li > a {
+    color: hsl(0, 0%, 80%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > li > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > li > a:focus {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(0, 0%, 15%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .selected > a,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .selected > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .selected > a:focus {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(210, 100%, 35%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active > a,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active > a:focus {
+    color: hsl(0, 0%, 100%);
+    background-color: #428BCA;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .disabled > a:focus {
+    color: hsl(0, 0%, 45%);
+    background-color: transparent;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active.disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active.disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-dark > ul > .active.disabled > a:focus {
+    color: hsl(0, 0%, 55%);
+    background-color: hsl(210, 50%, 35%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse {
+    background-color: hsl(0, 0%, 15%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > li > a {
+    color: hsl(0, 0%, 75%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > li > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > li > a:focus {
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 10%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .selected > a,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .selected > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .selected > a:focus {
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(210, 100%, 30%);
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active > a,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active > a:focus {
+    color: hsl(0, 0%, 100%);
+    background-color: #428BCA;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .disabled > a:focus {
+    color: hsl(0, 0%, 40%);
+    background-color: transparent;
+}
+
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active.disabled > a,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active.disabled > a:hover,
+.dropdown-menu .dropdown-column.dropdown-column-inverse > ul > .active.disabled > a:focus {
+    color: hsl(0, 0%, 50%);
+    background-color: hsl(210, 50%, 30%);
+}

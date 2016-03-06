@@ -1,0 +1,49 @@
+{
+	"name": "Scales",
+	"version": "0.1.1",
+	"description": "Scales — the flexible, open source game management daemon built for PufferPanel.",
+	"author": "Dane Everitt <dane@daneeveritt.com>",
+	"contributors": [
+		{
+			"name": "Douglas DeVicariis",
+			"email": "kootg04@gmail.com",
+			"web": "https://github.com/koo04"
+		}
+	],
+	"scripts": {
+		"start": "forever start lib/scales.js",
+		"start-verbose": "forever start lib/scales.js verbose",
+		"stop": "forever stop lib/scales.js"
+	},
+	"main": "lib/scales.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/PufferPanel/Scales"
+	},
+	"bugs": {
+		"url": "https://github.com/PufferPanel/Scales/issues"
+	},
+	"dependencies": {
+		"async": "0.9.*",
+		"binaryjs": "0.2.1",
+		"date-utils": "1.2.*",
+		"fs-extra": "0.18.0",
+		"forever": "0.14.*",
+		"gamedig": "0.2.24",
+		"js-yaml": "3.2.*",
+		"mime": "1.3.4",
+		"node.extend": "1.1.3",
+		"properties": "1.2.1",
+		"pty.js": "0.2.7-1",
+		"restify": "3.0.1",
+		"request": "2.55.*",
+		"socket.io": "1.3.5",
+		"tar-fs": "1.5.0",
+		"trim": "0.0.1",
+		"usage": "0.6.0",
+		"userid": "0.1.2",
+		"winston": "1.0.*"
+	},
+	"private": true,
+	"license": "GPLv3"
+}

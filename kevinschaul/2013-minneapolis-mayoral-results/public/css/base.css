@@ -1,0 +1,281 @@
+.clear {
+  clear: both;
+}
+
+.graphic {
+  width: 958px;
+  margin: auto;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  height: 940px;
+  position: relative;
+}
+
+h1 {
+  font-family: Popular-bold;
+  font-weight: bold;
+}
+
+.loading-indicator {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.hide {
+  display: none;
+}
+.results {
+  border: 1px solid rgb(195, 200, 214);
+}
+.results-header, .results-footer {
+  width: 100%;
+  color: #333;
+  line-height: 40px;
+}
+
+.results-footer {
+  border-top: 1px solid #ccc;
+  padding: 14px 0;
+}
+
+.results-header {
+  height: 80px;
+}
+.results-header .title {
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+.results-header form {
+  float: left;
+  padding: 20px 10px 0 10px;
+}
+.results-header .input {
+  background-color: #fff;
+  border: 1px solid rgb(146, 146, 146);
+  color: rgb(102, 115, 114);
+  font-size: 1em;
+  margin: 0px;
+  padding: 9px;
+  width: 340px;
+}
+.formButton {
+  margin-top: 0px;
+}
+#address-button {
+  width: 130px;
+}
+#address-button.loading, #address-button.loading:hover {
+  cursor: auto;
+  background: -moz-linear-gradient(top, #015e9e, #084a7a);
+    background: -webkit-linear-gradient(#015e9e,#084a7a);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#015e9e', endColorstr='#084a7a');
+}
+.results-header #feedback {
+  margin: 0 10px;
+  line-height: 100%;
+  color: rgb(153, 51, 12);
+  font-weight: bold;
+}
+
+.col {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  float: left;
+  background-color: #fff;
+}
+
+.col2 {
+  width: 55%;
+  float: left;
+  height: 836px;
+}
+
+.col1 {
+  overflow: auto;
+  width: 45%;
+  position: relative;
+  height: 918px;
+  border-right: 1px solid #ccc;
+}
+
+.col .wrapper.active {
+  background-color: #eee;
+}
+.col .header {
+  padding: 10px 10px 2px 20px;
+}
+.col .header .show-on-map {
+  margin-left: 10px;
+  font-size: .8em;
+  color: rgb(11, 71, 141);
+  cursor: pointer;
+}
+
+.col .header .return-total {
+  font-size: 1em;
+  color: rgb(11, 71, 141);
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.col .header .return-total:hover {
+  text-decoration: underline;
+}
+
+.col .header .show-on-map:hover {
+  text-decoration: underline;
+}
+.col .precinct-title {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.col .last-updated {
+  display: block;
+  font-size: 0.7em;
+  font-weight: normal;
+  margin-top: 4px;
+}
+.col .reporting {
+  font-size: 0.7em;
+  font-weight: normal;
+  color: #99330c;
+}
+
+.col .candidates {
+  padding: 0 20px;
+  font-size: 14px;
+}
+.col .candidate {
+  line-height: 1.6em;
+  border-bottom: 1px solid #ccc;
+}
+.col .candidate .color {
+  float: left;
+  margin-top: 4px;
+  height: 16px;
+  width: 16px;
+  opacity: 0.7;
+}
+
+div.candidate:last-child {border-bottom: 0px none;}
+
+.col .color { background-color: #aaaaaa; }
+.col .candidate-9031 .color { background-color: #d5531e; }
+.col .candidate-9021 .color { background-color: #f4a013; }
+.col .candidate-9010 .color { background-color: #fbeb4b; }
+.col .candidate-9014 .color { background-color: #57bb54; }
+.col .candidate-9013 .color { background-color: #65a6de; }
+.col .candidate-9032 .color { background-color: #b16cb0; }
+
+#map-key .candidate .color {
+  margin-top: 2px;
+}
+
+.col .candidate .name {
+  margin-left: 10px;
+}
+.col .candidate .percents, .col .percents-headers {
+  font-weight: bold;
+  float: right;
+}
+.col .percents-headers {
+  font-size: 0.7em;
+  font-weight: normal;
+  color: #999;
+  margin-right: 10px;
+  margin-top: -5px; // TODO hack
+}
+.col .candidate .percent, .col .percent-header {
+  width: 40px;
+  display: inline-block;
+  text-align: right;
+  margin-left: 4px;
+}
+.col .percent-header {
+  text-align: center;
+}
+.col .show-all {
+  margin: 6px 0;
+  font-size: .8em;
+  color: rgb(11, 71, 141);
+  cursor: pointer;
+}
+
+.col .show-all:hover {
+  text-decoration: underline;
+}
+
+#precinct-target {
+  display: none;
+}
+
+.map-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+#map-tooltip-target {
+  display: none;
+  position: absolute;
+  z-index: 500;
+  background-color: #fff;
+  width: 375px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  pointer-events: none;
+  -moz-box-shadow: 3px 3px 7px #999;
+  -webkit-box-shadow: 3px 3px 7px #999;
+  box-shadow: 3px 3px 7px #999;
+}
+
+#tooltip-precinct-title {
+  float: left;
+}
+
+#map-target {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+#map-key {
+  position: absolute;
+  z-index: 200;
+  bottom: 15px;
+  left: 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 174px;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  padding: 6px 10px;
+  -moz-box-shadow: 3px 3px 7px #999;
+  -webkit-box-shadow: 3px 3px 7px #999;
+  box-shadow: 3px 3px 7px #999;
+}
+#map-key .candidate {
+  border-bottom: none;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+.results-footer .sources {
+  clear: both;
+  color: #777;
+  font-size: 0.7em;
+  line-height: 115%;
+  margin: 10px;
+}
+.results-footer .sources a {
+  color: rgb(11, 71, 141);
+}
+.results-footer .sources a:hover {
+  text-decoration: underline;
+}
+
+

@@ -1,0 +1,20 @@
+.panel.panel-info
+  .panel-heading
+    h3.panel-title #{$i18n.dischargeControl.table.title}
+  table.table.table-bordered(ng-if='dischargeModel')
+    thead
+      tr
+        th #{$i18n.dischargeControl.table.header}
+        - var n = 0
+        while n < 10
+          th= n++
+    tbody
+      tr(ng-repeat='decade in dischargeTable.rowRange track by $index',
+        ng-init='decadeIndex = $index')
+        td: strong {{decade | hydroround}}
+        td(
+          ng-repeat='dischargeValue in dischargeTable.cellValues[decadeIndex] track by $index')
+          | {{dischargeValue | hydroround}}
+  .panel-body(ng-if='!dischargeModel')
+    p.
+      #{$i18n.dischargeControl.table.noModel}

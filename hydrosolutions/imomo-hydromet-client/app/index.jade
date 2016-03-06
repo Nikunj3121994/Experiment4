@@ -1,0 +1,161 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='author', content='Hydrosolutions GmbH')
+    meta(name='description', content='iMoMo web application for hydrology operations in Central Asia')
+    meta(name='viewport', content='width=device-width')
+    title #{$i18n.title}
+    // build:css(app) styles/vendor.css
+    // bower:css
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/bower_components/octicons/octicons/octicons.css')
+    // endbower
+    // endbuild
+    // build:css(.tmp) styles/main.css
+    link(rel='stylesheet', href='/styles/main.css')
+    // endbuild
+    link(rel='shortcut icon' href='favicon.ico')
+
+  body(ng-app='imomoCaApp')
+    div#container
+        header(ui-view='header')
+        section(ui-view='main')
+        footer(ui-view='footer')
+    // build:js(app) scripts/vendor.js
+    // bower:js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/angular/angular.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/bower_components/angular-cookies/angular-cookies.js')
+    script(src='/bower_components/angular-sanitize/angular-sanitize.js')
+    script(src='/bower_components/angular-resource/angular-resource.js')
+    script(src='/bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
+    script(src='/bower_components/underscore/underscore.js')
+    script(src='/bower_components/angular-ui-utils/ui-utils.js')
+    script(src='/bower_components/d3/d3.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/js-yaml/dist/js-yaml.js')
+    script(src='/bower_components/sprintf/src/sprintf.js')
+    script(src='/bower_components/mathjs/dist/math.min.js')
+    script(src='/bower_components/ng-file-upload/angular-file-upload.js')
+    // endbower
+    if $i18n.locale === 'ru'
+        script(src='/bower_components/moment/locale/ru.js')
+    // endbuild
+
+    // build:js({app, .tmp}) scripts/scripts.js
+    //- Main app
+    script(src='/scripts/app.js')
+    script(src='/scripts/services/access-token-storage.js')
+    script(src='/scripts/services/current-user.js')
+
+    //- Localized strings
+    script(src='/scripts/services/locale.' + $i18n.locale + '.js')
+    script(src='/scripts/services/localization.js')
+
+    //- Definitions
+    if dist
+        script(src='/scripts/services/backend-prod.js')
+    else
+        script(src='/scripts/services/backend-dev.js')
+    script(src='/scripts/services/lexicon.js')
+    script(src='/scripts/filters/hydrological-number.js')
+    script(src='/scripts/services/hydrological-year.js')
+
+    //- Models
+    script(src='/scripts/models/access-tokens.js')
+    script(src='/scripts/models/data-values.js')
+    script(src='/scripts/models/discharge-models.js')
+    script(src='/scripts/models/sites.js')
+    script(src='/scripts/models/sources.js')
+    script(src='/scripts/models/users.js')
+
+    //- View models
+    script(src='/scripts/view-models/daily-input-data.js')
+    script(src='/scripts/view-models/discharge-curve-line.js')
+    script(src='/scripts/view-models/discharge-curve-point.js')
+    script(src='/scripts/view-models/discharge-measurement-pair.js')
+    script(src='/scripts/view-models/journal-data.js')
+    script(src='/scripts/view-models/bulletin.js')
+    script(src='/scripts/view-models/discharge-norm.js')
+    script(src='/scripts/view-models/download-url.js')
+    script(src='/scripts/view-models/forecast-data.js')
+
+    //- APIs
+    script(src='/scripts/api/access-tokens-api.js')
+    script(src='/scripts/api/data-values-api.js')
+    script(src='/scripts/api/discharge-models-api.js')
+    script(src='/scripts/api/http-interceptors.js')
+    script(src='/scripts/api/resources.js')
+    script(src='/scripts/api/sites-api.js')
+    script(src='/scripts/api/sources-api.js')
+    script(src='/scripts/api/users-api.js')
+    script(src='/scripts/api/forecast-api.js')
+
+    //- Error handling
+    script(src='/scripts/errors/states.js')
+    script(src='/scripts/errors/controllers/error-display.js')
+    script(src='/scripts/errors/directives/error-alert.js')
+    script(src='/scripts/errors/models/client-errors.js')
+    script(src='/scripts/errors/models/server-errors.js')
+    script(src='/scripts/errors/services/error-formatter.js')
+    script(src='/scripts/errors/services/error-log.js')
+
+    //- Base controllers
+    script(src='/scripts/controllers/sidebar-options.js')
+
+    //- Home
+    script(src='/scripts/home/controllers/header.js')
+
+    //- Discharge
+    script(src='/scripts/discharge/directives/bounded-draggable-node.js')
+    script(src='/scripts/discharge/directives/discharge-curve.js')
+    script(src='/scripts/discharge/directives/discharge-curve-controls.js')
+    script(src='/scripts/discharge/directives/discharge-display.js')
+    script(src='/scripts/discharge/directives/discharge-table.js')
+    script(src='/scripts/discharge/services/bounding-box.js')
+    script(src='/scripts/discharge/services/discharge-curve-fitting.js')
+
+    //- Stations
+    script(src='/scripts/stations/states.js')
+    script(src='/scripts/stations/services/sites-page.js')
+    //- Stations: Overview
+    script(src='/scripts/stations/controllers/overview.js')
+    //- Stations: Site details
+    script(src='/scripts/stations/controllers/base.js')
+    script(src='/scripts/stations/controllers/curve.js')
+    script(src='/scripts/stations/controllers/norm.js')
+    script(src='/scripts/stations/controllers/site-details.js')
+    //- Stations: New station
+    script(src='/scripts/stations/new-station/controllers/new-station.js')
+
+    //- User registration
+    script(src='/scripts/register-user/states.js')
+    script(src='/scripts/register-user/controllers/register-user.js')
+
+    //- Tools
+    script(src='/scripts/tools/states.js')
+    //- Tools: About
+    script(src='/scripts/tools/controllers/about.js')
+    //- Tools: Operational data tool
+    script(src='/scripts/tools/operational-data/states.js')
+    //- Tools: Operational data tool - Telegram input
+    script(src='/scripts/tools/operational-data/data-input/controllers/calculated-discharge.js')
+    script(src='/scripts/tools/operational-data/data-input/controllers/data-input.js')
+    script(src='/scripts/tools/operational-data/data-input/controllers/discharge-control-telegram.js')
+    script(src='/scripts/tools/operational-data/data-input/controllers/processed-input.js')
+    script(src='/scripts/tools/operational-data/data-input/services/data-input-storage.js')
+    script(src='/scripts/tools/operational-data/data-input/services/discharge-control-state.js')
+    script(src='/scripts/tools/operational-data/data-input/services/kn15-parser.js')
+    //- Tools: Operational data tool - Operational Journal
+    script(src='/scripts/tools/operational-data/journal/controllers/journal.js')
+    //- Tools: Operational data tool - Bulletin
+    script(src='/scripts/tools/operational-data/bulletin/controllers/bulletin.js')
+
+    //- Tools: Forecast
+    script(src='/scripts/tools/forecast/states.js')
+    //- Tools: Forecast - Decade
+    script(src='/scripts/tools/forecast/decade/controller.js')
+    // endbuild

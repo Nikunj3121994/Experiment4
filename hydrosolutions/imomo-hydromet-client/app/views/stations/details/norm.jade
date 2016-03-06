@@ -1,0 +1,52 @@
+.row(ng-if='siteNormCtrl.dischargeNorm')
+  .col-xs-12
+    table.table.table-bordered
+      caption: h2 #{$i18n.stations.selected.norm.table.title}
+      thead
+        tr
+          th #{$i18n.stations.selected.norm.table.header.monthDecade}
+          th #{$i18n.stations.selected.norm.table.header.first}
+          th #{$i18n.stations.selected.norm.table.header.second}
+          th #{$i18n.stations.selected.norm.table.header.third}
+      tbody
+        tr(ng-repeat='monthName in siteNormCtrl.monthNames')
+          td {{monthName}}
+          td {{siteNormCtrl.dischargeNorm.normData[$index*3] | hydroround}}
+          td {{siteNormCtrl.dischargeNorm.normData[$index*3 + 1] | hydroround}}
+          td {{siteNormCtrl.dischargeNorm.normData[$index*3 + 2] | hydroround}}
+    hr
+.row
+  .col-xs-12
+    .h1 #{$i18n.stations.selected.norm.historic}
+    .row
+      .col-xs-6
+        h2 #{$i18n.stations.selected.norm.upload.title}
+        .row
+          .col-xs-5
+            .form-group
+              label #{$i18n.stations.selected.norm.upload.select}
+              input(ng-file-select, type='file',
+                ng-file-change='siteNormCtrl.filesSelected($files, $event)',
+                ng-multiple='false',
+                ng-disabled='siteNormCtrl.fileSelectDisabled()')
+            .form-group
+              button.btn.btn-block.btn-primary(
+                ng-click='siteNormCtrl.uploadFile($event)',
+                ng-disabled='siteNormCtrl.uploadDisabled()')
+                | #{$i18n.stations.selected.norm.upload.button} #{''}
+                i.octicon.octicon-cloud-upload
+          .col-xs-7
+            p.text-info(ng-hide='siteNormCtrl.error')
+              i.octicon.octicon-info
+              | #{''} {{siteNormCtrl.progressMsg}}
+            error-alert(ng-show='siteNormCtrl.error',
+              close='siteNormCtrl.closeErrorAlert()',
+              error='siteNormCtrl.error')
+      .col-xs-4
+        h2 #{$i18n.stations.selected.norm.download.title}
+        a.btn.btn-block.btn-info(
+          ng-href='{{siteNormCtrl.dischargeDataURL.url}}',
+          download)
+          | #{$i18n.stations.selected.norm.download.button} #{''}
+          i.octicon.octicon-cloud-download
+

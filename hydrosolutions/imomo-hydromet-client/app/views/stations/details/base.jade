@@ -1,0 +1,14 @@
+.page-header
+  h1
+    span {{baseSiteCtrl.focusSite.toString()}}
+    .btn-group.pull-right(dropdown)
+      button.btn.btn-primary.dropdown-toggle(dropdown-toggle)
+        | {{baseSiteCtrl.selectedOption.localizedLabel}} #{''}
+        span.caret
+      ul.dropdown-menu
+        li(ng-repeat='option in baseSiteCtrl.options')
+          a(href, ng-click='baseSiteCtrl.changeSelectedOption($event, option)',
+            ui-sref='{{option.state}}({siteId: baseSiteCtrl.focusSite.id})')
+            i.octicon(ng-class='option.icon')
+            | #{''} {{option.localizedLabel}}
+ui-view

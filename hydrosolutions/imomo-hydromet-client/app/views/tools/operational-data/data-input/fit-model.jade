@@ -1,0 +1,53 @@
+include ../../../mixins/form-mixins.jade
+
+div(ng-controller='FitModelCtrl as optionCtrl')
+  .row
+    .col-xs-12
+      .panel.panel-primary
+        .panel-heading
+          h4.panel-title #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints.title}
+        .panel-body
+          form(name='addPointForm')
+            +vFormField('waterLevel', false, $i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints, 'addPointForm', 'optionCtrl.newDischargePair.waterLevelValue', '', 'number')
+            +vFormField('discharge', false, $i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints, 'addPointForm', 'optionCtrl.newDischargePair.dischargeValue', '', 'number')(min='0')
+            .form-group
+              button.btn.btn-block.btn-primary(ng-click='optionCtrl.addFakePoint($event)',
+                ng-disabled='addPointForm.$invalid')
+                | #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints.add} #{''}
+                i.octicon.octicon-plus
+  .row
+    .col-xs-12
+      .panel.panel-info
+        .panel-heading
+          h4.panel-title #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints.listTitle}
+        ul.list-group.scrollable-list.px200
+          li.list-group-item(
+            ng-repeat='dischargePair in optionCtrl.fakeDischargePairs')
+            span #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints.waterLevel.label}
+              | : {{dischargePair.waterLevelValue}}
+            br
+            span #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.artificialPoints.discharge.label}
+              | : {{dischargePair.dischargeValue}}
+            i.octicon.octicon-trashcan.pull-right(
+              ng-click='optionCtrl.deleteFakePoint($event, $index)')
+  .row
+    .col-xs-12
+      .panel.panel-primary
+        .panel-heading
+          h4.panel-title
+          | #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.title} #{''}
+          i.octicon.octicon-info(
+            tooltip=$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.info)
+        .panel-body
+          dl.dl-horizontal
+            dt #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.fakePointsNo}
+            dd {{optionCtrl.fakeDischargePairs.length}}
+            dt #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.selectedDataNo}
+            dd {{optionCtrl.dischargeControlState.sharedSelectedDischargeData.length}}
+          form(name='createNewModelForm')
+            +vFormField('modelName', true, $i18n.tools.operationalData.dischargeControl.adjustment.fitModel, 'createNewModelForm', 'optionCtrl.modelName', 'text')
+            .form-group
+              button.btn.btn-lg.btn-primary(
+                ng-click='optionCtrl.createNewModel($event)',
+                ng-disabled='createNewModelForm.$invalid || optionCtrl.isInputDisabled()')
+                | #{$i18n.tools.operationalData.dischargeControl.adjustment.fitModel.create}

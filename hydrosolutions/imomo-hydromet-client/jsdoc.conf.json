@@ -1,0 +1,16 @@
+{
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "systemName": "IMoMo Hydromet Tool",
+    "copyright": "Copyright (c) 2014-2015 Hydrosolutions GmbH",
+    "navType": "vertical",
+    "theme": "journal",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": true,
+    "highlightTutorialCode": true,
+  }
+}

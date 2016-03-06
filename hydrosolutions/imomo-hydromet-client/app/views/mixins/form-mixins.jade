@@ -1,0 +1,101 @@
+//-
+  This mixin creates a input-group-addon span that contains
+  an auxiliary icon which indicates to the user the state of the input field,
+  e.g. when the input field is pristine the icon is a text-primary pencil,
+  unless it is a required field when it becomes a text-danger pencil.
+  The input-group-addon has a tooltip which indicates the user extra
+  information about the field.
+mixin inputGroupAddon(name, required, i18nPrefix, formName, tooltipPlacement)
+  if tooltipPlacement === undefined
+    - tooltipPlacement = 'right'
+  - var fieldFullName = formName + '.' + name
+  span.input-group-addon
+    if required
+      i.octicon.octicon-pencil.text-danger(ng-show=fieldFullName + '.$pristine && ' + fieldFullName + '.$invalid')
+      i.octicon.octicon-check.text-success(ng-show=fieldFullName + '.$valid')
+    else
+      i.octicon.octicon-pencil.text-primary(ng-show=fieldFullName + '.$pristine')
+      i.octicon.octicon-check.text-success(
+        ng-show=fieldFullName + '.$dirty && ' + fieldFullName + '.$valid')
+    each errorMsg, errorType in i18nPrefix[name].errorMsg
+      i.octicon.octicon-stop.text-danger.error-tooltip(
+        ng-if=fieldFullName + '.$dirty && ' + fieldFullName + '.$error.' + errorType,
+        tooltip=errorMsg,
+        tooltip-placement=tooltipPlacement)
+
+//-
+  This mixin creates an input field for horizontal forms,
+  including the label tag.
+  The sizing is 4-xs for the label and 8-xs for the input field.
+  It expects extra attributes to customize the error checking on the input
+  field.
+mixin formField(name, required, i18nPrefix, formName, modelName, disabled, type, labelWidth, fieldWidth)
+  if type === undefined
+    - type = 'text'
+  if labelWidth === undefined || fieldWidth == undefined
+    - labelWidth = 'col-xs-4'
+    - fieldWidth = 'col-xs-8'
+  .form-group
+    label(class=labelWidth).control-label #{i18nPrefix[name].label}
+    div(class=fieldWidth)
+      .input-group
+        input.form-control(type=type, name=name,
+          placeholder=i18nPrefix[name].placeholder,
+          ng-model=modelName,
+          ng-disabled=disabled,
+          required=required)&attributes(attributes)
+        +inputGroupAddon(name, required, i18nPrefix, formName)
+
+//-
+  This mixin creates an input field for vertical forms, including the label
+  tag.
+  It expects extra attributes to customize the error checking on the input
+  field.
+mixin vFormField(name, required, i18nPrefix, formName, modelName, disabled, type)
+  if type === undefined
+    - type = 'text'
+  .form-group
+    label #{i18nPrefix[name].label}
+    .input-group
+      input.form-control(type=type, name=name,
+        placeholder=i18nPrefix[name].placeholder,
+        ng-model=modelName,
+        ng-disabled=disabled,
+        required=required)&attributes(attributes)
+      +inputGroupAddon(name, required, i18nPrefix, formName)
+
+//-
+  This mixin creates a select field for horizontal forms, including the label
+  tag.
+  It expects extra attributes to customize the error checking on the input
+  field.
+mixin formSelect(name, required, i18nPrefix, formName, modelName, select, selectAs, selectValue, selectArray, disabled)
+  .form-group
+    label.control-label.col-xs-4 #{i18nPrefix[name].label}
+    .col-xs-8
+      .input-group
+        select.form-control(name=name,
+          ng-model=modelName,
+          ng-options=select +' as ' + selectAs + ' for ' + selectValue + ' in ' + selectArray,
+          ng-disabled=disabled,
+          required=required)&attributes(attributes)
+          option(value='') #{i18nPrefix[name].placeholder}
+        +inputGroupAddon(name, required, i18nPrefix, formName)
+
+//-
+  This mixin creates a select field for vertical forms, including the label
+  tag.
+  It expects extra attributes to customize the error checking on the input
+  field.
+mixin vFormSelect(name, required, i18nPrefix, formName, modelName, select, selectAs, selectValue, selectArray, disabled)
+  .form-group
+    label #{i18nPrefix[name].label}
+    .input-group
+      select.form-control(name=name,
+        ng-model=modelName,
+        ng-options=select +' as ' + selectAs + ' for ' + selectValue + ' in ' + selectArray,
+        ng-disabled=disabled,
+        required=required)&attributes(attributes)
+        option(value='') #{i18nPrefix[name].placeholder}
+      +inputGroupAddon(name, required, i18nPrefix, formName)
+

@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+brownplt/captain-teach,3,3164bdeb4ab7e98ab4ae55444cae2f2ff904f56d,Flow,Undetectable,"Spec error. Short cut conflict with native OS X.  ",77.0

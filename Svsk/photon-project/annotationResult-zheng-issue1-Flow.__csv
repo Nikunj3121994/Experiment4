@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+Svsk/photon-project,1,d77329d97fad10d809b1a88dff447776cb1148ab,Flow,Undetectable,"Spec error. Missing a predicate causes chars in unvisited areas to fail to load.",420.0

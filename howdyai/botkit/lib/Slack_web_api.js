@@ -1,3 +1,5 @@
+/* @flow */
+
 var request = require('request');
 
 module.exports = function(bot, config) {

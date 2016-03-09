@@ -1,3 +1,5 @@
+/* @flow */
+
 var dgram = require('dgram');
 var Buffer = require('buffer').Buffer;
 
@@ -222,6 +224,25 @@ SysLogger.prototype.assert = function(expression) {
     }
 };
 
-var logger = new SysLogger();
+class t {
+set;
+assert;
+trace;
+setTag;
+setHostname;
+get;
+timeEnd;
+dir;
+time;
+error;
+warn;
+info;
+log;
+send;
+_send;
+setFacility;
+}
+
+var logger:t = new SysLogger();
 logger.init();
 module.exports = logger;

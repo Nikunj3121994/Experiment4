@@ -1,3 +1,5 @@
+/* @flow */
+
 var fs = require('fs'), path = require('path'), util = require('util'), Stream = require('stream').Stream;
 
 

@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+howdyai/botkit,122,4d19a5af61d0d53d09cf81c3ba49d9a609172644,TypeScript,Undetectable,"Spec error. The same as Flow.",39.0

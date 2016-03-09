@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+23/resumable.js,261,aa9e231b1cedbd3a16383de011b27ef006bffd58,TypeScript,Detectable,"TypeScript successfully detects that property "opentions" has not be declared",63.0

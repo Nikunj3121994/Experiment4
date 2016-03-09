@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+ryu1kn/whatsdone,15,38c28b7528fa9107d7b63dfb73a558663b36d184,TypeScript,Undetectable,"Specification error. Wrong implementation of updating a done item causes no items can be displayed.",427.0

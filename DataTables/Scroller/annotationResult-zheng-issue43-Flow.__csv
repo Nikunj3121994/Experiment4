@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+DataTables/Scroller,43,2e4178a2157340e94b49a970e31c445f46b3b68a,Flow,Undetectable,"Missing a predicate. The bug was that the program incorrectly calculated the number of rows when the table was invisible.",544.0

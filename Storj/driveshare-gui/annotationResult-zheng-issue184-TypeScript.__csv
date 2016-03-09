@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+Storj/driveshare-gui,184,c7b01c5aeaa5329bd137cd70c02bf1e5778bf0ba,TypeScript,Undetectable,"Spec error. Synchronization error. The bug was that multipe writes can happen in parallel which messes up the setting file.",85.0

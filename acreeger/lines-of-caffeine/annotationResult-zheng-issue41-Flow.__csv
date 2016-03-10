@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+acreeger/lines-of-caffeine,41,8e468b9a7978c5bfcf08d1122fa79c9d49986135,Flow,Undetectable,"EIS error. Missing a functionality which is not related to types.",142.0

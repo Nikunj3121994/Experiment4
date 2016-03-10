@@ -1,3 +1,5 @@
+/* @flow */
+
 // Copyright 2011 Vineet Kumar
 
 var imports = {

@@ -1,3 +1,5 @@
+/* @flow */
+
 import React, { PropTypes } from 'react';
 
 import baseStyles from './base.css';
@@ -10,10 +12,18 @@ const propTypes = {
   placeholder: PropTypes.string,
 };
 
+class t {
+target:?s;
+}
+
+class s {
+    value:string;
+}
+
 const Input = ({ defaultValue, name, onChange, placeholder }) => {
   let debounce;
 
-  const onChangeWithDebounce = e => {
+  const onChangeWithDebounce = (e:t) => {
     clearTimeout( debounce );
     debounce = setTimeout(() => {
       onChange( e.target.value );

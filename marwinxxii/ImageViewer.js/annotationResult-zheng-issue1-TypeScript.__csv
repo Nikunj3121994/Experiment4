@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+marwinxxii/ImageViewer.js,1,7098ba9f50f4dbe9d9a5080bdf5515fa18ccd031,TypeScript,Undetectable,"String errors. The first parameter of a funtion is a string literal, and should be changed to another literal. These changes are invisibe to the two type systems.",30.0

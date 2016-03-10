@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+SpringRoll/SpringRollContainer,1,ba212fd3635c7329da4852de6e19446169a5a523,TypeScript,Detectable,"Void functions return a boolean",51.0

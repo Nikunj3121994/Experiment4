@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+zyrthofar/zwidgets,8,4f39a18777eec93724ad0480e79bab5a9fc2467f,TypeScript,Undetectable,"Spec/UI error. The bug was that keyboard-active item is missing ",122.0

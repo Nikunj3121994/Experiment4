@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+mkvd/smarttv-twitch,14,c99496cb4f2bc8637ebf9057c0ba932314ca73fa,Flow,Undetectable,"String errors. Fixed to English and failed to support multiple langauges",205.0

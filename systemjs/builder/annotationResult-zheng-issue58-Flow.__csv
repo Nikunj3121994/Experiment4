@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+systemjs/builder,58,efcaea1deff618172dd0b595426061e31548d8cd,Flow,Undetectable,"Spec error. Wrongly composes the url. Confusion in building relative paths.",42.0

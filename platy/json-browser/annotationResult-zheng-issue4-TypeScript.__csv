@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+platy/json-browser,4,32370cd04ba438de86e5c23b90a2661b030aec7c,TypeScript,Undetectable,"Missing a predicate. Only assigns a value when window.onload does not exsit. Without the predicate, there is still no type error.",104.0

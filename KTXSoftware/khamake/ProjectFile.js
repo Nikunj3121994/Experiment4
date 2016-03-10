@@ -1,9 +1,16 @@
+/* @flow */
+
 "use strict";
 
 const fs = require('fs');
 
+class t {
+assets:?Array<any>;
+rooms:?Array<any>;
+}
+
 module.exports = function (from) {
-	let project = JSON.parse(fs.readFileSync(from.resolve('project.kha').toString(), { encoding: 'utf8' }));
+	let project:t = JSON.parse(fs.readFileSync(from.resolve('project.kha').toString(), { encoding: 'utf8' }));
 	
 	if (project.format < 2) {
 		let assets = {};

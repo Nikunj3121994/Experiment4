@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+KTXSoftware/khamake,15,a044a9537b41071e2fdd8a0c9185762eb71d14bd,Flow,Detectable,"Flow detects it by having annotations that specify that both properties can be undefined.",31.0

@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+bootstrapworld/codemirror-blocks,18,20ddc808cbdece86f72f4d7f7ae7d80fa4c679d3,Flow,Undetectable,"Spec error. Expressions in the function position could not be added to the nextMap and previousMap",248.0

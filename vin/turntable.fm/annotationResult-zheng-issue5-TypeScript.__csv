@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+vin/turntable.fm,5,01f29c3236b3f652dc062e9f9d7f135883ded5cc,TypeScript,Detectable,"Can find that banned_reason has not been declared.",60.0

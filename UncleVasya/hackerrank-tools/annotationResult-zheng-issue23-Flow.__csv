@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+UncleVasya/hackerrank-tools,23,f6be3db0fad8c259b1a692bb2e7575c3f07eeae5,Flow,Undetectable,"Spec error and Incomplete predicates. Wrong Computation.",44.0

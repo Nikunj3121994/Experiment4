@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+rpbouman/xavier,7,dbec072d27c546d753355c163a78f8bee9f875e1,Flow,Undetectable,"EIS error. Wrong initialisation of a variable but the type remains the same.",87.0

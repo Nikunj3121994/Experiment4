@@ -1,3 +1,5 @@
+/* @flow */
+
 /*! SpringRoll Container 0.5.2 */
 /**
  * @module Core
@@ -2260,7 +2262,7 @@
 	 * @private
 	 * @param  {Event} e Click or focus event
 	 */
-	var onDocClick = function(e)
+	var onDocClick = function(e):void
 	{
 		if (!this.loaded) return;
 

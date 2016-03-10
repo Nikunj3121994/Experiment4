@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+hydrosolutions/imomo-hydromet-client,55,64491e3b869151a60e1dd8e92961f57ae2590b96,TypeScript,Undetectable,"Specification error. The bug was not considering the error happens when log out happens on a protected page",33.0

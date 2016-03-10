@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+it4biz/SaikuChartPlus,11,5ae1da0ff20f28640e990293f423ae13a63084cf,Flow,Undetectable,"Incomplete predicates",130.0

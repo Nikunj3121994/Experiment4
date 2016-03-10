@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+paulgreg/simple-monitoring,10,04f89bb90d086bb397f2b76400e2a364ba7d6ca2,TypeScript,Undetectable,"Specification errors. Wrongly computate the difference between now and a specific date.",257.0

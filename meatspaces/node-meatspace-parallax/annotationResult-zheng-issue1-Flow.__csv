@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+meatspaces/node-meatspace-parallax,1,03db5f5f9c7cdc5f719f46a69ed45739ca67061b,Flow,Undetectable,"Spec error. The bug was due to a big confusion among different variables that the developer creates, user, self.user and currUser. They all have the same type though.",202.0

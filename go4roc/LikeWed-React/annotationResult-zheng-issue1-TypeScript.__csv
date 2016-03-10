@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+go4roc/LikeWed-React,1,2ab5de298fbc2881340547e228368662e991cc27,TypeScript,Undetectable,"String errors. Wrong content of URL. ",22.0

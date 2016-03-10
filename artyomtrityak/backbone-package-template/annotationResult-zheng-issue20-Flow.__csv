@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+artyomtrityak/backbone-package-template,20,2c63dd27f0aa74c2ba6ba50f2e5d2fa08f529292,Flow,Undetectable,"Spec errors. Forgot to add a string to an array that is used to specify some file paths.",25.0

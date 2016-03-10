@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+gjedeer/paranoia,2,bb58b5c427b2d7a72e60609f490c11d02217a8cc,TypeScript,Undetectable,"Wrong predicate. And bug was due to an error in the string literal's content",94.0

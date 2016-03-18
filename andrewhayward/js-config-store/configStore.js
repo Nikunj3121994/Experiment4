@@ -1,3 +1,5 @@
+/* @flow */
+
 (function () {
 
   var root = this,
@@ -112,7 +114,7 @@
     return (''+value).replace(/([^A-Z_])([A-Z])/g, '$1_$2').toUpperCase();
   }
 
-  function parse (config) {
+  function parse (config:?Object) {
     var parsed = {};
 
     Object.keys(config).forEach(function (key) {

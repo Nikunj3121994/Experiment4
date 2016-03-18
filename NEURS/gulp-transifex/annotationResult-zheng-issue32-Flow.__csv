@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+NEURS/gulp-transifex,32,dcc2a2438519debce2e5005986d08fdc45568a34,Flow,Undetectable,"Wrong predicate. Interesting bug. Worth talking about. These two type systems do not distinguish between null and undefined.",160.0

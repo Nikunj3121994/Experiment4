@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+vuejs/vue-validator,139,b072f4a9816040c2803e0c682201c9a31aff6ca5,Flow,Unknown,"Some logic error, setting a property '_validation' to be null, causes a subsequent type error. How to annotate this?",413.0

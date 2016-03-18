@@ -1,3 +1,5 @@
+/* @flow */
+
 import util, { empty, each, pull } from './util'
 import BaseValidation from './validations/base'
 import CheckboxValidation from './validations/checkbox'

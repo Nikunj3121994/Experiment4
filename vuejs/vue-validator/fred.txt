@@ -1,0 +1,271 @@
+src/validator.js:16
+ 16:   constructor (name, dir, groups) {
+                    ^^^^ parameter `name`. Missing annotation
+
+src/validator.js:16
+ 16:   constructor (name, dir, groups) {
+                          ^^^ parameter `dir`. Missing annotation
+
+src/validator.js:16
+ 16:   constructor (name, dir, groups) {
+                               ^^^^^^ parameter `groups`. Missing annotation
+
+src/validator.js:17
+ 17:     this.name = name
+         ^^^^^^^^^ assignment of property `name`
+ 17:     this.name = name
+              ^^^^ property `name`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:19
+ 19:     this._scope = {}
+         ^^^^^^^^^^^ assignment of property `_scope`
+ 19:     this._scope = {}
+              ^^^^^^ property `_scope`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:20
+ 20:     this._dir = dir
+         ^^^^^^^^^ assignment of property `_dir`
+ 20:     this._dir = dir
+              ^^^^ property `_dir`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:21
+ 21:     this._validations = {}
+         ^^^^^^^^^^^^^^^^^ assignment of property `_validations`
+ 21:     this._validations = {}
+              ^^^^^^^^^^^^ property `_validations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:22
+ 22:     this._checkboxValidations = {}
+         ^^^^^^^^^^^^^^^^^^^^^^^^^ assignment of property `_checkboxValidations`
+ 22:     this._checkboxValidations = {}
+              ^^^^^^^^^^^^^^^^^^^^ property `_checkboxValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:23
+ 23:     this._radioValidations = {}
+         ^^^^^^^^^^^^^^^^^^^^^^ assignment of property `_radioValidations`
+ 23:     this._radioValidations = {}
+              ^^^^^^^^^^^^^^^^^ property `_radioValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:24
+ 24:     this._groups = groups
+         ^^^^^^^^^^^^ assignment of property `_groups`
+ 24:     this._groups = groups
+              ^^^^^^^ property `_groups`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:25
+ 25:     this._groupValidations = {}
+         ^^^^^^^^^^^^^^^^^^^^^^ assignment of property `_groupValidations`
+ 25:     this._groupValidations = {}
+              ^^^^^^^^^^^^^^^^^ property `_groupValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:28
+ 28:       this._groupValidations[group] = []
+                ^^^^^^^^^^^^^^^^^ property `_groupValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:33
+ 33:     util.Vue.util.defineReactive(this._dir.vm, this.name, this._scope)
+                                           ^^^^ property `_dir`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:33
+ 33:     util.Vue.util.defineReactive(this._dir.vm, this.name, this._scope)
+                                                         ^^^^ property `name`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:33
+ 33:     util.Vue.util.defineReactive(this._dir.vm, this.name, this._scope)
+                                                                    ^^^^^^ property `_scope`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:34
+ 34:     this._dir.vm._validatorMaps[this.name] = this
+              ^^^^ property `_dir`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:34
+ 34:     this._dir.vm._validatorMaps[this.name] = this
+                                          ^^^^ property `name`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:38
+ 38:     this._dir.vm._validatorMaps[this.name] = null
+              ^^^^ property `_dir`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:38
+ 38:     this._dir.vm._validatorMaps[this.name] = null
+                                          ^^^^ property `name`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:39
+ 39:     this._dir.vm[this.name] = null
+              ^^^^ property `_dir`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:39
+ 39:     this._dir.vm[this.name] = null
+                           ^^^^ property `name`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:43
+ 43:   get validations () {
+       ^ get/set properties not yet supported
+
+src/validator.js:43
+ 43:   get validations () {
+                         ^ return. Missing annotation
+
+src/validator.js:47
+ 47:     extend(ret, this._validations)
+                          ^^^^^^^^^^^^ property `_validations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:49
+ 49:     each(this._checkboxValidations, (dataset, key) => {
+                   ^^^^^^^^^^^^^^^^^^^^ property `_checkboxValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:53
+ 53:     each(this._radioValidations, (dataset, key) => {
+                   ^^^^^^^^^^^^^^^^^ property `_radioValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:60
+ 60:   manageValidation (field, vm, el, scope) {
+                         ^^^^^ parameter `field`. Missing annotation
+
+src/validator.js:60
+ 60:   manageValidation (field, vm, el, scope) {
+                                ^^ parameter `vm`. Missing annotation
+
+src/validator.js:60
+ 60:   manageValidation (field, vm, el, scope) {
+                                    ^^ parameter `el`. Missing annotation
+
+src/validator.js:60
+ 60:   manageValidation (field, vm, el, scope) {
+                                        ^^^^^ parameter `scope`. Missing annotation
+
+src/validator.js:60
+ 60:   manageValidation (field, vm, el, scope) {
+                                              ^ return. Missing annotation
+
+src/validator.js:76
+ 76:   unmanageValidation (field, el) {
+                           ^^^^^ parameter `field`. Missing annotation
+
+src/validator.js:76
+ 76:   unmanageValidation (field, el) {
+                                  ^^ parameter `el`. Missing annotation
+
+src/validator.js:88
+ 88:   _manageBaseValidation (field, vm, el, scope) {
+                              ^^^^^ parameter `field`. Missing annotation
+
+src/validator.js:88
+ 88:   _manageBaseValidation (field, vm, el, scope) {
+                                     ^^ parameter `vm`. Missing annotation
+
+src/validator.js:88
+ 88:   _manageBaseValidation (field, vm, el, scope) {
+                                         ^^ parameter `el`. Missing annotation
+
+src/validator.js:88
+ 88:   _manageBaseValidation (field, vm, el, scope) {
+                                             ^^^^^ parameter `scope`. Missing annotation
+
+src/validator.js:88
+ 88:   _manageBaseValidation (field, vm, el, scope) {
+                                                   ^ return. Missing annotation
+
+src/validator.js:89
+ 89:     let validation = this._validations[field] = new BaseValidation(field, vm, el, scope, this)
+                               ^^^^^^^^^^^^ property `_validations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:94
+ 94:   _unmanageBaseValidation (field, el) {
+                                ^^^^^ parameter `field`. Missing annotation
+
+src/validator.js:94
+ 94:   _unmanageBaseValidation (field, el) {
+                                       ^^ parameter `el`. Missing annotation
+
+src/validator.js:95
+ 95:     let validation = this._validations[field]
+                               ^^^^^^^^^^^^ property `_validations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:98
+ 98:       util.Vue.delete(this._scope, field)
+                                ^^^^^^ property `_scope`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:99
+ 99:       this._validations[field] = null
+                ^^^^^^^^^^^^ property `_validations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+src/validator.js:103
+103:   _manageCheckboxValidation (field, vm, el, scope) {
+                                  ^^^^^ parameter `field`. Missing annotation
+
+src/validator.js:103
+103:   _manageCheckboxValidation (field, vm, el, scope) {
+                                         ^^ parameter `vm`. Missing annotation
+
+src/validator.js:103
+103:   _manageCheckboxValidation (field, vm, el, scope) {
+                                             ^^ parameter `el`. Missing annotation
+
+src/validator.js:103
+103:   _manageCheckboxValidation (field, vm, el, scope) {
+                                                 ^^^^^ parameter `scope`. Missing annotation
+
+src/validator.js:103
+103:   _manageCheckboxValidation (field, vm, el, scope) {
+                                                       ^ return. Missing annotation
+
+src/validator.js:104
+104:     let validationSet = this._checkboxValidations[field]
+                                  ^^^^^^^^^^^^^^^^^^^^ property `_checkboxValidations`. Property not found in
+ 14: export default class Validator {
+                          ^^^^^^^^^ Validator
+
+
+... 80 more errors (only 50 out of 130 errors displayed)
+To see all errors, re-run Flow with --show-all-errors

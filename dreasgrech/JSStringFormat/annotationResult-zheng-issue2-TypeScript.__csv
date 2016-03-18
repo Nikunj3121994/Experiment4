@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+dreasgrech/JSStringFormat,2,ef0cd7a4f94b734dbbef23d72b0fe9961febd510,TypeScript,Undetectable,"Wrong predicate. These two type systems do not understand the difference between '==' and '==='.",27.0

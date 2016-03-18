@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+vuejs/vue-validator,139,b072f4a9816040c2803e0c682201c9a31aff6ca5,TypeScript,Undetectable,"Null/undefined handling. TSC does not support non-nullable type annotation.",37.0

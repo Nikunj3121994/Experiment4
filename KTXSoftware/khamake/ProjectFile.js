@@ -4,9 +4,10 @@
 
 const fs = require('fs');
 
-class t {
+interface t {
 assets:?Array<any>;
 rooms:?Array<any>;
+format:any;
 }
 
 module.exports = function (from) {

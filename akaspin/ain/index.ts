@@ -223,22 +223,22 @@ SysLogger.prototype.assert = function(expression) {
 };
 
 interface t {
-assert;
-trace;
-timeEnd;
-time;
-dir;
-error;
-warn;
-info;
-log;
-_send;
-send;
-get;
-set;
-setTag;
-setFacility;
-setHostname;
+    set:any;
+        assert:any;
+               trace:any;
+                     setTag:any;
+                            setHostname:any;
+                                        get:any;
+                                            timeEnd:any;
+                                                    dir:any;
+                                                        time:any;
+                                                             error:any;
+                                                                   warn:any;
+                                                                        info:any;
+                                                                             log:any;
+                                                                                 send:any;
+                                                                                      _send:any;
+                                                                                            setFacility:any;
 }
 
 

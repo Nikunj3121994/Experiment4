@@ -224,25 +224,25 @@ SysLogger.prototype.assert = function(expression) {
     }
 };
 
-class t {
-set;
-assert;
-trace;
-setTag;
-setHostname;
-get;
-timeEnd;
-dir;
-time;
-error;
-warn;
-info;
-log;
-send;
-_send;
-setFacility;
+interface t {
+    set:any;
+        assert:any;
+               trace:any;
+                     setTag:any;
+                            setHostname:any;
+                                        get:any;
+                                            timeEnd:any;
+                                                    dir:any;
+                                                        time:any;
+                                                             error:any;
+                                                                   warn:any;
+                                                                        info:any;
+                                                                             log:any;
+                                                                                 send:any;
+                                                                                      _send:any;
+                                                                                            setFacility:any;
 }
 
-var logger:t = new SysLogger();
+var logger: t = new SysLogger();
 logger.init();
 module.exports = logger;

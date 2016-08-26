@@ -1,2 +1,3 @@
 Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
 colinmeinke/universal-js,17,83ce402aad74427d3edec242cfd032c7b2d55d3d,TypeScript,Undetectable,"Does not support a nulllable type annotation",308.0
+colinmeinke/universal-js,17,83ce402aad74427d3edec242cfd032c7b2d55d3d,TypeScript,Detectable,"TypeScript is having problem parsing this program. I have to comment out some part of the program to make it amenable to being parsed, which I don't count as annotations.",469.0

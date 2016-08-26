@@ -1,39 +1,22 @@
-import React, { PropTypes } from 'react';
-
-import baseStyles from './base.css';
-import themeStyles from './oaxaca-theme.css';
-
-const propTypes = {
-  defaultValue: PropTypes.string,
-  name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
+"use strict";
+var react_1 = require('react');
+var propTypes = {
+    defaultValue: react_1.PropTypes.string,
+    name: react_1.PropTypes.string,
+    onChange: react_1.PropTypes.func.isRequired,
+    placeholder: react_1.PropTypes.string
 };
-
-const Input = ({ defaultValue, name, onChange, placeholder }) => {
-  let debounce;
-
-  const onChangeWithDebounce = e => {
-    clearTimeout( debounce );
-    debounce = setTimeout(() => {
-      onChange( e.target.value );
-    }, 500 );
-  };
-
-  return (
-    <input
-      className={[
-        baseStyles.regular,
-        themeStyles.regular,
-      ].join( ' ' )}
-      defaultValue={ defaultValue }
-      name={ name }
-      onChange={ onChangeWithDebounce }
-      placeholder={ placeholder }
-    />
-  );
+var Input = function (_a) {
+    var defaultValue = _a.defaultValue, name = _a.name, onChange = _a.onChange, placeholder = _a.placeholder;
+    var debounce;
+    var onChangeWithDebounce = function (e) {
+        clearTimeout(debounce);
+        debounce = setTimeout(function () {
+            onChange(e.target.value);
+        }, 500);
+    };
+    return (' ');
 };
-
 Input.propTypes = propTypes;
-
-export default Input;
+exports.__esModule = true;
+exports["default"] = Input;

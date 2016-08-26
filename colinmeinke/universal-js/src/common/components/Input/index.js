@@ -12,11 +12,11 @@ const propTypes = {
   placeholder: PropTypes.string,
 };
 
-class t {
+interface t {
 target:?s;
 }
 
-class s {
+interface s {
     value:string;
 }
 

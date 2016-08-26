@@ -1,2 +1,3 @@
 Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
 andrewhayward/js-config-store,2,ff9f338710045472fafe230a6d68ec0e2cb91d58,TypeScript,Undetectable,"Null/undefined handling. TSC does not support non-nullable type annotations.",106.0
+andrewhayward/js-config-store,2,ff9f338710045472fafe230a6d68ec0e2cb91d58,TypeScript,Detectable,"According to our definitions of tc-detectable, this is a successful detection. But tsc does not error on line 118, which is presumably because of tsc's inference on Object.keys() is too permissive.",282.0

@@ -1,0 +1,2 @@
+Project,Issue,Commit,TypeChecker,Detectable,Comment,AnnotationTime
+openmcac/mcac-js,9,04008770a0378a6a95b4a5fefdb4d58f3ab98ebb,TypeScript,Undetectable,"EIS. Wrongly handled the time zone differences.",82.0
